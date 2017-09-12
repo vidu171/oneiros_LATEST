@@ -55,13 +55,14 @@ public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapt
                 i.putExtra("Fees",currentEvent.Fees);
                 i.putExtra("FeesMode",currentEvent.FeesMode);
                 i.putExtra("JudgingCriteria",currentEvent.JudgingCriteria);
-                i.putExtra("MaxParticipent",currentEvent.MaxParticipant);
-                i.putExtra("MinParticipent",currentEvent.MinParticipant);
+                i.putExtra("MaxParticipant",currentEvent.MaxParticipant);
+                i.putExtra("MinParticipant",currentEvent.MinParticipant);
                 i.putExtra("Details",currentEvent.Details);
                 i.putExtra("Rules",currentEvent.Rules);
                 i.putExtra("EventKey",currentEvent.EventKey);
                 i.putExtra("Time",currentEvent.Time);
-                Log.w("Location",currentEvent.Location);
+                i.putExtra("RegistrationOpen",currentEvent.RegistrationOpen);
+                Log.w("RegistrationOpen", String.valueOf(currentEvent.RegistrationOpen));
                 i.putExtra("Location",currentEvent.Location);
                 i.putExtra("Contact",currentEvent.Contact);
                 Log.w("Check 123", currentEvent.EventKey);

@@ -20,8 +20,9 @@ public class RetrivedEvent {
     public String Contact;
     public String Time;
     public String Location;
+    public boolean RegistrationOpen;
     public RetrivedEvent(){}
-    public RetrivedEvent(String Name, String Details, String Rules, int MinParticipant, int MaxParticipant, int Fees, int FeesMode, String JudgingCriteria, String Duration, String Club, String EventKey, String Contact, String Time, String Location){
+    public RetrivedEvent(String Name, String Details, String Rules, int MinParticipant, int MaxParticipant, int Fees, int FeesMode, String JudgingCriteria, String Duration, String Club, String EventKey, String Contact, String Time, String Location, boolean RegistrationOpen){
         this.Name=Name;
         this.Details=Details;
         this.Rules=Rules;
@@ -36,5 +37,6 @@ public class RetrivedEvent {
         this.Contact = Contact;
         this.Time = Time;
         this.Location = Location;
+        this.RegistrationOpen = RegistrationOpen;
     }
 }

@@ -48,13 +48,6 @@ public class events extends Fragment {
         mLayout = v.findViewById(R.id.sliding_layout);
 
         List = new ArrayList<>();
-        List.add(new RetrivedEvent("adaf","asda","fassa",1,2,3,4,"afaf","sfaf","fafaf","afsf","asfas","fsaf","asfasf"));
-        List.add(new RetrivedEvent("adaf","asda","fassa",1,2,3,4,"afaf","sfaf","fafaf","afsf","asfas","fsaf","asfasf"));
-        List.add(new RetrivedEvent("adaf","asda","fassa",1,2,3,4,"afaf","sfaf","fafaf","afsf","asfas","fsaf","asfasf"));
-        List.add(new RetrivedEvent("adaf","asda","fassa",1,2,3,4,"afaf","sfaf","fafaf","afsf","asfas","fsaf","asfasf"));
-        List.add(new RetrivedEvent("adaf","asda","fassa",1,2,3,4,"afaf","sfaf","fafaf","afsf","asfas","fsaf","asfasf"));
-
-
         mAdapter = new recyclerViewAdapter(getContext(),List);
         recyclerView = v.findViewById(R.id.RECYCLE);
         final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());

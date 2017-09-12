@@ -72,12 +72,12 @@ public class SplashScreen extends AppCompatActivity {
                 if(dataSnapshot.hasChild("Contact")){
                     DataSnapshot contactSnapshot = dataSnapshot.child("Contact");
                     for (DataSnapshot Contact : contactSnapshot.getChildren()) {
-                        ContactVal+="Name: "+Contact.child("Name").getValue()+"\n";
-                        ContactVal+="Number: "+Contact.child("Number").getValue()+"\n\n";
+                        ContactVal+=Contact.child("Name").getValue()+"- ";
+                        ContactVal+=Contact.child("Number").getValue()+"\n\n";
                     }
                 }
                 Log.w("Name-->",EventData.Name);
-                mEvents.add(new RetrivedEvent(EventData.Name,EventData.Details,EventData.Rules,EventData.MinParticipant,EventData.MaxParticipant,EventData.Fees,EventData.FeesMode,EventData.JudgingCriteria,EventData.Duration,EventData.Club,dataSnapshot.getKey(), ContactVal, EventData.Time, EventData.Location));
+                mEvents.add(new RetrivedEvent(EventData.Name,EventData.Details,EventData.Rules,EventData.MinParticipant,EventData.MaxParticipant,EventData.Fees,EventData.FeesMode,EventData.JudgingCriteria,EventData.Duration,EventData.Club,dataSnapshot.getKey(), ContactVal, EventData.Time, EventData.Location, EventData.RegistrationOn));
 
                 if(mEvents.size()==39) {
                     EventdbHelper dbHelper = new EventdbHelper(SplashScreen.this);

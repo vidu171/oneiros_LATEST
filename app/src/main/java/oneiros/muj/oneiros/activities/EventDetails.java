@@ -51,6 +51,7 @@ public class EventDetails extends AppCompatActivity {
         if(i.getIntExtra("MinParticipant",-1)>1){
             Participation.setText("Team");
         }
+//        To
         else{
             Participation.setText("Single");
         }

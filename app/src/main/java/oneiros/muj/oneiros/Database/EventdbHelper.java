@@ -37,6 +37,7 @@ public class EventdbHelper extends SQLiteOpenHelper {
     private static final String COLOUMN_CONTACT = "contact";
     private static final String COLOUMN_TIME = "time";
     private static final String COLOUMN_LOCATION = "location";
+    private static final String COLOUMN_RegistrationOpen = "registrtion_open";
 
 
 
@@ -48,8 +49,8 @@ public class EventdbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+COLOUMN_ID+" INTEGER PRIMARY KEY, "+ COLOUMN_NAME+
                 " TEXT,"+COLOUMN_DETAILS+" TEXT,"+COLOUMN_RULES+" TEXT,"+COLOUMN_MIN_PARTICIPANT+" TEXT,"+COLOUMN_MAX_PARTICIPANT+ " TEXT,"+COLOUMN_FEES+" TEXT,"+
-                COLOUMN_FEES_MODE+" TEXT,"+COLOUMN_JUDGING_CRITERIA+" TEXT,"+COLOUMN_DURATION+" TEXT,"+COLOUMN_CLUB+" TEXT,"+COLOUMN_CONTACT+" TEXT,"+COLOUMN_TIME+" TEXT,"+COLOUMN_LOCATION+" TEXT,"+
-                COLOUMN_EVENT_KEY+" TEXT)";
+                COLOUMN_FEES_MODE+" TEXT,"+COLOUMN_JUDGING_CRITERIA+" TEXT,"+COLOUMN_DURATION+" TEXT,"+COLOUMN_CLUB+" TEXT,"+COLOUMN_CONTACT+" TEXT,"+COLOUMN_TIME+" TEXT,"+COLOUMN_LOCATION+" TEXT,"+COLOUMN_EVENT_KEY+" TEXT,"+
+                COLOUMN_RegistrationOpen+" TEXT)";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -79,6 +80,7 @@ public class EventdbHelper extends SQLiteOpenHelper {
                 values.put(COLOUMN_CONTACT, x.Contact);
                 values.put(COLOUMN_TIME, x.Time);
                 values.put(COLOUMN_LOCATION, x.Location);
+                values.put(COLOUMN_RegistrationOpen, x.RegistrationOpen);
                 db.insert(TABLE_NAME, null, values);
             }
         db.close();
@@ -105,8 +107,12 @@ public class EventdbHelper extends SQLiteOpenHelper {
                     String Contact = cursor.getString(11);
                     String Time = cursor.getString(12);
                     String Location = cursor.getString(13);
+//                    Boolean RegistrationOpen = Boolean.valueOf(cursor.getString(15));
+                    Log.w("->", String.valueOf(Boolean.valueOf(cursor.getString(15))));
+                    Log.w("->", cursor.getString(15));
+                    boolean RegistrationOpen = Integer.valueOf(cursor.getString(15))==1?true:false;
                     Log.w("while filling", EventKey);
-                    eventList.add(new RetrivedEvent(name, Details, Rules, Integer.parseInt(minParticipant), Integer.parseInt(maxParticipant), Integer.parseInt(fees), Integer.parseInt(feesMode), judgingCriteria, duration, club,EventKey, Contact,Time,Location));
+                    eventList.add(new RetrivedEvent(name, Details, Rules, Integer.parseInt(minParticipant), Integer.parseInt(maxParticipant), Integer.parseInt(fees), Integer.parseInt(feesMode), judgingCriteria, duration, club,EventKey, Contact,Time,Location,RegistrationOpen));
                 }
             }
             while (cursor.moveToNext());
@@ -116,58 +122,5 @@ public class EventdbHelper extends SQLiteOpenHelper {
         return eventList;
 
     }
-//    public ArrayList<Event> printEventList(){
-//        ArrayList<Event> eventList = new ArrayList<>();
-//        String select_query = "SELECT *FROM "+TABLE_NAME;
-//        SQLiteDatabase db  = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(select_query, null);
-//        if(cursor.moveToFirst()){
-//            do {
-//
-//                    String name = cursor.getString(1);
-//                    String Details = cursor.getString(2);
-//                    String Rules = cursor.getString(3);
-//                    String minParticipant = cursor.getString(4);
-//                    String maxParticipant = cursor.getString(5);
-//                    String fees = cursor.getString(6);
-//                    String feesMode = cursor.getString(7);
-//                    String judgingCriteria = cursor.getString(8);
-//                    String duration = cursor.getString(9);
-//                    String club = cursor.getString(10);
-//                Log.w("Databse fill check", name+" "+ club);
-////                    eventList.add(new Event(name, Details, Rules, Integer.parseInt(minParticipant), Integer.parseInt(maxParticipant), Integer.parseInt(fees), Integer.parseInt(feesMode), judgingCriteria, duration, club));
-//                }
-//
-//            while (cursor.moveToNext());
-//        }
-//
-//        db.close();
-//        return eventList;
-//
-//    }
-    public void dropTable(){
-        SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
-    }
-    public void add_data(RetrivedEvent x){
-        SQLiteDatabase db = getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put(COLOUMN_NAME, x.Name);
-            values.put(COLOUMN_DETAILS, x.Details);
-            values.put(COLOUMN_RULES, x.Rules);
-            values.put(COLOUMN_MIN_PARTICIPANT, x.MinParticipant);
-            values.put(COLOUMN_MAX_PARTICIPANT, x.MaxParticipant);
-            values.put(COLOUMN_FEES, x.Fees);
-            values.put(COLOUMN_FEES_MODE, x.FeesMode);
-            values.put(COLOUMN_JUDGING_CRITERIA, x.JudgingCriteria);
-            values.put(COLOUMN_DURATION, x.Duration);
-            values.put(COLOUMN_CLUB, x.Club);
-            values.put(COLOUMN_EVENT_KEY, x.EventKey);
-            values.put(COLOUMN_CONTACT, x.Contact);
-            values.put(COLOUMN_TIME, x.Time);
-            values.put(COLOUMN_LOCATION, x.Location);
-            db.insert(TABLE_NAME, null, values);
-        db.close();
-    }
+
 }
