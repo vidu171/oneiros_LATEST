@@ -115,6 +115,7 @@ public class SplashScreen extends AppCompatActivity {
                             }
                         });
                 handler.postDelayed(runi,8000);
+
                 snackbar.setActionTextColor(getColor(R.color.One));
                 try {
                     snackbar.show();

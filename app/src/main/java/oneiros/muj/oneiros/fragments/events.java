@@ -6,26 +6,21 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.activities.MainActivity;
 import oneiros.muj.oneiros.backend.RetrivedEvent;
 import oneiros.muj.oneiros.backend.recyclerViewAdapter;
-import oneiros.muj.oneiros.backend.recyclerViewProvider;
 
 /**
  * Created by aesher on 9/12/2017.
@@ -44,12 +39,12 @@ public class events extends Fragment {
 
 
 
-    private SlidingUpPanelLayout mLayout;
-
+    private static SlidingUpPanelLayout mLayout;
+    View v;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_events,container,false);
+        v = inflater.inflate(R.layout.fragment_events,container,false);
         mLayout = v.findViewById(R.id.sliding_layout);
 
         List = new ArrayList<>();
@@ -62,7 +57,7 @@ public class events extends Fragment {
 
         mAdapter = new recyclerViewAdapter(getContext(),List);
         recyclerView = v.findViewById(R.id.RECYCLE);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
@@ -88,6 +83,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                mLayout.setTouchEnabled(false);
             }
         });
         Aperture.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +93,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                mLayout.setTouchEnabled(false);
             }
         });
         Coreographia.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +103,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                mLayout.setTouchEnabled(false);
             }
         });
         Litmus.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +113,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                mLayout.setTouchEnabled(false);
             }
         });
         Scribbles.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +123,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                mLayout.setTouchEnabled(false);
             }
         });
         Shabd.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +133,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                mLayout.setTouchEnabled(false);
             }
         });
         Sophia.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +143,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+                mLayout.setTouchEnabled(false);
             }
         });
         MusicClub.setOnClickListener(new View.OnClickListener() {
@@ -151,7 +153,7 @@ public class events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-
+                mLayout.setTouchEnabled(false);
             }
         });
 
@@ -159,8 +161,14 @@ public class events extends Fragment {
 
         return v;
     }
+public static boolean ispanelEnabled(){
+    return mLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.EXPANDED) || mLayout.getPanelState().equals(SlidingUpPanelLayout.PanelState.ANCHORED);
+}
 
+    public static void setPanelState(){
+        mLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
 
+    }
 
 
 }

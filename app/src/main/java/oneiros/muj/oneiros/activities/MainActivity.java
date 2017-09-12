@@ -6,7 +6,9 @@ import android.os.Bundle;
 
 
 import oneiros.muj.oneiros.R;
+import oneiros.muj.oneiros.backend.AddData;
 import oneiros.muj.oneiros.backend.pagerAdapter;
+import oneiros.muj.oneiros.fragments.events;
 
 
 /**
@@ -40,10 +42,18 @@ public class MainActivity extends AppCompatActivity {
         top.getTabAt(1).setIcon(R.drawable.ic_home);
         top.getTabAt(2).setIcon(R.drawable.ic_grade);
 
+
+
+
     }
 
     @Override
     public void onBackPressed() {
-        finish();
+        if(events.ispanelEnabled()){
+            events.setPanelState();
+        }
+        else{
+            finish();
+        }
     }
 }
