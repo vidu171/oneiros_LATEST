@@ -15,7 +15,7 @@ import oneiros.muj.oneiros.R;
  * Created by aesher on 9/12/2017.
  */
 
-class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapter.MyViewHolder>  {
+public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapter.MyViewHolder>  {
 
     private Context myContext;
     private List<recyclerViewProvider> myProvider;
@@ -49,13 +49,14 @@ class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapter.MyVi
 
         TextView TITLE;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
-            TITLE = (TextView) itemView.findViewById(R.id.text);
+            TITLE = itemView.findViewById(R.id.text);
         }
 
         @Override
         public void onClick(View view) {
+
 
         }
     }

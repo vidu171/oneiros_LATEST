@@ -7,7 +7,7 @@ package oneiros.muj.oneiros.backend;
 public class recyclerViewProvider {
     private String myname;
 
-    public  recyclerViewProvider(String name , int IMAGE){
+    public  recyclerViewProvider(String name){
         this.myname=name;
     }
 
