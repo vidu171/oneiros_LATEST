@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <TextView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/text"
-        android:layout_marginTop="3dip"
-        android:layout_marginStart="14dip"
-        android:layout_marginEnd="14dip"
-        android:paddingTop="9dp"
-        android:paddingBottom="9dp"
-        android:gravity="center"
-        android:textColor="#811261"
-        android:textSize="23sp"
-        android:text="@string/app_name"
-        android:background="@drawable/event_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+<LinearLayout
+    android:orientation="vertical"
+    android:background="#7ccbda"
+    android:layout_marginTop = "5dp"
+    android:layout_width="fill_parent"
+    android:id="@+id/cardViewEvent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"
+        android:alpha="0.3"
+        android:src="@drawable/ic_camera" />
+    <LinearLayout android:orientation="vertical" android:background="#ffffff" android:padding="20dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-4dp">
+        <TextView android:textSize="24sp" android:ellipsize="middle" android:id="@+id/Name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp"
+            android:text="Rate us on the Google Play" android:maxLines="2" android:alpha="0.75" android:fontFamily="sans-serif-light"
+            android:textColor="#000000" />
+    </LinearLayout>
+</LinearLayout>

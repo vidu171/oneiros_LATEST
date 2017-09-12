@@ -360,6 +360,7 @@
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/RECYCLE"
+            android:nestedScrollingEnabled="false"
             android:layout_marginTop="14dip"
             android:layout_marginBottom="15dip"
             android:layout_width="match_parent"
