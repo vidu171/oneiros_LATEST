@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 
 /**
@@ -18,10 +20,10 @@ import oneiros.muj.oneiros.R;
 public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapter.MyViewHolder>  {
 
     private Context myContext;
-    private List<recyclerViewProvider> myProvider;
+    private ArrayList<RetrivedEvent> myProvider;
 
 
-    public  recyclerViewAdapter(Context mContext, List<recyclerViewProvider> mProvider){
+    public  recyclerViewAdapter(Context mContext, ArrayList<RetrivedEvent> mProvider){
         this.myContext= mContext;
         this.myProvider = mProvider;
     }
@@ -36,8 +38,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapt
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        recyclerViewProvider pro= myProvider.get(position);
-        holder.TITLE.setText(pro.getMyname());
+        RetrivedEvent pro= myProvider.get(position);
+        holder.TITLE.setText(pro.Name);
     }
 
     @Override
