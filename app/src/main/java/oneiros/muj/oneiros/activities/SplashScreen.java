@@ -2,13 +2,17 @@ package oneiros.muj.oneiros.activities;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -37,14 +41,14 @@ public class SplashScreen extends AppCompatActivity {
     private ChildEventListener mChildEventListener;
     ArrayList<RetrivedEvent> mEvents;
     boolean successful;
-
-
+    Handler handler = new Handler();
+    LinearLayout layout;
     ImageView imageView,transactionimage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        layout = (LinearLayout) findViewById(R.id.layoutsplash);
 
         imageView = (ImageView) findViewById(R.id.moto);
         transactionimage = (ImageView) findViewById(R.id.OHNO);
@@ -52,18 +56,7 @@ public class SplashScreen extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.blink);
         imageView.startAnimation(animation);
 
-        Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                if(!successful){
-
-                    Log.w("Thread", "Complete and succesfull");
-                    Toast.makeText(SplashScreen.this,"Please Check your connection",Toast.LENGTH_LONG).show();
-                    finish();
-                }
-            }
-        }; handler.postDelayed(runnable,5000);
+        handler.postDelayed(runnable,5000);
 
 
         mEvents = new ArrayList<>();
@@ -106,4 +99,28 @@ public class SplashScreen extends AppCompatActivity {
         mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
 
     }
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if(!successful){
+                final Runnable runi = this;
+                final Snackbar snackbar = Snackbar
+                        .make(layout, "No internet connection!", Snackbar.LENGTH_LONG)
+                        .setAction("RETRY", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                            }
+                        });
+                handler.postDelayed(runi,8000);
+                snackbar.setActionTextColor(getColor(R.color.One));
+                try {
+                    snackbar.show();
+                }
+                catch (Exception E){
+                    
+                }
+            }
+        }
+    };
 }
