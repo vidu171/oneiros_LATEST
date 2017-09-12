@@ -17,7 +17,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/Nav">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,13 +49,11 @@
                         android:layout_width="110dip"
                         android:layout_height="110dip"
                         android:layout_marginTop="4dip"
-                        android:alpha="0.6"
                         android:src="@drawable/ono_cini" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:text="CINEFELIA"
                         android:textColor="#FFFFFF"
@@ -84,7 +83,6 @@
                         android:layout_width="110dip"
                         android:layout_height="110dip"
                         android:layout_marginTop="4dip"
-                        android:alpha="0.6"
                         android:src="@drawable/ono_shabd" />
 
                     <TextView
@@ -130,14 +128,12 @@
                         android:layout_width="90dip"
                         android:layout_height="90dip"
                         android:layout_marginTop="4dip"
-                        android:alpha="0.6"
                         android:src="@drawable/ono_litmus" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dip"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:paddingBottom="2dip"
                         android:paddingEnd="19dip"
@@ -170,14 +166,12 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="90dip"
                         android:layout_height="100dip"
-                        android:alpha="0.6"
                         android:src="@drawable/ono_tmc" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dip"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:paddingBottom="2dip"
                         android:paddingEnd="19dip"
@@ -214,16 +208,14 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="90dip"
-                        android:layout_height="95dip"
-                        android:alpha="0.6"
-                        android:src="@drawable/ono_scribb" />
+                        android:layout_width="120dip"
+                        android:layout_height="120dip"
+                        android:src="@drawable/scr" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dip"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:paddingBottom="2dip"
                         android:paddingEnd="19dip"
@@ -254,14 +246,12 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="95dip"
                         android:layout_height="95dip"
-                        android:alpha="0.6"
                         android:src="@drawable/ono_sophia" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dip"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:paddingBottom="2dip"
                         android:paddingEnd="19dip"
@@ -300,7 +290,6 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="95dip"
                         android:layout_height="95dip"
-                        android:alpha="0.6"
                         android:src="@drawable/ono_aper" />
 
                     <TextView
@@ -340,7 +329,6 @@
                         android:id="@+id/circleImageView"
                         android:layout_width="90dip"
                         android:layout_height="90dip"
-                        android:alpha="0.6"
                         android:src="@drawable/ono_coreo" />
 
                     <TextView
