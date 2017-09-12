@@ -10,13 +10,15 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="true">
         <activity android:name=".activities.MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait">
 
         </activity>
 
         <activity android:name=".activities.SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
