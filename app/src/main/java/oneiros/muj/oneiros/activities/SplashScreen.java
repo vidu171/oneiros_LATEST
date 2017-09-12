@@ -63,6 +63,7 @@ public class SplashScreen extends AppCompatActivity {
         mFirebaseData = FirebaseDatabase.getInstance();
         mMessagesDatabaseReference = mFirebaseData.getReference().child("Events");
         mChildEventListener = new ChildEventListener() {
+
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Event EventData  = dataSnapshot.getValue(Event.class);
@@ -77,6 +78,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 Log.w("Name-->",EventData.Name);
                 mEvents.add(new RetrivedEvent(EventData.Name,EventData.Details,EventData.Rules,EventData.MinParticipant,EventData.MaxParticipant,EventData.Fees,EventData.FeesMode,EventData.JudgingCriteria,EventData.Duration,EventData.Club,dataSnapshot.getKey(), ContactVal, EventData.Time, EventData.Location));
+
                 if(mEvents.size()==39) {
                     EventdbHelper dbHelper = new EventdbHelper(SplashScreen.this);
                     dbHelper.reset_data_list(mEvents);
@@ -84,7 +86,7 @@ public class SplashScreen extends AppCompatActivity {
                     Intent i = new Intent(SplashScreen.this,MainActivity.class);
                     Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, transactionimage,transactionimage.getTransitionName()).toBundle();
                     startActivity(i, bundle);
-                    finish();
+
                 }
             }
             @Override
