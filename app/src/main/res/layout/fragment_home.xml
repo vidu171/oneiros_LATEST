@@ -40,8 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_colorNormal="@color/white"
-            fab:fab_title="View QR code"
-            android:src="@drawable/ic_camera"
+            app:fab_title="@string/app_name"
+            app:fab_icon="@drawable/ic_camera"
             app:fab_colorNormal="#076658"
             fab:fab_colorPressed="@color/white_pressed"/>
 
@@ -49,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="#076658"
+            app:fab_icon="@drawable/ic_remove"
             fab:fab_colorNormal="@color/white"
             fab:fab_size="mini"
             app:fab_title="@string/app_name"
