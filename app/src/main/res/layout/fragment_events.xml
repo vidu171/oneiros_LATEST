@@ -1,239 +1,356 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/Nav"
-    android:layout_weight="3">
-
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:weightSum="2"
-    android:baselineAligned="false">
-
-    <LinearLayout
-        android:clickable="true"
-        android:foreground="?selectableItemBackground"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal|center_vertical"
-        android:layout_height="match_parent">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:alpha="0.8"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
-            android:src="@drawable/add_user"
-            />
-
-        <TextView
-            android:paddingStart="19dip"
-            android:paddingEnd="19dip"
-            android:paddingTop="2dip"
-            android:paddingBottom="2dip"
-            android:layout_marginTop="10dip"
-            android:text="Scribbles"
-            android:textSize="25dip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="0dp"
+    sothree:umanoShadowHeight="0dp"
+    sothree:umanoParallaxOffset="50dp"
+    sothree:umanoDragView="@+id/dragView"
+    sothree:umanoOverlay="true"
+    sothree:umanoScrollableView="@+id/list">
 
 
-    </LinearLayout>
 
-    <View
-        android:layout_width="1dip"
-        android:layout_height="match_parent"
-        android:background="#076658"/>
-
-
-    <LinearLayout
-        android:clickable="true"
-        android:foreground="?selectableItemBackground"
-        android:gravity="center_horizontal|center_vertical"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:alpha="0.8"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
-            android:src="@drawable/add_user"
-            />
-
-        <TextView
-            android:paddingStart="19dip"
-            android:paddingEnd="19dip"
-            android:paddingTop="2dip"
-            android:paddingBottom="2dip"
-            android:layout_marginTop="10dip"
-            android:text="Scribbles"
-            android:textSize="25dip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-</LinearLayout>
-
-    <View
-        android:background="#076658"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="1dip"/>
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:weightSum="2">
         <LinearLayout
-            android:clickable="true"
-            android:foreground="?selectableItemBackground"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:alpha="0.8"
-                android:layout_width="120dip"
-                android:layout_height="120dip"
-                android:src="@drawable/add_user"
-                />
-
-            <TextView
-                android:paddingStart="19dip"
-                android:paddingEnd="19dip"
-                android:paddingTop="2dip"
-                android:paddingBottom="2dip"
-                android:layout_marginTop="10dip"
-                android:text="Scribbles"
-                android:textSize="25sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="1dip"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#076658"/>
+            android:layout_weight="4"
+            android:background="@color/Nav"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/cini"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="Cinefilia"
+                        android:textSize="25sp" />
 
 
-        <LinearLayout
-            android:clickable="true"
-            android:foreground="?selectableItemBackground"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+                </LinearLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:alpha="0.8"
-                android:layout_width="120dip"
-                android:layout_height="120dip"
-                android:src="@drawable/add_user"
-                />
+                <View
+                    android:layout_width="1dip"
+                    android:layout_height="match_parent"
+                    android:background="#076658" />
 
-            <TextView
-                android:paddingStart="19dip"
-                android:paddingEnd="19dip"
-                android:paddingTop="2dip"
-                android:paddingBottom="2dip"
-                android:layout_marginTop="10dip"
-                android:text="Scribbles"
-                android:textSize="25dip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:id="@+id/shabd"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="Shabd"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="#076658" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/Litmus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="Litmus"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="1dip"
+                    android:layout_height="match_parent"
+                    android:background="#076658" />
+
+
+                <LinearLayout
+                    android:id="@+id/TMC"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="TMC"
+                        android:textSize="25dip" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="#076658" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/scribbles"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="Scribbles"
+                        android:textSize="25dip" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="1dip"
+                    android:layout_height="match_parent"
+                    android:background="#076658" />
+
+
+                <LinearLayout
+                    android:id="@+id/SOPHIA"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="Sophia"
+                        android:textSize="25dip" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="#076658" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/Aperture"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="Aperture"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="1dip"
+                    android:layout_height="match_parent"
+                    android:background="#076658" />
+
+
+                <LinearLayout
+                    android:id="@+id/coreoe"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView"
+                        android:layout_width="90dip"
+                        android:layout_height="90dip"
+                        android:alpha="0.8"
+                        android:src="@drawable/add_user" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:paddingBottom="2dip"
+                        android:paddingEnd="19dip"
+                        android:paddingStart="19dip"
+                        android:paddingTop="2dip"
+                        android:text="Coreografia"
+                        android:textSize="25sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
         </LinearLayout>
-
-
-    </LinearLayout>
-    <View
-        android:background="#076658"
-        android:layout_width="match_parent"
-        android:layout_height="1dip"/>
+    </FrameLayout>
     <LinearLayout
+        android:clickable="false"
+        android:focusable="true"
+        android:background="#1b1b1b"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:weightSum="2">
-
-        <LinearLayout
-
-            android:clickable="true"
-            android:foreground="?selectableItemBackground"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:alpha="0.8"
-                android:layout_width="120dip"
-                android:layout_height="120dip"
-                android:src="@drawable/add_user"
-                />
-
-            <TextView
-                android:paddingStart="19dip"
-                android:paddingEnd="19dip"
-                android:paddingTop="2dip"
-                android:paddingBottom="2dip"
-                android:layout_marginTop="10dip"
-                android:text="Scribbles"
-                android:textSize="25dip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="1dip"
-            android:layout_height="match_parent"
-            android:background="#076658"/>
-
-
-        <LinearLayout
-            android:clickable="true"
-            android:foreground="?selectableItemBackground"
-            android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:alpha="0.8"
-                android:layout_width="120dip"
-                android:layout_height="120dip"
-                android:src="@drawable/add_user"
-                />
-
-            <TextView
-                android:paddingStart="19dip"
-                android:paddingEnd="19dip"
-                android:paddingTop="2dip"
-                android:paddingBottom="2dip"
-                android:layout_marginTop="10dip"
-                android:text="Scribbles"
-                android:textSize="25dip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="14dip"
+            android:layout_marginBottom="15dip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-</LinearLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

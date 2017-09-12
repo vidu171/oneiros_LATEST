@@ -25,11 +25,10 @@
         android:src="@drawable/nav_logo"/>
 
     <ImageView
-
         android:id="@+id/moto"
         android:visibility="invisible"
         android:layout_marginEnd="30dip"
-        android:layout_marginTop="3dip"
+        android:layout_marginTop="9dip"
         android:layout_gravity="right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
