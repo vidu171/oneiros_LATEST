@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="5"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="oneiros.muj.oneiros.activities.MainActivity">
+
+
+
+   <android.support.v7.widget.Toolbar
+       android:background="@color/colorPrimary"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <LinearLayout
+           android:gravity="center_horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       <ImageView
+           android:alpha="0.9"
+           android:transitionName="@string/app_name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/nav_logo_main"/>
+       </LinearLayout>
+
+   </android.support.v7.widget.Toolbar>
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tab"
+        app:tabMode="fixed"
+        android:background="@color/colorPrimary"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="#076658"
+        app:tabSelectedTextColor="#076658"
+        app:tabTextColor="#FFFFFF"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewpager"/>
+
+
+
+</LinearLayout>
