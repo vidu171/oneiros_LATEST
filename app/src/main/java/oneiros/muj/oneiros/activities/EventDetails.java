@@ -1,6 +1,7 @@
 package oneiros.muj.oneiros.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,7 @@ import oneiros.muj.oneiros.R;
  */
 
 public class EventDetails extends AppCompatActivity {
-    TextView Name, Duration, Min, Max, Fees, FeesMode, JudgingCriteria, Details, Contacts;
+    TextView Name, Fees, Participation, JudgingCriteria, Details, Contacts;
     Button Register;
     WebView EventRule;
 
@@ -30,35 +31,41 @@ public class EventDetails extends AppCompatActivity {
 
         final Intent i = getIntent();
         Name = (TextView) findViewById(R.id.Name);
-        Duration = (TextView) findViewById(R.id.duration);
-        Min = (TextView) findViewById(R.id.Min);
-        Max = (TextView) findViewById(R.id.Max);
         Fees = (TextView) findViewById(R.id.Fees);
-        FeesMode = (TextView) findViewById(R.id.FeesMode);
+        Participation = (TextView) findViewById(R.id.participation);
         EventRule = (WebView) findViewById(R.id.Rules);
+        EventRule.setBackgroundColor(Color.parseColor("#000000"));
+
         JudgingCriteria = (TextView) findViewById(R.id.JudgingCriteria);
         Details = (TextView) findViewById(R.id.Details);
-        Contacts = (TextView) findViewById(R.id.Contacts);
+        Contacts = (TextView) findViewById(R.id.Contact);
         Register = (Button) findViewById(R.id.register);
-        Name.setText("Event Name: "+i.getStringExtra("Name")+" "+i.getStringExtra("EventKey"));
-        Duration.setText("Time: "+i.getStringExtra("Time")+" "+i.getStringExtra("Location"));
-        Fees.setText("Fees: "+i.getIntExtra("Fees", -1));
-        FeesMode.setText("Fees Mode: "+i.getIntExtra("FeesMode",-1));
-        if (Build.VERSION.SDK_INT >= 24) {
-            JudgingCriteria.setText(Html.fromHtml("Judging Criteria:<br>"+i.getStringExtra("JudgingCriteria"), Html.FROM_HTML_MODE_COMPACT));
-        } else {
-            JudgingCriteria.setText(Html.fromHtml("Judging Criteria:<br>"+i.getStringExtra("JudgingCriteria")));
+        Name.setText(i.getStringExtra("Name"));
+        if(i.getIntExtra("FeesMode",-1)==0) {
+            Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per person");
+
         }
-        Min.setText("Min Participant: "+i.getIntExtra("MinParticipent",-1));
-        Max.setText("Max Participant: "+i.getIntExtra("MaxParticipent", -1));
+        else{
+            Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Team");
+        }
+        if(i.getIntExtra("MinParticipant",-1)>1){
+            Participation.setText("Team");
+        }
+        else{
+            Participation.setText("Single");
+        }
         if (Build.VERSION.SDK_INT >= 24) {
-            Details.setText(Html.fromHtml("Details:<br>" + i.getStringExtra("Details"), Html.FROM_HTML_MODE_COMPACT));
+            JudgingCriteria.setText(Html.fromHtml(i.getStringExtra("JudgingCriteria"), Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            JudgingCriteria.setText(Html.fromHtml(i.getStringExtra("JudgingCriteria")));
+        }
+        if (Build.VERSION.SDK_INT >= 24) {
+            Details.setText(Html.fromHtml(i.getStringExtra("Details"), Html.FROM_HTML_MODE_COMPACT));
         }else
-            Details.setText(Html.fromHtml("Details:<br>" + i.getStringExtra("Details")));
-        EventRule.loadDataWithBaseURL(null, "Rules:<br>"+i.getStringExtra("Rules"), "text/html", "utf-8", null);
-//        EventRule.setText("Rules: \n"+i.getStringExtra("Rules"));
+            Details.setText(Html.fromHtml(i.getStringExtra("Details")));
+        EventRule.loadDataWithBaseURL(null, "<font color='white'>"+i.getStringExtra("Rules")+"</font>", "text/html", "utf-8", null);
         try{
-            Contacts.setText("Contacts:\n"+ i.getStringExtra("Contact"));
+            Contacts.setText(i.getStringExtra("Contact"));
         }catch (Exception es){}
 
         Register.setOnClickListener(new View.OnClickListener() {
