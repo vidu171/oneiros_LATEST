@@ -18,7 +18,6 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
 
 
 
-
     private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
 
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_sid,
@@ -41,8 +40,7 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
     private LayoutInflater mLayoutInflater;
 
 
-    public HorizontalPagerAdapter_developers(final Context context, final boolean isTwoWay) {
-
+    public HorizontalPagerAdapter_developers(final Context context) {
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -59,10 +57,8 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
     @Override
     public Object instantiateItem(final ViewGroup container, final int position) {
         final View view;
-
             view = mLayoutInflater.inflate(R.layout.developer_item, container, false);
             HorizontalPager_utilities.setupItem(view, LIBRARIES[position]);
-
 
         container.addView(view);
         return view;

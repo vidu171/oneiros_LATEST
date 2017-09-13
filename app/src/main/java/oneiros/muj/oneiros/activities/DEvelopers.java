@@ -21,7 +21,7 @@ public class DEvelopers extends AppCompatActivity {
         setContentView(R.layout.developers);
 
         final HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager = (HorizontalInfiniteCycleViewPager) findViewById(R.id.hicvp);
-        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(this, false));
+        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(this));
 
 
 

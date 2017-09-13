@@ -34,10 +34,6 @@ public class HorizontalPager_utilities {
             return mTitle;
         }
 
-        public void setTitle(final String title) {
-            mTitle = title;
-        }
-
         public int getRes() {
             return mRes;
         }
