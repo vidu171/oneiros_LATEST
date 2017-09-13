@@ -3,6 +3,7 @@ package oneiros.muj.oneiros.backend;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 
 import oneiros.muj.oneiros.fragments.events;
 import oneiros.muj.oneiros.fragments.home;
@@ -39,7 +40,7 @@ public class pagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getItemPosition(Object object){
-        return super.getItemPosition(object);
+        return PagerAdapter.POSITION_NONE;
     }
 
 
