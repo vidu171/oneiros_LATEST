@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,7 +46,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapt
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final RetrivedEvent currentEvent= myProvider.get(position);
         holder.TITLE.setText(currentEvent.Name);
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.TITLE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -78,13 +79,11 @@ public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapt
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView TITLE;
-        LinearLayout cardView;
+        Button TITLE;
 
         MyViewHolder(View itemView) {
             super(itemView);
             TITLE = itemView.findViewById(R.id.Name);
-            cardView = (LinearLayout) itemView.findViewById(R.id.cardViewEvent);
         }
 
     }

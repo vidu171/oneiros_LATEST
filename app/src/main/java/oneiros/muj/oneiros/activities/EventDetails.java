@@ -42,7 +42,7 @@ public class EventDetails extends AppCompatActivity {
         Register = (Button) findViewById(R.id.register);
         Name.setText(i.getStringExtra("Name"));
         if(i.getIntExtra("FeesMode",-1)==0) {
-            Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per person");
+            Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Person");
 
         }
         else{
