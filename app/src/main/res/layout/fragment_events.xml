@@ -5,7 +5,7 @@
     android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
+    android:gravity="top"
     sothree:umanoPanelHeight="0dp"
     sothree:umanoShadowHeight="0dp"
     sothree:umanoParallaxOffset="20dp"
@@ -361,7 +361,6 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/RECYCLE"
             android:nestedScrollingEnabled="false"
-            android:layout_marginTop="14dip"
             android:layout_marginBottom="15dip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

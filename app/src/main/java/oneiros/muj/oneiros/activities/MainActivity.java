@@ -31,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
         top = (TabLayout) findViewById(R.id.tab);
         Pagerfragments = (ViewPager) findViewById(R.id.viewpager);
 
-        Pagerfragments.setOffscreenPageLimit(1);
+        Pagerfragments.setOffscreenPageLimit(0);
         top.setupWithViewPager(Pagerfragments);
 
         pagerAdapter adapter = new pagerAdapter(getSupportFragmentManager());
         Pagerfragments.setAdapter(adapter);
         Pagerfragments.setCurrentItem(1);
+
 
         top.getTabAt(0).setIcon(R.drawable.ic_event);
         top.getTabAt(1).setIcon(R.drawable.ic_home);

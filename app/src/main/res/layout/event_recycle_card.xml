@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:id="@+id/cardViewEvent"
+
+
+
+<RelativeLayout android:orientation="vertical"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="120dip">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.alorma.timeline.RoundTimelineView
+        android:id="@+id/timeline1"
+        android:layout_width="?android:listPreferredItemHeight"
+        android:layout_height="80dip"
+        app:timeline_indicatorSize="8dp"
+        app:timeline_lineStyle="linear"
+        app:timeline_type="middle"
+        app:timeline_drawInternal="false"
+        app:timeline_internalColor="@color/Nav"
+        app:timeline_lineWidth="1dip"
+        app:timeline_lineColor="#ff999999"
+        app:timeline_indicatorColor="@color/One"/>
 
-
-    <TextView
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:minHeight="40dip"
+        android:background="@drawable/button_shape"
         android:id="@+id/Name"
-        android:alpha="0.75"
+        android:text="TEXT"
+        android:textColor="#ff999999"
+        android:textSize="22sp"
         android:fontFamily="sans-serif-light"
-        android:textColor="#b7b8b9"
-        android:layout_gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:textSize="31sp"
-        android:layout_marginStart="20dip"
-        android:layout_marginEnd="74dp"
-        android:text="@string/app_name"
-        android:layout_height="wrap_content" />
-</FrameLayout>
+        android:padding="10dp"
+        android:layout_marginLeft="-15dip"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/timeline1" />
+
+    />
 
 
-    <View
-        android:layout_marginEnd="20dip"
-        android:layout_marginStart="20dip"
-        android:layout_marginTop="5dip"
-        android:background="#3a3f41"
-        android:layout_width="match_parent"
-        android:layout_height="1.3dip"/>
-</LinearLayout>
+</RelativeLayout>
