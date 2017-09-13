@@ -25,6 +25,8 @@
             </intent-filter>
             </activity>
         <activity android:name=".activities.EventDetails"/>
+        <activity android:name=".activities.DEvelopers"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
     </application>
 

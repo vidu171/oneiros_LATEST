@@ -64,8 +64,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
-        android:minHeight="54dp"
-        android:onClick="openDeveloperFB">
+        android:minHeight="54dp">
 
         <TextView
             android:textSize="15sp"

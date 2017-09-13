@@ -83,9 +83,10 @@ public class SplashScreen extends AppCompatActivity {
                     EventdbHelper dbHelper = new EventdbHelper(SplashScreen.this);
                     dbHelper.reset_data_list(mEvents);
                     successful = true;
+
                     Intent i = new Intent(SplashScreen.this,MainActivity.class);
                     Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, transactionimage,transactionimage.getTransitionName()).toBundle();
-                    startActivity(i, bundle);
+                    startActivity(i,bundle);
 
                 }
             }
