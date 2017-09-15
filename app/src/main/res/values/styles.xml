@@ -9,6 +9,11 @@
     </style>
 
 
+    <style name="ALLBLACK" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        </style>
+
 
 
 

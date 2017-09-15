@@ -2,6 +2,7 @@ package oneiros.muj.oneiros.backend;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,17 +22,17 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
     private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
 
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_sid,
-                    "Advisor Dubeldore"),
+                    "Advisor Dubeldore", "Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_aashis,
-                    "CC L"),
+                    "CC L","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_vidyanshu,
-                    "CC SpongeBob"),
+                    "CC SpongeBob","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.oneiros_glow,
-                    "OC Tom"),
+                    "OC Tom","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_akhil,
-                    "OC Joney Bravo"),
+                    "OC Joney Bravo","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_ankita,
-                    "Volunteer Chip"),
+                    "Volunteer Chip","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
 
 
     };
@@ -42,6 +43,7 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
 
     public HorizontalPagerAdapter_developers(final Context context) {
         mLayoutInflater = LayoutInflater.from(context);
+
     }
 
     @Override
@@ -73,6 +75,8 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
     public void destroyItem(final ViewGroup container, final int position, final Object object) {
         container.removeView((View) object);
     }
+
+
 }
 
 

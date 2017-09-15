@@ -41,7 +41,7 @@
 
 
         <activity android:name=".activities.DEvelopers"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/ALLBLACK"/>
 
     </application>
 

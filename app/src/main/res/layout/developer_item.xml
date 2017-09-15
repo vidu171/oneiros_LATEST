@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.v7.widget.CardView
         app:cardBackgroundColor="#FFFFFF"
         android:layout_width="match_parent"
@@ -38,6 +39,7 @@
                 tools:text="Delivery"/>
 
             <TextView
+                android:id="@+id/description"
                 android:textColor="#3e3d3d"
                 android:layout_marginTop="19dip"
                 android:textSize="19sp"
@@ -46,9 +48,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="THis would be the breif description of the bla bla bla lalalla lallala doremon ne spongebob kyu le liya yar lalallalallalngbaskbgkakgajk"/>
-
-
-
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

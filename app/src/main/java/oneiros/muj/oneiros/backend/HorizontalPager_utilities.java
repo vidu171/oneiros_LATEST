@@ -10,27 +10,36 @@ import oneiros.muj.oneiros.R;
 /**
  * Created by GIGAMOLE on 8/18/16.
  */
-public class HorizontalPager_utilities {
+class HorizontalPager_utilities {
 
-    public static void setupItem(final View view, final LibraryObject libraryObject) {
+    static void setupItem(final View view, final LibraryObject libraryObject) {
         final TextView txt = (TextView) view.findViewById(R.id.txt_item);
         txt.setText(libraryObject.getTitle());
 
         final ImageView img = (ImageView) view.findViewById(R.id.img_item);
         img.setImageResource(libraryObject.getRes());
+
+        final  TextView desc = (TextView) view.findViewById(R.id.description);
+        desc.setText(libraryObject.getDescription());
+
     }
 
-    public static class LibraryObject {
+    static class LibraryObject {
 
         private String mTitle;
         private int mRes;
+        private String mDescription;
 
-        public LibraryObject(final int res, final String title) {
+        LibraryObject(final int res, final String title, final String description) {
             mRes = res;
             mTitle = title;
+            mDescription = description;
         }
 
-        public String getTitle() {
+
+        String getDescription() {return  mDescription;}
+
+        String getTitle() {
             return mTitle;
         }
 
