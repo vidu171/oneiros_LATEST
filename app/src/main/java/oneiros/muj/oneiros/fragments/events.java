@@ -12,11 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.backend.RetrivedEvent;
@@ -35,7 +37,9 @@ public class events extends Fragment {
     RecyclerView recyclerView;
     recyclerViewAdapter mAdapter;
     ArrayList<RetrivedEvent> List;
-    LinearLayout Cinefilia, Aperture, Coreographia, Litmus, Scribbles, Shabd, Sophia, MusicClub ;
+    LinearLayout Cinefilia, Aperture, Coreographia, Litmus, Scribbles, Shabd, Sophia, MusicClub;
+
+    CircleImageView one,two,three,four,five,six,seven,eight;
 
 
 
@@ -54,18 +58,36 @@ public class events extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
+        one = v.findViewById(R.id.ONE);
+        two = v.findViewById(R.id.TWO);
+        three = v.findViewById(R.id.THREE);
+        four = v.findViewById(R.id.FOUR);
+        five = v.findViewById(R.id.FIVE);
+        six = v.findViewById(R.id.SIX);
+        seven = v.findViewById(R.id.SEVEN);
+        eight = v.findViewById(R.id.EIGHT);
 //        recyclerView.setNestedScrollingEnabled(false);
+
+        Glide.with(getActivity()).load(R.drawable.ono_cini).into(one);
+        Glide.with(getActivity()).load(R.drawable.ono_shabd).into(two);
+        Glide.with(getActivity()).load(R.drawable.ono_litmus).into(three);
+        Glide.with(getActivity()).load(R.drawable.ono_tmc).into(four);
+        Glide.with(getActivity()).load(R.drawable.scr).fitCenter().into(five);
+        Glide.with(getActivity()).load(R.drawable.ono_sophia).into(six);
+        Glide.with(getActivity()).load(R.drawable.ono_aper).into(seven);
+        Glide.with(getActivity()).load(R.drawable.ono_coreo).into(eight);
 
         ButterKnife.bind(this,v);
 
-        Cinefilia = (LinearLayout) v.findViewById(R.id.cini);
-        Aperture = (LinearLayout) v.findViewById(R.id.Aperture);
-        Coreographia = (LinearLayout) v.findViewById(R.id.coreoe);
-        Litmus = (LinearLayout) v.findViewById(R.id.Litmus);
-        Scribbles = (LinearLayout) v.findViewById(R.id.scribbles);
-        Shabd = (LinearLayout) v.findViewById(R.id.shabd);
-        Sophia = (LinearLayout) v.findViewById(R.id.SOPHIA);
-        MusicClub = (LinearLayout) v.findViewById(R.id.TMC);
+        Cinefilia = v.findViewById(R.id.cini);
+        Aperture = v.findViewById(R.id.Aperture);
+        Coreographia = v.findViewById(R.id.coreoe);
+        Litmus = v.findViewById(R.id.Litmus);
+        Scribbles = v.findViewById(R.id.scribbles);
+        Shabd = v.findViewById(R.id.shabd);
+        Sophia = v.findViewById(R.id.SOPHIA);
+        MusicClub = v.findViewById(R.id.TMC);
 
         final EventdbHelper eventdbHelper = new EventdbHelper(getContext());
         Cinefilia.setOnClickListener(new View.OnClickListener() {

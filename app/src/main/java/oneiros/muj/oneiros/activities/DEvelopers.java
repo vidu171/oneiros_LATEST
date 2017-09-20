@@ -25,11 +25,8 @@ public class DEvelopers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.developers);
 
-        final FrameLayout frameLayout = (FrameLayout) findViewById(R.id.background_changer);
-
         final HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager = (HorizontalInfiniteCycleViewPager) findViewById(R.id.hicvp);
         horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(this));
 
-        horizontalInfiniteCycleViewPager.startAutoScroll(true);
     }
 }

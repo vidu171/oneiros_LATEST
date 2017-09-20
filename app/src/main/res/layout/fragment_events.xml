@@ -47,9 +47,10 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="110dip"
+                        android:id="@+id/ONE"
                         android:layout_height="110dip"
                         android:layout_marginTop="4dip"
-                        android:src="@drawable/ono_cini" />
+                         />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -81,9 +82,9 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="110dip"
+                        android:id="@+id/TWO"
                         android:layout_height="110dip"
-                        android:layout_marginTop="4dip"
-                        android:src="@drawable/ono_shabd" />
+                        android:layout_marginTop="4dip" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -126,9 +127,10 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="90dip"
+                        android:id="@+id/THREE"
                         android:layout_height="90dip"
                         android:layout_marginTop="4dip"
-                        android:src="@drawable/ono_litmus" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -165,8 +167,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="90dip"
-                        android:layout_height="100dip"
-                        android:src="@drawable/ono_tmc" />
+                        android:id="@+id/FOUR"
+                        android:layout_height="100dip" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -208,9 +210,10 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="170dip"
-                        android:layout_height="120dip"
-                        android:src="@drawable/scr" />
+                        android:layout_width="130dip"
+                        android:id="@+id/FIVE"
+                        android:layout_height="95dip"
+                         />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -245,8 +248,9 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="95dip"
+                        android:id="@+id/SIX"
                         android:layout_height="95dip"
-                        android:src="@drawable/ono_sophia" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -290,7 +294,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="95dip"
                         android:layout_height="95dip"
-                        android:src="@drawable/ono_aper" />
+                        android:id="@+id/SEVEN" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -326,10 +330,10 @@
                     android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circleImageView"
+                        android:id="@+id/EIGHT"
                         android:layout_width="90dip"
                         android:layout_height="90dip"
-                        android:src="@drawable/ono_coreo" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
