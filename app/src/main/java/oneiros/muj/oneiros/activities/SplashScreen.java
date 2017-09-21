@@ -2,7 +2,6 @@ package oneiros.muj.oneiros.activities;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
@@ -13,7 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +29,7 @@ import oneiros.muj.oneiros.backend.RetrivedEvent;
 
 /**
  * Created by aesher on 9/8/2017.
+ * Its a splash screen only c'mon now
  */
 
 public class SplashScreen extends AppCompatActivity {

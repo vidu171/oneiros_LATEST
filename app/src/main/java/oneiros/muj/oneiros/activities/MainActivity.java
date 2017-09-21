@@ -1,14 +1,14 @@
 package oneiros.muj.oneiros.activities;
+
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.backend.AddData;
 import oneiros.muj.oneiros.backend.pagerAdapter;
 import oneiros.muj.oneiros.fragments.events;
+import oneiros.muj.oneiros.fragments.home;
 
 
 /**
@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(events.ispanelEnabled()){
             events.setPanelState();
+        }
+        else if(home.isFab()){
+            home.CLOSE_FAB();
         }
         else{
             finish();
