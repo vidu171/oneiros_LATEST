@@ -13,13 +13,13 @@ import oneiros.muj.oneiros.R;
 class HorizontalPager_utilities {
 
     static void setupItem(final View view, final LibraryObject libraryObject) {
-        final TextView txt = (TextView) view.findViewById(R.id.txt_item);
+        final TextView txt = view.findViewById(R.id.txt_item);
         txt.setText(libraryObject.getTitle());
 
-        final ImageView img = (ImageView) view.findViewById(R.id.img_item);
+        final ImageView img = view.findViewById(R.id.img_item);
         img.setImageResource(libraryObject.getRes());
 
-        final  TextView desc = (TextView) view.findViewById(R.id.description);
+        final  TextView desc = view.findViewById(R.id.description);
         desc.setText(libraryObject.getDescription());
 
     }

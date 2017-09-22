@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Nav">
+    android:background="@color/Nav"
+    tools:context=".activities.MainActivity">
 
 
 
@@ -46,10 +48,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:onClick="View_qr"
                     android:textColor="#C8000000"
                     android:gravity="center|center_vertical"
                     android:padding="24dip"
-                    android:drawableLeft="@drawable/ic_qr"
+                    android:drawableStart="@drawable/ic_qr"
                     android:textSize="20sp"
                     android:drawablePadding="16dip"
                     android:text="View Qr Code"
@@ -57,6 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:onClick="Scan_qr"
                     android:textColor="#C8000000"
                     android:clickable="true"
                     android:gravity="center|center_vertical"
