@@ -41,6 +41,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'uk.co.samuelwall:material-tap-target-prompt:2.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.journeyapps:zxing-android-embedded:3.5.0'
+
 
     //Firebase
     compile 'com.google.firebase:firebase-core:11.2.0'

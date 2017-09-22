@@ -2,6 +2,7 @@ package oneiros.muj.oneiros.activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.backend.pagerAdapter;
@@ -72,11 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
     //Todo View Qr code goes here
     public void View_qr(View V){
+
         AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
         LayoutInflater inflater = getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.dialogue_view_qr,null));
         builder.setCancelable(false);
-       /*
+
+
         builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -85,13 +91,31 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.setNegativeButton("Cancel",null);
 
-        */
         builder.create().show();
+
     }
 
     //Todo Scan Qr code goes here
     public void Scan_qr(View v){
-        Toast.makeText(this,"The shit was clicked",Toast.LENGTH_SHORT).show();
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setPrompt("Scan the club's QR code");
+        integrator.setOrientationLocked(false);
+        integrator.initiateScan();
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, ""+result.getContents()+""+result.getFormatName(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }
