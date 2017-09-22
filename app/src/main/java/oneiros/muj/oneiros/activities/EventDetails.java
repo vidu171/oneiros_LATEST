@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -71,13 +72,13 @@ public class EventDetails extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent I =  new Intent(EventDetails.this, RegisterActivity.class);
-//                I.putExtra("EventKey",i.getStringExtra("EventKey"));
-//                I.putExtra("Name",i.getStringExtra("Name"));
-//                I.putExtra("Fees",i.getIntExtra("Fees", -1));
-//                Log.w("Fees", String.valueOf(i.getIntExtra("Fees",-1)));
-//                I.putExtra("FeesMode",i.getIntExtra("FeesMode", -1));
-//                startActivity(I);
+                Intent I =  new Intent(EventDetails.this, RegisterActivity.class);
+                I.putExtra("EventKey",i.getStringExtra("EventKey"));
+                I.putExtra("Name",i.getStringExtra("Name"));
+                I.putExtra("Fees",i.getIntExtra("Fees", -1));
+                Log.w("Fees", String.valueOf(i.getIntExtra("Fees",-1)));
+                I.putExtra("FeesMode",i.getIntExtra("FeesMode", -1));
+                startActivity(I);
             }
         });
 

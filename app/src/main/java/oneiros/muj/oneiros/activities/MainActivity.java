@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
+
                 Toast.makeText(this, ""+result.getContents()+""+result.getFormatName(), Toast.LENGTH_LONG).show();
             }
         } else {

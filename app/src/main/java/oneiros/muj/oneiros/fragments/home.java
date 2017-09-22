@@ -53,10 +53,11 @@ public class home extends Fragment {
                                 {
                                     // User has pressed the prompt target
                                 }
+                                // just for fun
                             }
                         })
                         .show();
-
+//kjkl
             }
         };handler.postDelayed(runnable,1000);
 

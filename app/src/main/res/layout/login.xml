@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/back"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#9e000000"
+        android:visibility="invisible"
+        android:id="@+id/hiddenFbBox"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="10dp"
+            android:layout_marginRight="40dp"
+            app:cardBackgroundColor="#b90f88de"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="80dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:visibility="visible"
+        android:id="@+id/CredentialForm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/credBox"
+                android:layout_marginTop="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:textSize="14sp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingBottom="9dp"
+                    android:hint="Full Name"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/half_white"
+                    android:id="@+id/formName"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent" />
+                <View
+                    android:layout_marginTop="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#27c1c1c1"/>
+                <EditText
+                    android:textSize="14sp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="6dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingBottom="9dp"
+                    android:hint="Email ID"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/half_white"
+                    android:id="@+id/form_Email"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent" />
+                <View
+                    android:layout_marginTop="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#27c1c1c1"/>
+
+                <EditText
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="9dp"
+                    android:paddingBottom="9dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/half_white"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/formRegNo"
+                    android:hint="Registration Number"
+                    />
+                <View
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#27c1c1c1"/>
+                <EditText
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="9dp"
+                    android:paddingBottom="9dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/half_white"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/formUniversity"
+                    android:hint="University"
+                    />
+                <View
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#27c1c1c1"/>
+                <EditText
+                    android:textSize="14sp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="9dp"
+                    android:paddingBottom="9dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColorHint="@color/half_white"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/formPhoneNo"
+                    android:hint="10 digit phone number"
+                    />
+                <View
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#27c1c1c1"/>
+
+                <EditText
+                    android:textSize="13sp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="9dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColorHint="@color/half_white"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:id="@+id/formpassword"
+                    android:hint="Password"
+                    />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_below="@id/credBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:text="Sign Up"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="30dp"
+                android:id="@+id/SignUpButton"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_shape"/>
+            <Button
+                android:layout_width="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="Sign In"
+                android:id="@+id/SignInButton"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_shape"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password "
+                android:textColor="@color/white"
+                android:id="@+id/resetpassword"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/memberCard"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_margin="10dp"
+            android:paddingLeft="6dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#c5f1f1f1"
+            android:id="@+id/memberName"
+            android:textColor="@android:color/black"
+            android:hint="Full Full Name Name"/>
+        <EditText
+            android:id="@+id/memberRegNo"
+            android:layout_width="match_parent"
+            android:background="#c5f1f1f1"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/memberName"
+            android:paddingLeft="6dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:layout_margin="10dp"
+            android:hint="Registration No"/>
+
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
