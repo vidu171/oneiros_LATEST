@@ -43,6 +43,7 @@ public class EventDetails extends AppCompatActivity {
         Name.setText(i.getStringExtra("Name"));
         if(i.getIntExtra("FeesMode",-1)==0) {
             Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Person");
+
         }
         else{
             Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Team");
@@ -50,12 +51,9 @@ public class EventDetails extends AppCompatActivity {
         if(i.getIntExtra("MinParticipant",-1)>1){
             Participation.setText("Team");
         }
+//        To
         else{
             Participation.setText("Single");
-        }
-
-        if(i.getStringExtra("EventKey").equals("-KtrYxH1JXCGmHicczIw")){
-            Fees.setText("First 10 participants Rs.800\nAnd Rs. 100 for every extra participant");
         }
         if (Build.VERSION.SDK_INT >= 24) {
             JudgingCriteria.setText(Html.fromHtml(i.getStringExtra("JudgingCriteria"), Html.FROM_HTML_MODE_COMPACT));
@@ -70,6 +68,7 @@ public class EventDetails extends AppCompatActivity {
         try{
             Contacts.setText(i.getStringExtra("Contact"));
         }catch (Exception es){}
+
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,10 +76,12 @@ public class EventDetails extends AppCompatActivity {
                 I.putExtra("EventKey",i.getStringExtra("EventKey"));
                 I.putExtra("Name",i.getStringExtra("Name"));
                 I.putExtra("Fees",i.getIntExtra("Fees", -1));
+                Log.w("Fees", String.valueOf(i.getIntExtra("Fees",-1)));
                 I.putExtra("FeesMode",i.getIntExtra("FeesMode", -1));
                 startActivity(I);
             }
         });
+
     }
 
 }

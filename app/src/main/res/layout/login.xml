@@ -44,7 +44,7 @@
 
             <LinearLayout
                 android:id="@+id/credBox"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="200dip"
                 android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -52,13 +52,13 @@
 
                 <EditText
                     android:textSize="14sp"
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="6dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="8dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:paddingBottom="9dp"
+                    android:paddingLeft="10dip"
+                    android:layout_marginTop="6dip"
+                    android:paddingRight="10dip"
+                    android:paddingTop="8dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:paddingBottom="9dip"
                     android:hint="Full Name"
                     android:textColor="@color/white"
                     android:textColorHint="@color/half_white"
@@ -66,18 +66,18 @@
                     android:layout_height="match_parent"
                     android:layout_width="match_parent" />
                 <View
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="6dip"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_height="1dip"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
                     android:layout_gravity="center_horizontal"
                     android:background="#27c1c1c1"/>
                 <EditText
                     android:textSize="14sp"
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="6dp"
-                    android:paddingRight="10dp"
+                    android:paddingLeft="10dip"
+                    android:layout_marginTop="6dip"
+                    android:paddingRight="10dip"
                     android:paddingTop="8dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -204,9 +204,9 @@
                 android:background="@drawable/button_shape"/>
             <Button
                 android:layout_width="150dp"
-                android:layout_marginTop="20dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dip"
+                android:layout_height="50dip"
+                android:layout_marginRight="30dip"
                 android:layout_alignParentRight="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"

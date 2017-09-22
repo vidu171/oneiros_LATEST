@@ -36,7 +36,7 @@
         app:tabMode="fixed"
         android:background="@color/colorPrimary"
         app:tabGravity="fill"
-        app:tabIndicatorColor="#076658"
+        app:tabIndicatorColor="@color/One"
         app:tabSelectedTextColor="#076658"
         app:tabTextColor="#FFFFFF"
         />

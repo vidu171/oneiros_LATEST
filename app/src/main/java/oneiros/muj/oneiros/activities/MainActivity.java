@@ -1,8 +1,7 @@
 package oneiros.muj.oneiros.activities;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,10 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.R;
@@ -23,7 +27,6 @@ import oneiros.muj.oneiros.backend.pagerAdapter;
 import oneiros.muj.oneiros.fragments.events;
 import oneiros.muj.oneiros.fragments.home;
 
-import static java.security.AccessController.getContext;
 
 
 /**
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     TabLayout top;
     ViewPager Pagerfragments;
 
+    String Generate_name = "Aashis is a good boy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,26 +84,37 @@ public class MainActivity extends AppCompatActivity {
     //Todo View Qr code goes here
     public void View_qr(View V){
 
+        home.CLOSE_FAB();
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+
         AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
         LayoutInflater inflater = getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.dialogue_view_qr,null));
-        builder.setCancelable(false);
+        View dialogueView = inflater.inflate(R.layout.dialogue_view_qr,null);
+        builder.setView(dialogueView);
+        ImageView imageView = dialogueView.findViewById(R.id.Qr_view_holder);
 
 
-        builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(),"THIS",Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.setNegativeButton("Cancel",null);
+        try{
+            BitMatrix bitMatrix = multiFormatWriter.encode(Generate_name, BarcodeFormat.QR_CODE,200,200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            imageView.setImageBitmap(bitmap);
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
         builder.create().show();
+
+
+
 
     }
 
     //Todo Scan Qr code goes here
     public void Scan_qr(View v){
+        home.CLOSE_FAB();
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setPrompt("Scan the club's QR code");
         integrator.setOrientationLocked(false);
@@ -113,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+        //        Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 EventdbHelper eventdbHelper = new EventdbHelper(getBaseContext());
                 RetrivedEvent currentEvent = eventdbHelper.getEventFromKey(result.getContents());
