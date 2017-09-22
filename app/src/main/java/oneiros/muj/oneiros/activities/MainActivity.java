@@ -24,7 +24,6 @@ import oneiros.muj.oneiros.backend.pagerAdapter;
 import oneiros.muj.oneiros.fragments.events;
 import oneiros.muj.oneiros.fragments.home;
 
-import static java.security.AccessController.getContext;
 
 
 /**

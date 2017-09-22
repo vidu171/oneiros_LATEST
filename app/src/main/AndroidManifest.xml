@@ -15,17 +15,16 @@
         <activity android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation"
+            android:noHistory="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+
         </activity>
 
         <activity android:name=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:screenOrientation="portrait"
-            tools:replace="screenOrientation" >
+            tools:replace="screenOrientation"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -45,7 +44,13 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:noHistory="true"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             </activity>
+
+
         <activity android:name=".activities.RegisterActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:noHistory="true"

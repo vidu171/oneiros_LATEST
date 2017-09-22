@@ -67,7 +67,9 @@ public class EventDetails extends AppCompatActivity {
         EventRule.loadDataWithBaseURL(null, "<font color='white'>"+i.getStringExtra("Rules")+"</font>", "text/html", "utf-8", null);
         try{
             Contacts.setText(i.getStringExtra("Contact"));
-        }catch (Exception es){}
+        }catch (Exception es){
+            
+        }
 
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
