@@ -54,7 +54,8 @@
 
 
 
-        <activity android:name=".activities.EventDetails"/>
+        <activity android:name=".activities.EventDetails"
+            android:theme="@style/Transparancy"/>
 
 
         <activity android:name=".activities.DEvelopers"

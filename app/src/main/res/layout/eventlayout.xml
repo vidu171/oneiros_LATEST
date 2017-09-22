@@ -109,15 +109,17 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-    <TextView
-        android:layout_marginTop="10sp"
-        android:layout_below="@id/description_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:text="Think you're the king of spontaneity? Ever been on stage without a script? If yes then come showcase your improv skills in Cinefilia's event UNO DOS ACT "
-        android:id="@+id/Details"/>
-        <TextView
+
+            <TextView
+                android:id="@+id/Details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/description_textView"
+                android:layout_marginTop="10sp"
+                android:text="Think you're the king of spontaneity? Ever been on stage without a script? If yes then come showcase your improv skills in Cinefilia's event UNO DOS ACT "
+                android:textColor="@android:color/white" />
+
+            <TextView
             android:text="Rules"
             android:layout_marginTop="20dp"
             android:textColor="@color/One"
@@ -153,12 +155,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/button_shape"
-                android:minHeight="30dip"
-                android:minWidth="90dip"
+                android:background="@drawable/button_register"
+                android:minHeight="40dip"
+                android:minWidth="100dip"
                 android:text="Register"
-                android:textColor="#ff999999"
-                android:textSize="16sp" />
+                android:textColor="@color/One"
+                android:textSize="19sp" />
         </LinearLayout>
 
     </RelativeLayout>
