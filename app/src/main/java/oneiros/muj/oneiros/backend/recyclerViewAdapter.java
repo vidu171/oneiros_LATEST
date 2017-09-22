@@ -44,7 +44,6 @@ public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapt
         holder.TITLE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(myContext,EventDetails.class);
                 i.putExtra("Name",currentEvent.Name);
                 i.putExtra("Duration",currentEvent.Duration);

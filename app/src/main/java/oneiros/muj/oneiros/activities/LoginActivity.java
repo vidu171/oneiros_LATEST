@@ -137,7 +137,6 @@ public class LoginActivity extends AppCompatActivity {
                                         UserCreds user = new UserCreds(Name.getText().toString(),EmailId.getText().toString().trim(), Contact.getText().toString().trim(), RegNum.getText().toString(),University.getText().toString());
                                         mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
 
-
                                         startActivity(new Intent(LoginActivity.this, SplashScreen.class));
                                         finish();
                                     }
@@ -159,7 +158,6 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
-
                             }
                         });
             }

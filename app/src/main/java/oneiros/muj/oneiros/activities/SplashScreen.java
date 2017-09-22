@@ -121,11 +121,9 @@ public class SplashScreen extends AppCompatActivity {
                     snackbar.show();
                 }
                 catch (Exception E){
-                    
                 }
             }
         }
     };
-
 
 }

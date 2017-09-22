@@ -53,6 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
         NotHidden.setVisibility(View.VISIBLE);
         Fees = (TextView) findViewById(R.id.Totalfees);
         Button registerButton = (Button) findViewById(R.id.register);
+        Log.w("Fees", String.valueOf(getIntent().getIntExtra("Fees",-1)));
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,12 +68,21 @@ public class RegisterActivity extends AppCompatActivity {
                 // TODO Add THe Correct Details to the New Registration
                 newRegistration.UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 newRegistration.EventId = getIntent().getStringExtra("EventKey");
+
                 if(getIntent().getIntExtra("FeesMode",-1)==0) {
-                    newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1)*memberList.size();
-//                    Fees.setText(newRegistration.TotalFees);
+                    newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1)*(memberList.size()+1);
                 }
                 else{
-
+                    newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1);
+                }
+                if(newRegistration.EventId.equals("-KtrYxH1JXCGmHicczIw")){
+                    if(memberList.size()<10) {
+                        newRegistration.TotalFees = 800;
+                    }
+                    else{
+                        int n = memberList.size()-10;
+                        newRegistration.TotalFees = 800+(100*(n+1));
+                    }
                 }
                 newRegistration.FeesStatus = 0;
                 newRegistration.PaymentMode = "Paytm";
@@ -107,6 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 memberList.add(new TeamMembers("",""));
                 mAdapter.notifyDataSetChanged();
             }

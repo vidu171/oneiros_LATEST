@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
@@ -15,7 +16,9 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.R;
+import oneiros.muj.oneiros.backend.RetrivedEvent;
 import oneiros.muj.oneiros.backend.pagerAdapter;
 import oneiros.muj.oneiros.fragments.events;
 import oneiros.muj.oneiros.fragments.home;
@@ -112,7 +115,26 @@ public class MainActivity extends AppCompatActivity {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-
+                EventdbHelper eventdbHelper = new EventdbHelper(getBaseContext());
+                RetrivedEvent currentEvent = eventdbHelper.getEventFromKey(result.getContents());
+                Intent i = new Intent(MainActivity.this,EventDetails.class);
+                i.putExtra("Name",currentEvent.Name);
+                i.putExtra("Duration",currentEvent.Duration);
+                i.putExtra("Fees",currentEvent.Fees);
+                i.putExtra("FeesMode",currentEvent.FeesMode);
+                i.putExtra("JudgingCriteria",currentEvent.JudgingCriteria);
+                i.putExtra("MaxParticipant",currentEvent.MaxParticipant);
+                i.putExtra("MinParticipant",currentEvent.MinParticipant);
+                i.putExtra("Details",currentEvent.Details);
+                i.putExtra("Rules",currentEvent.Rules);
+                i.putExtra("EventKey",currentEvent.EventKey);
+                i.putExtra("Time",currentEvent.Time);
+                i.putExtra("RegistrationOpen",currentEvent.RegistrationOpen);
+                Log.w("RegistrationOpen", String.valueOf(currentEvent.RegistrationOpen));
+                i.putExtra("Location",currentEvent.Location);
+                i.putExtra("Contact",currentEvent.Contact);
+                Log.w("Check 123", currentEvent.EventKey);
+                startActivity(i);
                 Toast.makeText(this, ""+result.getContents()+""+result.getFormatName(), Toast.LENGTH_LONG).show();
             }
         } else {

@@ -121,5 +121,41 @@ public class EventdbHelper extends SQLiteOpenHelper {
         return eventList;
 
     }
+    public RetrivedEvent getEventFromKey(String eventKey){
+        RetrivedEvent event = new RetrivedEvent();
+        String select_query = "SELECT *FROM "+TABLE_NAME;
+        SQLiteDatabase db  = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(select_query, null);
+        if(cursor.moveToFirst()){
+            do {
+                if (cursor.getString(14).equals(eventKey)) {
+                    String name = cursor.getString(1);
+                    String Details = cursor.getString(2);
+                    String Rules = cursor.getString(3);
+                    String minParticipant = cursor.getString(4);
+                    String maxParticipant = cursor.getString(5);
+                    String fees = cursor.getString(6);
+                    String feesMode = cursor.getString(7);
+                    String judgingCriteria = cursor.getString(8);
+                    String duration = cursor.getString(9);
+                    String club = cursor.getString(10);
+                    String EventKey = cursor.getString(14);
+                    String Contact = cursor.getString(11);
+                    String Time = cursor.getString(12);
+                    String Location = cursor.getString(13);
+//                    Boolean RegistrationOpen = Boolean.valueOf(cursor.getString(15));
+                    Log.w("->", String.valueOf(Boolean.valueOf(cursor.getString(15))));
+                    Log.w("->", cursor.getString(15));
+                    boolean RegistrationOpen = Integer.valueOf(cursor.getString(15))==1?true:false;
+                    Log.w("while filling", EventKey);
+                    event = new RetrivedEvent(name, Details, Rules, Integer.parseInt(minParticipant), Integer.parseInt(maxParticipant), Integer.parseInt(fees), Integer.parseInt(feesMode), judgingCriteria, duration, club,EventKey, Contact,Time,Location,RegistrationOpen);
+                }
+            }
+            while (cursor.moveToNext());
+        }
 
+        db.close();
+        return event;
+
+    }
 }
