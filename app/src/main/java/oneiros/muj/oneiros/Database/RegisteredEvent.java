@@ -10,6 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import oneiros.muj.oneiros.backend.Registered;
+import oneiros.muj.oneiros.backend.RetrivedEvent;
 
 /**
  * Created by vidu on 11/9/17.
@@ -20,9 +21,10 @@ public class RegisteredEvent extends SQLiteOpenHelper {
     private static final String DATABASE_NAME= "Registered_EVENTS";
     private static final String TABLE_NAME = "Registered_Event";
     private static final String COLOUMN_ID = "id";
-    private static final String COLOUMN_NAME = "Name";
-    private static final String COLOUMN_CLUB = "club";
-    private static final String COLOUMN_EVENT_KEY = "eventkey";
+    private static final String COLOUMN_EVENT = "Event";
+    private static final String COLOUMN_STATUS = "status";
+    private static final String COLOUMN_EVENT_ID = "eventId";
+    private static final String COLOUMN_USER_ID = "user_Id";
 
 
 
@@ -32,17 +34,32 @@ public class RegisteredEvent extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+COLOUMN_ID+" INTEGER PRIMARY KEY, "+ COLOUMN_NAME+
-                " TEXT,"+" TEXT,"+COLOUMN_CLUB+" TEXT,"+
-                COLOUMN_EVENT_KEY+" TEXT)";
+        String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+COLOUMN_ID+" INTEGER PRIMARY KEY, "+ COLOUMN_EVENT+
+                " TEXT,"+COLOUMN_STATUS+" INTEGER,"+COLOUMN_EVENT_ID+" TEXT,"+
+                COLOUMN_USER_ID+" TEXT)";
         db.execSQL(CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
+    public void reset_data_list(ArrayList<Registered> eventList){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+        int count =0;
+        for(Registered x: eventList){
+            Log.w("x->", x.Event+"\n"+x.FeesStatus+"\n"+x.EventId+"\n"+x.UserId);
+            ContentValues values = new ContentValues();
+            values.put(COLOUMN_EVENT, x.Event);
+            values.put(COLOUMN_STATUS, x.FeesStatus);
+            values.put(COLOUMN_EVENT_ID, x.EventId);
+            values.put(COLOUMN_USER_ID, x.UserId);
+            db.insert(TABLE_NAME, null, values);
+        }
+        db.close();
+    }
 
     public ArrayList<Registered> getEventList(){
         ArrayList<Registered> eventList = new ArrayList<>();
@@ -52,12 +69,12 @@ public class RegisteredEvent extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do {
                     String name = cursor.getString(1);
-                    String club = cursor.getString(2);
+                    String UserId = cursor.getString(4);
+                    int status = cursor.getInt(2);
                     String EventKey = cursor.getString(3);
-                    Log.w("while filling", EventKey);
-                    eventList.add(new Registered(name, club,EventKey ));
-
-            }
+                    Log.w("while filling", name+"\n"+status+"\n"+EventKey);
+                    eventList.add(new Registered(UserId, status,UserId, name, "random@example.com" ));
+                }
             while (cursor.moveToNext());
         }
 
@@ -71,13 +88,13 @@ public class RegisteredEvent extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-    public void add_data(Registered x){
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLOUMN_NAME, x.Name);
-        values.put(COLOUMN_CLUB, x.Club);
-        values.put(COLOUMN_EVENT_KEY, x.EventKey);
-        db.insert(TABLE_NAME, null, values);
-        db.close();
-    }
+//    public void add_data(Registered x){
+//        SQLiteDatabase db = getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(COLOUMN_NAME, x.Name);
+//        values.put(COLOUMN_CLUB, x.Club);
+//        values.put(COLOUMN_EVENT_KEY, x.EventKey);
+//        db.insert(TABLE_NAME, null, values);
+//        db.close();
+//    }
 }

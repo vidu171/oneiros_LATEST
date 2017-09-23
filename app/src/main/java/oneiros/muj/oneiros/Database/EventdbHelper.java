@@ -91,7 +91,7 @@ public class EventdbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(select_query, null);
         if(cursor.moveToFirst()){
             do {
-                if (cursor.getString(10).equals(ClubKey)) {
+                if (cursor.getString(10).equals(ClubKey) || (ClubKey.equals("-KtNY1ZLdhpVMvj_sFMx")&& cursor.getString(14).equals("-KtrYxGHWjtAOWTR3u_A")) || (ClubKey.equals("-KtNY1ZU0kplfYYgVEOf")&& cursor.getString(14).equals("-KtrYxGKjZmCbzC9qG4w"))  ) {
                     String name = cursor.getString(1);
                     String Details = cursor.getString(2);
                     String Rules = cursor.getString(3);
@@ -107,12 +107,11 @@ public class EventdbHelper extends SQLiteOpenHelper {
                     String Time = cursor.getString(12);
                     String Location = cursor.getString(13);
 //                    Boolean RegistrationOpen = Boolean.valueOf(cursor.getString(15));
-                    Log.w("->", String.valueOf(Boolean.valueOf(cursor.getString(15))));
-                    Log.w("->", cursor.getString(15));
                     boolean RegistrationOpen = Integer.valueOf(cursor.getString(15))==1?true:false;
                     Log.w("while filling", EventKey);
                     eventList.add(new RetrivedEvent(name, Details, Rules, Integer.parseInt(minParticipant), Integer.parseInt(maxParticipant), Integer.parseInt(fees), Integer.parseInt(feesMode), judgingCriteria, duration, club,EventKey, Contact,Time,Location,RegistrationOpen));
                 }
+
             }
             while (cursor.moveToNext());
         }
@@ -144,8 +143,6 @@ public class EventdbHelper extends SQLiteOpenHelper {
                     String Time = cursor.getString(12);
                     String Location = cursor.getString(13);
 //                    Boolean RegistrationOpen = Boolean.valueOf(cursor.getString(15));
-                    Log.w("->", String.valueOf(Boolean.valueOf(cursor.getString(15))));
-                    Log.w("->", cursor.getString(15));
                     boolean RegistrationOpen = Integer.valueOf(cursor.getString(15))==1?true:false;
                     Log.w("while filling", EventKey);
                     event = new RetrivedEvent(name, Details, Rules, Integer.parseInt(minParticipant), Integer.parseInt(maxParticipant), Integer.parseInt(fees), Integer.parseInt(feesMode), judgingCriteria, duration, club,EventKey, Contact,Time,Location,RegistrationOpen);

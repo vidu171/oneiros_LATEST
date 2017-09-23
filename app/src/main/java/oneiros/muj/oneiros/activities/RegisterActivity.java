@@ -1,6 +1,7 @@
 package oneiros.muj.oneiros.activities;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -68,7 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
                 // TODO Add THe Correct Details to the New Registration
                 newRegistration.UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 newRegistration.EventId = getIntent().getStringExtra("EventKey");
-
+                newRegistration.Event = getIntent().getStringExtra("Name");
+                SharedPreferences pref = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+                newRegistration.EmailId = pref.getString("EmailId",null);
                 if(getIntent().getIntExtra("FeesMode",-1)==0) {
                     newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1)*(memberList.size()+1);
                 }
@@ -84,8 +87,9 @@ public class RegisterActivity extends AppCompatActivity {
                         newRegistration.TotalFees = 800+(100*(n+1));
                     }
                 }
+                newRegistration.RandomKey="";
                 newRegistration.FeesStatus = 0;
-                newRegistration.PaymentMode = "Paytm";
+                newRegistration.PaymentMode = "";
                 if(isNetworkAvailable()) {
 
                     eventData.setValue(newRegistration);
@@ -94,8 +98,8 @@ public class RegisterActivity extends AppCompatActivity {
                     for (int i = 0; i < memberList.size(); i++) {
                         eventData.child("TeamMates").push().setValue(memberList.get(i));
                     }
-                    RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
-                    dbHelper.add_data(new Registered(getIntent().getStringExtra("Name"),getIntent().getStringExtra("EventKey"),getIntent().getStringExtra("Club")));
+//                    RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
+//                    dbHelper.add_data(new Registraion(getIntent().getStringExtra("Name"),getIntent().getStringExtra("EventKey"),getIntent().getStringExtra("Club"),0));
                     Hidden.setVisibility(View.VISIBLE);
                     NotHidden.setVisibility(View.INVISIBLE);
                 }
@@ -113,25 +117,21 @@ public class RegisterActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
         members.setLayoutManager(mLayoutManager);
         members.setItemAnimator(new DefaultItemAnimator());
+
         members.setAdapter(mAdapter);
 
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 memberList.add(new TeamMembers("",""));
                 mAdapter.notifyDataSetChanged();
             }
         });
-
     }
-
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
-
 }

@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                    String pass = Password.getText().toString().trim();
-                    String email = EmailId.getText().toString().trim();
+                    String email = EmailId.getText().toString().trim().toLowerCase();
                     mAuth.signInWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 Toast.LENGTH_SHORT).show();
                                     } else {
                                         editor.putString("Name",Name.getText().toString()).commit();
-                                        editor.putString("EmailId",EmailId.getText().toString()).commit();
+                                        editor.putString("EmailId",EmailId.getText().toString().trim().toLowerCase()).commit();
                                         editor.putString("Contact",Contact.getText().toString()).commit();
                                         editor.putString("RegNo.",RegNum.getText().toString()).commit();
                                         editor.putString("University",University.getText().toString()).commit();
@@ -165,9 +165,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
-
-
     @Override
     public void onStart() {
         super.onStart();
@@ -191,7 +188,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
         public UserCreds(String Name, String EmailId, String Contact, String RegNum, String University){
-
             this.Name = Name;
             this.EmailId = EmailId;
             this.RegNum = RegNum;

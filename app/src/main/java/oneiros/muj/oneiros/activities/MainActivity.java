@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
@@ -34,14 +35,12 @@ import oneiros.muj.oneiros.fragments.home;
  * This activity provides the base UI for the pagers
  */
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     TabLayout top;
     ViewPager Pagerfragments;
 
-    String Generate_name = "Aashis is a good boy";
+    String Generate_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +60,7 @@ public class MainActivity extends AppCompatActivity {
         top.getTabAt(0).setIcon(R.drawable.ic_event);
         top.getTabAt(1).setIcon(R.drawable.ic_home);
         top.getTabAt(2).setIcon(R.drawable.ic_grade);
-
-
-
-
+        Generate_name = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
     @Override
@@ -72,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
         if(events.ispanelEnabled()){
             events.setPanelState();
         }
-        else if(home.isFab()){
-            home.CLOSE_FAB();
-        }
+//        else if(home.isFab()){
+//            home.CLOSE_FAB();
+//        }
         else{
-            finish();
+            finishAffinity();
         }
     }
 
@@ -84,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     //Todo View Qr code goes here
     public void View_qr(View V){
 
-        home.CLOSE_FAB();
+//        home.CLOSE_FAB();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
         AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
@@ -114,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Todo Scan Qr code goes here
     public void Scan_qr(View v){
-        home.CLOSE_FAB();
+//        home.CLOSE_FAB();
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setPrompt("Scan the club's QR code");
         integrator.setOrientationLocked(false);

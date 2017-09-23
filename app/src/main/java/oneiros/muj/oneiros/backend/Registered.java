@@ -5,13 +5,17 @@ package oneiros.muj.oneiros.backend;
  */
 
 public class Registered {
-    public String Name;
-    public String Club;
-    public String EventKey;
+    public String EventId;
+    public String Event;
+    public String EmailId;
+    public String UserId;
+    public int FeesStatus;
     public Registered(){}
-    public Registered(String Name , String Club, String EventKey){
-        this.Name=Name;
-        this.Club=Club;
-        this.EventKey = EventKey;
+    public Registered(String EventId , int PaidStatus, String UserId, String Event, String EmailId){
+        this.EventId=EventId;
+        this.FeesStatus = PaidStatus;
+        this.UserId = UserId;
+        this.Event = Event;
+        this.EmailId = EmailId;
     }
 }
