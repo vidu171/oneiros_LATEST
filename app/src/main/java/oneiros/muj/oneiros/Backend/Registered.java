@@ -10,12 +10,14 @@ public class Registered {
     public String EmailId;
     public String UserId;
     public int FeesStatus;
+    public String Time;
     public Registered(){}
-    public Registered(String EventId , int PaidStatus, String UserId, String Event, String EmailId){
+    public Registered(String EventId , int PaidStatus, String UserId, String Event, String EmailId, String Time){
         this.EventId=EventId;
         this.FeesStatus = PaidStatus;
         this.UserId = UserId;
         this.Event = Event;
         this.EmailId = EmailId;
+        this.Time = Time;
     }
 }
