@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:background="#8fdcd2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dp"
+        android:alpha="0.3"
+        android:src="@drawable/qr_backdrop" />
+    <LinearLayout android:orientation="vertical" android:background="#ffffff" android:padding="20dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-4dp">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:alpha="0.6"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:text="Scan event qr code to get started."
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/ScanQR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/button_shape"
+                android:fontFamily="sans-serif-medium"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:paddingTop="5.0dip"
+                android:text="SCAN QR CODE"
+                android:textColor="#8fdcd2"
+                android:textSize="16.0sp"
+                app:backgroundTint="#8fdcd2" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/ViewQR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/ScanQR"
+                android:layout_alignBottom="@+id/ScanQR"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_toEndOf="@+id/ScanQR"
+                android:background="@drawable/button_shape"
+                android:fontFamily="sans-serif-medium"
+                android:paddingBottom="5.0dip"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:paddingTop="5.0dip"
+                android:text="VIEW QR CODE"
+                android:textColor="#8fdcd2"
+                android:textSize="16.0sp"
+                app:backgroundTint="#8fdcd2" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
