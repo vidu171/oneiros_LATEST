@@ -185,6 +185,8 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    Log.w("-->",mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).toString());
+
                                     editor.putString("Name",NName).commit();
                                     editor.putString("EmailId", finalEEmail.trim().toLowerCase()).commit();
                                     editor.putString("Contact",PPhone).commit();
