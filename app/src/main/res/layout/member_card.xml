@@ -13,14 +13,14 @@
             android:paddingBottom="3dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#c5f1f1f1"
+            android:background="@android:color/transparent"
             android:id="@+id/memberName"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:hint="Full Full Name Name"/>
         <EditText
             android:id="@+id/memberRegNo"
             android:layout_width="match_parent"
-            android:background="#c5f1f1f1"
+            android:background="@android:color/transparent"
             android:layout_height="wrap_content"
             android:layout_below="@id/memberName"
             android:paddingLeft="6dp"
@@ -28,9 +28,13 @@
             android:paddingBottom="3dp"
             android:layout_margin="10dp"
             android:hint="Registration No"/>
-
-
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_clear"
+            android:id="@+id/close"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"/>
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

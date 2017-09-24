@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-        android:background="#EBECED"
+        android:background="#000000"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:id="@+id/image_container"
-        android:background="#4c586f">
+        android:background="@color/One">
         <ImageView
             android:layout_gravity="center"
             android:layout_width="150dp"
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="@android:color/black"
+        android:textColor="@color/One"
         android:textSize="18dp"
         android:id="@+id/event_name"
         android:text="Sleeping Contest"/>
@@ -63,7 +63,7 @@
                 android:id="@+id/bar"
                 android:layout_width="match_parent"
                 android:layout_margin="8dp"
-                android:background="#c6c6c6"
+                android:background="@color/One"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
                 <TextView
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:text="Candidate"
                     android:layout_margin="10dp"
-                    android:textColor="#737272"
+                    android:textColor="@android:color/black"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
                     android:layout_marginLeft="180dp"
                     android:text="Fees"
                     android:layout_marginTop="10dp"
-                    android:textColor="#737272"
+                    android:textColor="@android:color/black"
                     />
             </LinearLayout>
             <LinearLayout
@@ -92,6 +92,7 @@
                 <TextView
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
+                    android:id="@+id/Name"
                     android:textColor="@android:color/black"
                     android:text="Vidhyanshu Kumar Jain Jain"
                     android:layout_height="wrap_content"
@@ -100,17 +101,20 @@
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/RegNum"
                     android:text="169105214"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/Contact"
                     android:text="7869530027"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
+                    android:id="@+id/University"
                     android:layout_height="wrap_content"
                     android:text="Manipal University Jaipur"
                     android:layout_marginLeft="10dp"/>
