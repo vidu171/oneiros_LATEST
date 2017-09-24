@@ -2,22 +2,44 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/background_changer"
+    android:id="@+id/getget"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#000000">
 
 
     <ImageView
+        android:id="@+id/background_changer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+    <LinearLayout
+        android:alpha="0.3"
+        android:background="@drawable/gradient_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <ImageView
         android:transitionName="@string/app_name"
-        android:layout_marginTop="60dip"
+        android:layout_marginTop="50dip"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/nav_logo"/>
+        android:src="@drawable/nav_logo" />
+
+
+
+
+
+
+
     <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
         android:id="@+id/hicvp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:icvp_max_page_scale="0.85"
         app:icvp_interpolator="@android:anim/accelerate_decelerate_interpolator"
         app:icvp_scroll_duration="250"
        />
