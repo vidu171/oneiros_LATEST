@@ -86,25 +86,31 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 EventdbHelper eventdbHelper = new EventdbHelper(getBaseContext());
                 RetrivedEvent currentEvent = eventdbHelper.getEventFromKey(result.getContents());
-                Intent i = new Intent(MainActivity.this,EventDetails.class);
-                i.putExtra("Name",currentEvent.Name);
-                i.putExtra("Duration",currentEvent.Duration);
-                i.putExtra("Fees",currentEvent.Fees);
-                i.putExtra("FeesMode",currentEvent.FeesMode);
-                i.putExtra("JudgingCriteria",currentEvent.JudgingCriteria);
-                i.putExtra("MaxParticipant",currentEvent.MaxParticipant);
-                i.putExtra("MinParticipant",currentEvent.MinParticipant);
-                i.putExtra("Details",currentEvent.Details);
-                i.putExtra("Rules",currentEvent.Rules);
-                i.putExtra("EventKey",currentEvent.EventKey);
-                i.putExtra("Time",currentEvent.Time);
-                i.putExtra("RegistrationOpen",currentEvent.RegistrationOpen);
-                Log.w("RegistrationOpen", String.valueOf(currentEvent.RegistrationOpen));
-                i.putExtra("Location",currentEvent.Location);
-                i.putExtra("Contact",currentEvent.Contact);
-                Log.w("Check 123", currentEvent.EventKey);
-                startActivity(i);
-                Toast.makeText(this, ""+result.getContents()+""+result.getFormatName(), Toast.LENGTH_LONG).show();
+                if(currentEvent!=null) {
+                    Intent i = new Intent(MainActivity.this, EventDetails.class);
+                    Log.w("this", result.getContents());
+                    i.putExtra("Name", currentEvent.Name);
+                    i.putExtra("Duration", currentEvent.Duration);
+                    i.putExtra("Fees", currentEvent.Fees);
+                    i.putExtra("FeesMode", currentEvent.FeesMode);
+                    i.putExtra("JudgingCriteria", currentEvent.JudgingCriteria);
+                    i.putExtra("MaxParticipant", currentEvent.MaxParticipant);
+                    i.putExtra("MinParticipant", currentEvent.MinParticipant);
+                    i.putExtra("Details", currentEvent.Details);
+                    i.putExtra("Rules", currentEvent.Rules);
+                    i.putExtra("EventKey", currentEvent.EventKey);
+                    i.putExtra("Time", currentEvent.Time);
+                    i.putExtra("RegistrationOpen", currentEvent.RegistrationOpen);
+                    Log.w("RegistrationOpen", String.valueOf(currentEvent.RegistrationOpen));
+                    i.putExtra("Location", currentEvent.Location);
+                    i.putExtra("Contact", currentEvent.Contact);
+                    Log.w("Check 123", currentEvent.EventKey);
+                    startActivity(i);
+
+                }
+                else{
+                    Toast.makeText(this, "Incorrect Qr Code", Toast.LENGTH_LONG).show();
+                }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
