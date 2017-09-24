@@ -15,7 +15,8 @@
         <activity android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
