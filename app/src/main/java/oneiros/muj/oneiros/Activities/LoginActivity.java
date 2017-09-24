@@ -273,24 +273,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public class UserCreds {
-        public String Name;
-        public String EmailId;
-        public String Contact;
-        public String RegNum;
-        public String University;
-
-
-        public UserCreds(String Name, String EmailId, String Contact, String RegNum, String University){
-            this.Name = Name;
-            this.EmailId = EmailId;
-            this.RegNum = RegNum;
-            this.Contact = Contact;
-            this.University = University;
-        }
-
-    }
-
 
 
     @Override

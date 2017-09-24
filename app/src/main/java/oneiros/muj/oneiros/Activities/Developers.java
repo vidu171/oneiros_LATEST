@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -35,7 +36,9 @@ public class Developers extends AppCompatActivity {
         setContentView(R.layout.developers);
         frameLayout = findViewById(R.id.background_changer);
         horizontalInfiniteCycleViewPager = findViewById(R.id.hicvp);
-        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(this));
+
+                horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(getApplicationContext()));
+
 
     }
 
@@ -114,10 +117,10 @@ public class Developers extends AppCompatActivity {
 
     public void SET_BACKGROUND(){
         int images[]= {R.drawable.sid_sid,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.akhil_akhil};
+
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), images[horizontalInfiniteCycleViewPager.getRealItem()]);
         frameLayout.setScaleType(ImageView.ScaleType.CENTER_CROP);
         Blurry.with(Developers.this).animate(200).radius(13).async().from(largeIcon).into(frameLayout);
-
 
     }
 

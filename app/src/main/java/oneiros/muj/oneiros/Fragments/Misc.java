@@ -29,6 +29,7 @@ import java.util.Map;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import oneiros.muj.oneiros.Activities.MainActivity;
+import oneiros.muj.oneiros.Activities.SplashScreen;
 import oneiros.muj.oneiros.BuildConfig;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.Activities.Developers;
@@ -41,11 +42,13 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class Misc extends Fragment {
     View v;
-    ImageView transactionimage ;
+
     @OnClick(R.id.footer)
     public void open_dev(){
+        ImageView imageView = getActivity().findViewById(R.id.ONO);
+        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(getActivity(),imageView, imageView.getTransitionName()).toBundle();
         Intent i = new Intent(getContext(), Developers.class);
-                startActivity(i);
+        startActivity(i,bundle);
 
     }
     @OnClick(R.id.RateUs)
