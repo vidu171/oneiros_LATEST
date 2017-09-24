@@ -38,7 +38,7 @@ public class Events extends Fragment {
     ArrayList<RetrivedEvent> List;
     LinearLayout Cinefilia, Aperture, Coreographia, Litmus, Scribbles, Shabd, Sophia, MusicClub;
 
-    CircleImageView two,three,four,five,six,seven,eight;
+    CircleImageView one,two,three,four,five,six,seven,eight;
 
 
 
@@ -58,6 +58,7 @@ public class Events extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
+        one = v.findViewById(R.id.ONE);
         two = v.findViewById(R.id.TWO);
         three = v.findViewById(R.id.THREE);
         four = v.findViewById(R.id.FOUR);
@@ -67,6 +68,7 @@ public class Events extends Fragment {
         eight = v.findViewById(R.id.EIGHT);
 //        recyclerView.setNestedScrollingEnabled(false);
 
+        Glide.with(getActivity()).load(R.drawable.ono_cini).into(one);
         Glide.with(getActivity()).load(R.drawable.ono_shabd).into(two);
         Glide.with(getActivity()).load(R.drawable.ono_litmus).into(three);
         Glide.with(getActivity()).load(R.drawable.ono_tmc).into(four);
