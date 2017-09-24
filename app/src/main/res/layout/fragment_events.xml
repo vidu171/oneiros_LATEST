@@ -1,5 +1,6 @@
 <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +18,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/Nav">
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:id="@+id/ONE"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="15dp">
 
+            <include layout="@layout/fragment_events_copy" />
+        </android.support.v7.widget.CardView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -43,26 +53,13 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="110dip"
-                        android:id="@+id/ONE"
-                        android:layout_height="110dip"
-                        android:layout_marginTop="4dip"
-                         />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="CINEFELIA"
-                        android:textColor="#FFFFFF"
-                        android:textSize="15sp" />
+
 
 
                 </LinearLayout>
 
                 <View
-                    android:alpha="0.1"
                     android:layout_width="1dip"
                     android:layout_height="match_parent"
                     android:background="#646464" />
@@ -88,7 +85,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dip"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:paddingBottom="2dip"
                         android:paddingEnd="19dip"
@@ -104,7 +100,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dip"
-                android:alpha="0.1"
                 android:background="#646464" />
 
             <LinearLayout
@@ -147,7 +142,6 @@
 
 
                 <View
-                    android:alpha="0.1"
                     android:layout_width="1dip"
                     android:layout_height="match_parent"
                     android:background="#646464" />
@@ -188,7 +182,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dip"
-                android:alpha="0.1"
                 android:background="#646464" />
 
             <LinearLayout
@@ -229,7 +222,6 @@
 
 
                 <View
-                    android:alpha="0.1"
                     android:layout_width="1dip"
                     android:layout_height="match_parent"
                     android:background="#646464" />
@@ -270,7 +262,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dip"
-                android:alpha="0.1"
                 android:background="#646464" />
 
             <LinearLayout
@@ -298,7 +289,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dip"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:paddingBottom="2dip"
                         android:paddingEnd="19dip"
@@ -311,7 +301,6 @@
 
 
                 <View
-                    android:alpha="0.1"
                     android:layout_width="1dip"
                     android:layout_height="match_parent"
                     android:background="#646464" />
@@ -337,7 +326,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dip"
-                        android:alpha="0.7"
                         android:fontFamily="sans-serif-light"
                         android:paddingBottom="2dip"
                         android:paddingEnd="19dip"

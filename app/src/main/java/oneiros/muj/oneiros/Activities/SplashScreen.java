@@ -194,5 +194,6 @@ public class SplashScreen extends AppCompatActivity {
         else
             showSnackBar("no internet connection !","Retry");
     }
+
 }
 
