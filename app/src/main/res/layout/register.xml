@@ -141,7 +141,9 @@
         android:layout_below="@id/card">
         </android.support.v7.widget.RecyclerView>
     <Button
+        android:background="@drawable/button_register"
         android:padding="10dp"
+        android:textColor="@color/One"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/team_members"

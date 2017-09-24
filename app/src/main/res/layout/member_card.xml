@@ -16,7 +16,7 @@
             android:background="@android:color/transparent"
             android:id="@+id/memberName"
             android:textColor="@android:color/white"
-            android:hint="Full Full Name Name"/>
+            android:hint="Full Name"/>
         <EditText
             android:id="@+id/memberRegNo"
             android:layout_width="match_parent"
