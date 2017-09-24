@@ -1,6 +1,7 @@
 package oneiros.muj.oneiros.Fragments;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,7 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import oneiros.muj.oneiros.Activities.MainActivity;
 import oneiros.muj.oneiros.BuildConfig;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.Activities.Developers;
@@ -38,9 +41,12 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class Misc extends Fragment {
     View v;
+    ImageView transactionimage ;
     @OnClick(R.id.footer)
     public void open_dev(){
-        startActivity(new Intent(getContext(), Developers.class));
+        Intent i = new Intent(getContext(), Developers.class);
+                startActivity(i);
+
     }
     @OnClick(R.id.RateUs)
     public void appRateCardClick(View view) {
@@ -75,7 +81,7 @@ public class Misc extends Fragment {
         String NAME = ((TextView) v.findViewById(R.id.feedback_name)).getText().toString();
         String CONTACT = ((TextView) v.findViewById(R.id.feedback_contact)).getText().toString();
         if (SUBJECT.equals(BuildConfig.FLAVOR) || MESSAGE.equals(BuildConfig.FLAVOR)|| NAME.equals(BuildConfig.FLAVOR)|| CONTACT.equals(BuildConfig.FLAVOR)) {
-            Toast.makeText(v.getContext(), "Subject, Message, Name & Contact fields cannot be blank!", 1).show();
+            Toast.makeText(v.getContext(), "Subject, Message, Name & Contact fields cannot be blank!", Toast.LENGTH_SHORT).show();
             return;
         }
         Toast.makeText(v.getContext(), "Sending feedback", 0).show();

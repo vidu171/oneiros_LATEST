@@ -28,6 +28,8 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
                     "CC SpongeBob","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_akhil,
                     "OC Joney Bravo","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
+            new HorizontalPager_utilities.LibraryObject(R.drawable.team_s,
+                    "Volunteer Hodor","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
 
 
 
@@ -44,7 +46,7 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @Override
