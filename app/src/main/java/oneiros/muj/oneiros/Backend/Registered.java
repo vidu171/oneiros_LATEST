@@ -7,17 +7,17 @@ package oneiros.muj.oneiros.Backend;
 public class Registered {
     public String EventId;
     public String Event;
-    public String EmailId;
     public String UserId;
     public int FeesStatus;
+    public int TotalFees;
     public String Time;
     public Registered(){}
-    public Registered(String EventId , int PaidStatus, String UserId, String Event, String EmailId, String Time){
+    public Registered(String EventId , int PaidStatus, String UserId, String Event, String Time, int TotalFees){
         this.EventId=EventId;
         this.FeesStatus = PaidStatus;
         this.UserId = UserId;
         this.Event = Event;
-        this.EmailId = EmailId;
         this.Time = Time;
+        this.TotalFees = TotalFees;
     }
 }

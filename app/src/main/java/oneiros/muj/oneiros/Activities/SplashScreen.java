@@ -70,6 +70,9 @@ public class SplashScreen extends AppCompatActivity {
         mRegistered = new ArrayList<>();
         mFirebaseAuth = FirebaseAuth.getInstance();
         tryFetching();
+
+        RegisteredEvent dbHelper = new RegisteredEvent(SplashScreen.this);
+        ArrayList<Registered> list = dbHelper.getRegisteredList();
     }
 
     @Override
@@ -124,7 +127,7 @@ public class SplashScreen extends AppCompatActivity {
                     registerations.putAll(RegisterationMatches);
                     for (Map.Entry<String, Registered> entry : registerations.entrySet())
                     {
-                        Log.w("Retrived Registration","-->"+entry.getValue()+" "+entry.getValue().Time);
+                        Log.w("Retrived Registration","-->"+entry.getValue().TotalFees);
                         mRegistered.add(entry.getValue());
                     }
                 }
