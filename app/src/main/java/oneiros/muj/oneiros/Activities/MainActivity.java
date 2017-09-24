@@ -75,46 +75,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Todo View Qr code goes here
-    public void View_qr(View V){
-
-//        Home.CLOSE_FAB();
-        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-
-        AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogueView = inflater.inflate(R.layout.dialogue_view_qr,null);
-        builder.setView(dialogueView);
-        ImageView imageView = dialogueView.findViewById(R.id.Qr_view_holder);
-
-
-        try{
-            BitMatrix bitMatrix = multiFormatWriter.encode(Generate_name, BarcodeFormat.QR_CODE,200,200);
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-            imageView.setImageBitmap(bitmap);
-        }
-
-        catch (Exception e){
-            e.printStackTrace();
-        }
-
-        builder.create().show();
-
-
-
-
-    }
-
-    //Todo Scan Qr code goes here
-    public void Scan_qr(View v){
-//        Home.CLOSE_FAB();
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.setPrompt("Scan the club's QR code");
-        integrator.setOrientationLocked(false);
-        integrator.initiateScan();
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -96,8 +96,6 @@ public class RegisterActivity extends AppCompatActivity {
                     for (int i = 0; i < memberList.size(); i++) {
                         eventData.child("TeamMates").push().setValue(memberList.get(i));
                     }
-//                    RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
-//                    dbHelper.add_data(new Registraion(getIntent().getStringExtra("Name"),getIntent().getStringExtra("EventKey"),getIntent().getStringExtra("Club"),0));
                     Hidden.setVisibility(View.VISIBLE);
                     NotHidden.setVisibility(View.INVISIBLE);
                 }
@@ -107,7 +105,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         mAdd = (FloatingActionButton) findViewById(R.id.add);
-
         memberList = new ArrayList<>();
         mAdapter = new TeamMemberAdapter(memberList, RegisterActivity.this);
 

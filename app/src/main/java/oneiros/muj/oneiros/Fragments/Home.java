@@ -1,84 +1,62 @@
 package oneiros.muj.oneiros.Fragments;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import com.gordonwong.materialsheetfab.MaterialSheetFab;
-
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import oneiros.muj.oneiros.R;
-
-
-/**
- * Created by aesher on 9/12/2017.
- */
-
 public class Home extends Fragment {
-    private static MaterialSheetFab materialSheetFab;
-
+    FirebaseAuth mFirebaseAuth;
+    View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_home, container, false);
-//        Fab floatingActionButton = view.findViewById(R.id.main);
-//        View sheetView = view.findViewById(R.id.fab_sheet);
-//        View overlay = view.findViewById(R.id.overlay);
-//
-//
-//        Handler handler = new Handler();
-//        Runnable runnable = new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                new MaterialTapTargetPrompt.Builder(getActivity())
-//                        .setBackgroundColour(ContextCompat.getColor(getContext(),R.color.One))
-//                        .setPrimaryTextColour(ContextCompat.getColor(getContext(),R.color.main))
-//                        .setTarget(view.findViewById(R.id.main))
-//                        .setPrimaryText("Start your club registrations")
-//                        .setSecondaryText("Tap the envelop to do shit")
-//                        .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
-//                        {
-//                            @Override
-//                            public void onPromptStateChanged(MaterialTapTargetPrompt prompt, int state)
-//                            {
-//                                if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED)
-//                                {
-//                                    // User has pressed the prompt target
-//                                }
-//                                // just for fun
-//                            }
-//                        })
-//                        .show();
-////kjkl
-//            }
-//        };handler.postDelayed(runnable,1000);
-//
-//
-//
-//
-//
-//        int sheetColor = ContextCompat.getColor(getContext(),R.color.white);
-//        int fabColor = ContextCompat.getColor(getContext(),R.color.colorAccent);
-//
-//        materialSheetFab = new MaterialSheetFab<>(floatingActionButton, sheetView, overlay, sheetColor, fabColor);
-//
+        view = inflater.inflate(R.layout.fragment_home, container, false);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        ButterKnife.bind(this,view);
         return view;
     }
-//
-//
-//
-//
-//    public static boolean isFab()
-//    {
-//        return materialSheetFab.isSheetVisible();
-//    }
-//
-//
-//    public static void CLOSE_FAB(){
-//        materialSheetFab.hideSheet();
-//    }
+
+    @OnClick(R.id.ScanQR)
+    public void Scan_qr(View v){
+        IntentIntegrator integrator = new IntentIntegrator(getActivity());
+        integrator.setPrompt("Place the event's QR code inside the viewfinder to register ");
+        integrator.setOrientationLocked(false);
+        integrator.initiateScan();
+    }
+    @OnClick(R.id.ViewQR)
+    public void View_qr(){
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        AlertDialog.Builder builder= new AlertDialog.Builder(view.getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogueView = inflater.inflate(R.layout.dialogue_view_qr,null);
+        builder.setView(dialogueView);
+        ImageView imageView = dialogueView.findViewById(R.id.Qr_view_holder);
+        try{
+            BitMatrix bitMatrix = multiFormatWriter.encode(mFirebaseAuth.getCurrentUser().getUid(), BarcodeFormat.QR_CODE,300,300);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            imageView.setImageBitmap(bitmap);
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        builder.create().show();
+    }
 
 }
