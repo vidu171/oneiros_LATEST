@@ -13,15 +13,15 @@ public class Registraion {
     public int TotalFees;
     public int FeesStatus;
     public String PaymentMode;
-    public String RandomKey;
+    public String Time;
     public Registraion(){}
-    Registraion(String UserId, String EventId, String Event, int TotalFees, int FeesStatus, String PaymentMode, String RandomKey){
+    Registraion(String UserId, String EventId, String Event, int TotalFees, int FeesStatus, String PaymentMode, String Time){
         this.UserId=UserId;
         this.TotalFees=TotalFees;
         this.FeesStatus=FeesStatus;
         this.PaymentMode=PaymentMode;
         this.EventId = EventId;
         this.Event = Event;
-        this.RandomKey = RandomKey;
+        this.Time = Time;
     }
 }

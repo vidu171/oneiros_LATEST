@@ -28,7 +28,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.RequestPreferences.TeamMembers;
@@ -127,7 +130,11 @@ public class RegisterActivity extends AppCompatActivity {
                         newRegistration.TotalFees = 800 + (100 * (n + 1));
                     }
                 }
-                newRegistration.RandomKey = "";
+                // Todo Update Date And Time
+
+                Date todaysDate = new Date();
+                DateFormat df = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
+                newRegistration.Time = df.format(todaysDate);
                 newRegistration.FeesStatus = 0;
                 newRegistration.PaymentMode = "";
                 if (isNetworkAvailable()) {
