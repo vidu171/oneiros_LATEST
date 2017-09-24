@@ -68,14 +68,14 @@ public class Events extends Fragment {
         eight = v.findViewById(R.id.EIGHT);
 //        recyclerView.setNestedScrollingEnabled(false);
 
-        Glide.with(getActivity()).load(R.drawable.ono_cini).into(one);
-        Glide.with(getActivity()).load(R.drawable.ono_shabd).into(two);
-        Glide.with(getActivity()).load(R.drawable.ono_litmus).into(three);
-        Glide.with(getActivity()).load(R.drawable.ono_tmc).into(four);
+        Glide.with(getActivity()).load(R.drawable.ono_cini).fitCenter().into(one);
+        Glide.with(getActivity()).load(R.drawable.ono_shabd).fitCenter().into(two);
+        Glide.with(getActivity()).load(R.drawable.ono_litmus).fitCenter().into(three);
+        Glide.with(getActivity()).load(R.drawable.ono_tmc).fitCenter().into(four);
         Glide.with(getActivity()).load(R.drawable.scr).fitCenter().into(five);
-        Glide.with(getActivity()).load(R.drawable.ono_sophia).into(six);
-        Glide.with(getActivity()).load(R.drawable.ono_aper).into(seven);
-        Glide.with(getActivity()).load(R.drawable.ono_coreo).into(eight);
+        Glide.with(getActivity()).load(R.drawable.ono_sophia).fitCenter().into(six);
+        Glide.with(getActivity()).load(R.drawable.ono_aper).fitCenter().into(seven);
+        Glide.with(getActivity()).load(R.drawable.ono_coreo).fitCenter().into(eight);
 
         ButterKnife.bind(this,v);
 

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
@@ -12,298 +13,298 @@
     sothree:umanoOverlay="true"
     sothree:umanoScrollableView="@+id/list">
 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Backdrop">
 
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/Nav">
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1" >
+
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/cini"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="@color/Nav"
+            android:layout_weight="1"
+            android:background="#0e0e0e"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <LinearLayout
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ONE"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
 
-                <LinearLayout
-                    android:id="@+id/cini"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#1b1b1b"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/ONE"
-                        android:layout_width="110dip"
-                        android:layout_height="110dip"
-                        android:layout_marginTop="4dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:text="CINEFELIA"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/shabd"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#232323"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/TWO"
-                        android:layout_width="110dip"
-                        android:layout_height="110dip"
-                        android:layout_marginTop="4dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:text="SHABD"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:id="@+id/Litmus"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#272727"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/THREE"
-                        android:layout_width="90dip"
-                        android:layout_height="90dip"
-                        android:layout_marginTop="4dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:paddingTop="2dip"
-                        android:text="LITMUS"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/TMC"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#2c2b2b"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/FOUR"
-                        android:layout_width="90dip"
-                        android:layout_height="100dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:text="TMC"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:id="@+id/scribbles"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#302f2f"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/FIVE"
-                        android:layout_width="130dip"
-                        android:layout_height="95dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:text="SCRIBBLES"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/SOPHIA"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#333232"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/SIX"
-                        android:layout_width="95dip"
-                        android:layout_height="95dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:text="SOPHIA"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:id="@+id/Aperture"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#383737"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/SEVEN"
-                        android:layout_width="95dip"
-                        android:layout_height="95dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:text="APERTURE"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/coreoe"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#3d3c3c"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:orientation="vertical">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/EIGHT"
-                        android:layout_width="90dip"
-                        android:layout_height="90dip" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingBottom="2dip"
-                        android:paddingEnd="19dip"
-                        android:paddingStart="19dip"
-                        android:paddingTop="2dip"
-                        android:text="COREOGRAFIA"
-                        android:textColor="#ffffff"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="CINEFELIA"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
         </LinearLayout>
-    </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/shabd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#121212"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/TWO"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="SHABD"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:id="@+id/Litmus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#121212"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/THREE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="LITMUS"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/TMC"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0e0e0e"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/FOUR"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="TMC"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:id="@+id/scribbles"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0e0e0e"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/FIVE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="SCRIBBLES"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/SOPHIA"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#121212"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/SIX"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="SOPHIA"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:id="@+id/Aperture"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#121212"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/SEVEN"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="APERTURE"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/coreoe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0e0e0e"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/EIGHT"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="55dip"
+                android:alpha="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-55dip"
+                android:alpha="0.5"
+                android:fontFamily="sans-serif-light"
+                android:paddingEnd="19dip"
+                android:paddingStart="19dip"
+                android:text="COREOGRAFIA"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
     <LinearLayout
         android:clickable="false"
         android:focusable="true"
