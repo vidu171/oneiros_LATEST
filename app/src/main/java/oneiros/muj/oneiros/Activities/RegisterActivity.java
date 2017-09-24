@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
         RegNum.setText(pref.getString("RegNo.",null));
         Contact.setText(pref.getString("Contact",null));
         University.setText(pref.getString("University",null));
-
+        mAdd = (FloatingActionButton) findViewById(R.id.add);
         Button registerButton = (Button) findViewById(R.id.register);
         Log.w("Fees", String.valueOf(getIntent().getIntExtra("Fees", -1)));
         memberList = new ArrayList<>();
@@ -145,7 +145,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-        mAdd = (FloatingActionButton) findViewById(R.id.add);
 
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
