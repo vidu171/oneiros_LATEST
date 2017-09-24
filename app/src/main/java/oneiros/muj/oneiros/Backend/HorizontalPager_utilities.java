@@ -4,40 +4,57 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import oneiros.muj.oneiros.R;
 
 
-/**
- * Created by GIGAMOLE on 8/18/16.
- */
-class HorizontalPager_utilities {
+public class HorizontalPager_utilities {
 
-    static void setupItem(final View view, final LibraryObject libraryObject) {
-        final TextView txt = view.findViewById(R.id.txt_item);
-        txt.setText(libraryObject.getTitle());
+    public static void setupItem(final View view, final LibraryObject libraryObject) {
 
-        final ImageView img = view.findViewById(R.id.img_item);
-        img.setImageResource(libraryObject.getRes());
 
-        final  TextView desc = view.findViewById(R.id.description);
-        desc.setText(libraryObject.getDescription());
+        final ImageView back_image = view.findViewById(R.id.back_image);
+         Glide.with(view.getContext()).load(libraryObject.getBack()).centerCrop().into(back_image);
+
+        final CircleImageView profile = view.findViewById(R.id.profile_image);
+        Glide.with(view.getContext()).load(libraryObject.getRes()).into(profile);
+
+        final TextView Name = view.findViewById(R.id.name);
+        Name.setText(libraryObject.getTitle());
+
+        final  TextView DESC = view.findViewById(R.id.desc);
+        DESC.setText(libraryObject.getDeig());
+
+
+        final TextView Description = view.findViewById(R.id.description);
+        Description.setText(libraryObject.getDescription());
 
     }
 
-    static class LibraryObject {
 
+
+
+
+
+    public static class LibraryObject {
         private String mTitle;
         private int mRes;
+        private int mBack;
+        private String mDesig;
         private String mDescription;
 
-        LibraryObject(final int res, final String title, final String description) {
+        public LibraryObject(final int res, final int back, final String title, final String desig, final String description) {
             mRes = res;
+            mBack = back;
             mTitle = title;
+            mDesig = desig;
             mDescription = description;
         }
 
 
-        String getDescription() {return  mDescription;}
+
 
         String getTitle() {
             return mTitle;
@@ -47,8 +64,23 @@ class HorizontalPager_utilities {
             return mRes;
         }
 
+        public int getBack(){return mBack;}
+
+        String getDeig(){return  mDesig;}
+
+        String getDescription() {return  mDescription;}
+
+
+
+
+
         public void setRes(final int res) {
             mRes = res;
         }
+
+        public void setBack(final int back){
+            mBack = back;
+        }
+
     }
 }
