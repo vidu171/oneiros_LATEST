@@ -22,13 +22,13 @@ public class HorizontalPagerAdapter_developers extends PagerAdapter {
 
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_sid,
                     "Advisor Dubeldore", "Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
-            new HorizontalPager_utilities.LibraryObject(R.drawable.team_aashis,
+            new HorizontalPager_utilities.LibraryObject(R.drawable.team_vidyanshu,
                     "CC L","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_vidyanshu,
                     "CC SpongeBob","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
             new HorizontalPager_utilities.LibraryObject(R.drawable.team_akhil,
                     "OC Joney Bravo","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
-            new HorizontalPager_utilities.LibraryObject(R.drawable.team_s,
+            new HorizontalPager_utilities.LibraryObject(R.drawable.team_sid,
                     "Volunteer Hodor","Siddhart Jaidka -> Evil genuis coder who can do magic with his laptop.  "),
 
 
