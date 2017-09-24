@@ -1,4 +1,4 @@
-package oneiros.muj.oneiros.activities;
+package oneiros.muj.oneiros.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

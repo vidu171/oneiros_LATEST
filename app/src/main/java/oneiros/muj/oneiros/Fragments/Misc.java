@@ -1,4 +1,4 @@
-package oneiros.muj.oneiros.fragments;
+package oneiros.muj.oneiros.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,17 +11,17 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.activities.DEvelopers;
+import oneiros.muj.oneiros.Activities.Developers;
 
 /**
  * Created by aesher on 9/12/2017.
  */
 
-public class misc extends Fragment {
+public class Misc extends Fragment {
 
     @OnClick(R.id.footer)
     public void open_dev(){
-        startActivity(new Intent(getContext(), DEvelopers.class));
+        startActivity(new Intent(getContext(), Developers.class));
     }
 
     @Nullable

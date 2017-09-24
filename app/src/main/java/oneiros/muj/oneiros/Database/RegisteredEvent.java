@@ -9,8 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import oneiros.muj.oneiros.backend.Registered;
-import oneiros.muj.oneiros.backend.RetrivedEvent;
+import oneiros.muj.oneiros.Backend.Registered;
 
 /**
  * Created by vidu on 11/9/17.

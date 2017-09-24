@@ -1,4 +1,4 @@
-package oneiros.muj.oneiros.activities;
+package oneiros.muj.oneiros.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,12 +22,10 @@ import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import oneiros.muj.oneiros.Database.EventdbHelper;
+import oneiros.muj.oneiros.Fragments.Events;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.backend.RetrivedEvent;
-import oneiros.muj.oneiros.backend.pagerAdapter;
-import oneiros.muj.oneiros.fragments.events;
-import oneiros.muj.oneiros.fragments.home;
-
+import oneiros.muj.oneiros.Backend.RetrivedEvent;
+import oneiros.muj.oneiros.Backend.pagerAdapter;
 
 
 /**
@@ -65,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(events.ispanelEnabled()){
-            events.setPanelState();
+        if(Events.ispanelEnabled()){
+            Events.setPanelState();
         }
-//        else if(home.isFab()){
-//            home.CLOSE_FAB();
+//        else if(Home.isFab()){
+//            Home.CLOSE_FAB();
 //        }
         else{
             finishAffinity();
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     //Todo View Qr code goes here
     public void View_qr(View V){
 
-//        home.CLOSE_FAB();
+//        Home.CLOSE_FAB();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
         AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
@@ -110,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Todo Scan Qr code goes here
     public void Scan_qr(View v){
-//        home.CLOSE_FAB();
+//        Home.CLOSE_FAB();
         IntentIntegrator integrator = new IntentIntegrator(this);
         integrator.setPrompt("Scan the club's QR code");
         integrator.setOrientationLocked(false);

@@ -1,4 +1,4 @@
-package oneiros.muj.oneiros.activities;
+package oneiros.muj.oneiros.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,12 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.RequestPreferences.TeamMemberAdapter;
 import oneiros.muj.oneiros.RequestPreferences.TeamMembers;
-import oneiros.muj.oneiros.backend.Registered;
-import oneiros.muj.oneiros.backend.Registraion;
+import oneiros.muj.oneiros.Backend.Registraion;
 
 /**
  * Created by vidu on 9/9/17.

@@ -1,4 +1,6 @@
-package oneiros.muj.oneiros.backend;
+package oneiros.muj.oneiros.Backend;
+
+import java.util.HashMap;
 
 /**
  * Created by Siddharth on 30-08-2017.
@@ -14,12 +16,13 @@ public class Event {
     public int FeesMode;
     public String JudgingCriteria;
     public String Duration;
+    public HashMap<String, Contact> Contact;
     public String Club;
     public String Time;
     public String Location;
     public boolean RegistrationOn;
     public Event(){}
-    public Event(String Name, String Details, String Rules, int MinParticipant, int MaxParticipant, int Fees, int FeesMode, String JudgingCriteria, String Duration, String Club, String Time, String Location, boolean RegistrationOn){
+    public Event(String Name, String Details, String Rules, int MinParticipant, int MaxParticipant, int Fees, int FeesMode, String JudgingCriteria, String Duration, HashMap<String, Contact> Contact, String Club, String Time, String Location, boolean RegistrationOn){
         this.Name=Name;
         this.Details=Details;
         this.Rules=Rules;
@@ -29,6 +32,7 @@ public class Event {
         this.FeesMode=FeesMode;
         this.JudgingCriteria=JudgingCriteria;
         this.Duration=Duration;
+        this.Contact=Contact;
         this.Club=Club;
         this.Time = Time;
         this.Location = Location;

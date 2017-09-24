@@ -1,15 +1,15 @@
-package oneiros.muj.oneiros.activities;
+package oneiros.muj.oneiros.Activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.backend.HorizontalPagerAdapter_developers;
+import oneiros.muj.oneiros.Backend.HorizontalPagerAdapter_developers;
 
 /**
  * Created by aesher on 9/13/2017.
  */
 
-public class DEvelopers extends AppCompatActivity {
+public class Developers extends AppCompatActivity {
 
 
     @Override

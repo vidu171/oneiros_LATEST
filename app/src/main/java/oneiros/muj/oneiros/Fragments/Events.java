@@ -1,4 +1,4 @@
-package oneiros.muj.oneiros.fragments;
+package oneiros.muj.oneiros.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,14 +20,14 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.backend.RetrivedEvent;
-import oneiros.muj.oneiros.backend.recyclerViewAdapter;
+import oneiros.muj.oneiros.Backend.RetrivedEvent;
+import oneiros.muj.oneiros.Backend.recyclerViewAdapter;
 
 /**
  * Created by aesher on 9/12/2017.
  */
 
-public class events extends Fragment {
+public class Events extends Fragment {
 
 
     static String clubs[]="Aperture#Cinefilia#Coreographia#Litmus#Scribbles#Shabd#Sophia#The Music Club".split("#");
@@ -38,7 +38,7 @@ public class events extends Fragment {
     ArrayList<RetrivedEvent> List;
     LinearLayout Cinefilia, Aperture, Coreographia, Litmus, Scribbles, Shabd, Sophia, MusicClub;
 
-    CircleImageView one,two,three,four,five,six,seven,eight;
+    CircleImageView two,three,four,five,six,seven,eight;
 
 
 
@@ -58,7 +58,6 @@ public class events extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        one = v.findViewById(R.id.ONE);
         two = v.findViewById(R.id.TWO);
         three = v.findViewById(R.id.THREE);
         four = v.findViewById(R.id.FOUR);
@@ -68,7 +67,6 @@ public class events extends Fragment {
         eight = v.findViewById(R.id.EIGHT);
 //        recyclerView.setNestedScrollingEnabled(false);
 
-        Glide.with(getActivity()).load(R.drawable.ono_cini).into(one);
         Glide.with(getActivity()).load(R.drawable.ono_shabd).into(two);
         Glide.with(getActivity()).load(R.drawable.ono_litmus).into(three);
         Glide.with(getActivity()).load(R.drawable.ono_tmc).into(four);

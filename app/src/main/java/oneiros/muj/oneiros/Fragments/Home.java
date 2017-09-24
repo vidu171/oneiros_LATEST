@@ -1,27 +1,22 @@
-package oneiros.muj.oneiros.fragments;
+package oneiros.muj.oneiros.Fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.gordonwong.materialsheetfab.MaterialSheetFab;
 
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.samples.Fab;
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 
 /**
  * Created by aesher on 9/12/2017.
  */
 
-public class home extends Fragment {
+public class Home extends Fragment {
     private static MaterialSheetFab materialSheetFab;
 
     @Nullable
