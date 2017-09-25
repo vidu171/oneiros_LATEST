@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:fullBackupContent="true"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
         >
         <activity android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait"
