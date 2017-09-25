@@ -51,7 +51,7 @@ import oneiros.muj.oneiros.Activities.EventDetails;
             holder.eventTitle.setText(currentReg.Event);
             holder.totalFees.setText("Total Fees: "+currentReg.TotalFees);
             holder.time.setText(currentReg.Time);
-            holder.rID.setText(currentReg.EventId);
+            holder.rID.setText(currentReg.RegKey);
             if(currentReg.FeesStatus==1)
                 holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
             else
@@ -66,7 +66,7 @@ import oneiros.muj.oneiros.Activities.EventDetails;
                     builder.setView(dialogueView);
                     ImageView imageView = dialogueView.findViewById(R.id.Qr_view_holder);
                     try{
-                        BitMatrix bitMatrix = multiFormatWriter.encode(currentReg.EventId, BarcodeFormat.QR_CODE,300,300);
+                        BitMatrix bitMatrix = multiFormatWriter.encode(currentReg.RegKey, BarcodeFormat.QR_CODE,300,300);
                         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                         Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                         imageView.setImageBitmap(bitmap);
