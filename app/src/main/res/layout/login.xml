@@ -82,7 +82,7 @@
                     android:backgroundTint="#90fafafa"
                     android:cursorVisible="false"
                     android:drawablePadding="25dp"
-                    android:drawableStart="@drawable/ic_email"
+                    android:drawableStart="@drawable/ic_email_sv"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="left"
                     android:hint="Email Address"
