@@ -67,9 +67,6 @@ public class MainActivity extends AppCompatActivity {
         if(Events.ispanelEnabled()){
             Events.setPanelState();
         }
-//        else if(Home.isFab()){
-//            Home.CLOSE_FAB();
-//        }
         else{
             finishAffinity();
         }
