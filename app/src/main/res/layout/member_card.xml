@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/memberCard"
-    android:layout_margin="1dp"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="25dip"
+    android:layout_marginLeft="20dip"
+    android:layout_marginRight="20dip"
+    app:cardBackgroundColor="@android:color/transparent">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <EditText
-            android:layout_margin="10dp"
-            android:paddingLeft="6dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
+            android:id="@+id/memberName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:id="@+id/memberName"
+            android:backgroundTint="@color/One"
+            android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:focusable="true"
+            android:hint="Full Name"
+            android:maxLines="1"
+            android:paddingBottom="12dp"
+            android:paddingStart="6dip"
             android:textColor="@android:color/white"
-            android:hint="Full Name"/>
+            android:textColorHighlight="#6cffffff"
+            android:textColorHint="#90fafafa" />
+
         <EditText
             android:id="@+id/memberRegNo"
             android:layout_width="match_parent"
-            android:background="@android:color/transparent"
             android:layout_height="wrap_content"
             android:layout_below="@id/memberName"
-            android:paddingLeft="6dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:layout_margin="10dp"
-            android:hint="Registration No"/>
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/One"
+            android:focusable="true"
+            android:hint="Registration No."
+            android:maxLines="1"
+            android:paddingBottom="12dp"
+            android:paddingStart="6dip"
+            android:textColor="@android:color/white"
+            android:textColorHighlight="#6cffffff"
+            android:textColorHint="#90fafafa" />
+
         <ImageView
+            android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_clear"
-            android:id="@+id/close"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_clear" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

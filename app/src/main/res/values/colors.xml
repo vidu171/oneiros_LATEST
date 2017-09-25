@@ -18,6 +18,7 @@
     <color name="One">#07f0cd</color>
 
     <color name="half_white">#c1c1c1</color>
+    <color name="half__more_white">#ceffffff</color>
     <color name="half_black">#666565</color>
 
     <array name="Oneiros_colors">
