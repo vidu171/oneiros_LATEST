@@ -82,7 +82,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:text="Candidate"
+                            android:text="Team Leader"
                             android:textColor="@android:color/black" />
 
                         <TextView
@@ -166,7 +166,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"
-                    android:text="Member Details"
+                    android:text="Other Members"
                     android:textColor="@color/One"
                     android:textSize="18dp" />
             </LinearLayout>

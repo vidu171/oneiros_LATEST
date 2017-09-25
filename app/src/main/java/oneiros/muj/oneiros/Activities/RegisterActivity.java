@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
     ArrayList<TeamMembers> memberList;
     SharedPreferences pref;
     public static DatabaseReference mDatabase;
-    TextView Fees, EventName, Name, RegNum, Contact, University ;
+    TextView Fees, EventName, Name, RegNum, Contact, University, MemberDetails ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
         RegNum = (TextView) findViewById(R.id.RegNum);
         Contact = (TextView) findViewById(R.id.Contact);
         University = (TextView) findViewById(R.id.University);
+        MemberDetails = (TextView) findViewById(R.id.MemberDetails);
 
         Fees.setText(String.valueOf(getIntent().getIntExtra("Fees", -1)));
         EventName.setText(getIntent().getStringExtra("Name"));
@@ -91,6 +92,8 @@ public class RegisterActivity extends AppCompatActivity {
         members.setAdapter(mAdapter);
         if(getIntent().getIntExtra("MaxParticipant",-1)==1){
             mAdd.setVisibility(View.INVISIBLE);
+            MemberDetails.setVisibility(View.INVISIBLE);
+
         }
         if(getIntent().getIntExtra("MinParticipant",-1)>0){
             int n=getIntent().getIntExtra("MinParticipant",-1)-1;

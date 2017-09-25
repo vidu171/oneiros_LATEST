@@ -12,7 +12,7 @@
         android:layout_gravity="right"
         android:layout_marginRight="15dp"
         android:alpha="0.3"
-        android:src="@drawable/dev_d" />
+        android:src="@drawable/dev_d"/>
     <LinearLayout android:orientation="vertical" android:background="#ffffff" android:padding="20dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-4dp">
 
         <TextView android:textSize="24sp" android:ellipsize="middle" android:id="@+id/classTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp"
