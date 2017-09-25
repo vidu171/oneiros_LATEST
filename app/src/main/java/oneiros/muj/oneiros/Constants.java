@@ -8,6 +8,7 @@ public class Constants {
 
     public static final String EVENTS_TABLE_REFERENCE = "Events";
     public static final String REGISTRATION_TABLE_REFERENCE = "Registration";
+    public static final String USER_TABLE_REFERENCE = "Users";
 
 
 }

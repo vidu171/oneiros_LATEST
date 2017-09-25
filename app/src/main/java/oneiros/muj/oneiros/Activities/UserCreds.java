@@ -19,6 +19,7 @@ public class UserCreds {
         this.Contact = Contact;
         this.University = University;
     }
+    public UserCreds(){}
 
 }
 
