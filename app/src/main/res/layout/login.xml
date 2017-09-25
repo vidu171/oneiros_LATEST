@@ -2,45 +2,35 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout">
+    android:id="@+id/layout"
+    android:background="@drawable/image">
 
-    <LinearLayout
-        android:alpha="0.9"
-        android:background="@drawable/image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
     <LinearLayout
         android:background="@drawable/gradient_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
         <RelativeLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
         <ScrollView
             android:layout_centerVertical="true"
             android:scrollbarStyle="outsideOverlay"
             android:scrollbarFadeDuration="1000"
             android:scrollbars="vertical"
-
-            android:requiresFadingEdge="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="100dip">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_marginTop="20dip"
                 android:animateLayoutChanges="true"
                 android:gravity="center_vertical"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
 
                 <ImageView
