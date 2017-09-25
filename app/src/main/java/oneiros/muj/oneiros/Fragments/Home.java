@@ -75,7 +75,7 @@ public class Home extends Fragment {
     @OnClick(R.id.ScanQR)
     public void Scan_qr(View v){
         IntentIntegrator integrator = new IntentIntegrator(getActivity());
-        integrator.setPrompt("Place the event's QR code inside the viewfinder to register ");
+        integrator.setPrompt("Place the event's QR code inside the viewfinder to register \n\n");
         integrator.setOrientationLocked(false);
         integrator.initiateScan();
     }
