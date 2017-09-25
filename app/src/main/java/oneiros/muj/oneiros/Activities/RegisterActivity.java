@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
         members.setItemAnimator(new DefaultItemAnimator());
 
         members.setAdapter(mAdapter);
-        if(getIntent().getIntExtra("MinParticipant",-1)==1){
+        if(getIntent().getIntExtra("MaxParticipant",-1)==1){
             mAdd.setVisibility(View.INVISIBLE);
         }
         if(getIntent().getIntExtra("MinParticipant",-1)>0){
