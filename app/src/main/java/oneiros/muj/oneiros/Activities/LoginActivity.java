@@ -90,11 +90,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(isOpen){
                     isOpen= false;
+
                     ONO_username.setVisibility(View.GONE);
                     ONO_registration.setVisibility(View.GONE);
                     ONO_university.setVisibility(View.GONE);
                     ONO_phonenumber.setVisibility(View.GONE);
                     login.setText("SignIn");
+                    ONO_email.requestFocus();
                     textView.setText("Don't have an account? SignUp ");
                 }
                 else{
@@ -103,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                     ONO_registration.setVisibility(View.VISIBLE);
                     ONO_university.setVisibility(View.VISIBLE);
                     ONO_phonenumber.setVisibility(View.VISIBLE);
+                    ONO_username.requestFocus();
                     login.setText("Signup");
                     textView.setText("Already have an account? SignIn ");
                 }

@@ -117,7 +117,6 @@ public class Developers extends AppCompatActivity {
 
     public void SET_BACKGROUND(){
         int images[]= {R.drawable.sid_sid,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.akhil_akhil};
-
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), images[horizontalInfiniteCycleViewPager.getRealItem()]);
         frameLayout.setScaleType(ImageView.ScaleType.CENTER_CROP);
         Blurry.with(Developers.this).animate(200).radius(13).async().from(largeIcon).into(frameLayout);

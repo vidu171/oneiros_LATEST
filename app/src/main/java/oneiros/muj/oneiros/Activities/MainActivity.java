@@ -1,5 +1,6 @@
 package oneiros.muj.oneiros.Activities;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -114,4 +115,11 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+    public void DEvelopers(View v){
+        Intent i = new Intent(MainActivity.this, Developers.class);
+        startActivity(i);
+    }
+
 }

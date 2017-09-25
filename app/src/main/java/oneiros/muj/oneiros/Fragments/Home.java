@@ -65,7 +65,7 @@ public class Home extends Fragment {
         uID.setText(mFirebaseAuth.getCurrentUser().getUid());
         RegisteredEvent dbHelper = new RegisteredEvent(getContext());
         ArrayList<Registered> list = dbHelper.getRegisteredList();
-        rListView = (RecyclerView) view.findViewById(R.id.rEventList);
+        rListView = view.findViewById(R.id.rEventList);
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);

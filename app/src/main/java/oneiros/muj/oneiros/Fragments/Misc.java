@@ -45,11 +45,8 @@ public class Misc extends Fragment {
 
     @OnClick(R.id.footer)
     public void open_dev(){
-        ImageView imageView = getActivity().findViewById(R.id.ONO);
-        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(getActivity(),imageView, imageView.getTransitionName()).toBundle();
-        Intent i = new Intent(getContext(), Developers.class);
-        startActivity(i,bundle);
 
+        Toast.makeText(getContext(),"This is an easter egg. Feels good that you found it",Toast.LENGTH_SHORT).show();
     }
     @OnClick(R.id.RateUs)
     public void appRateCardClick(View view) {
@@ -140,5 +137,7 @@ public class Misc extends Fragment {
             return params;
         }
     }
+
+
 
 }

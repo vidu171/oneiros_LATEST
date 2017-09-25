@@ -14,27 +14,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
 
         <ScrollView
-            android:requiresFadingEdge="horizontal"
             android:layout_centerVertical="true"
-            android:id="@+id/scroll"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbarFadeDuration="1000"
+            android:scrollbars="vertical"
+
+            android:requiresFadingEdge="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="100dip">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginTop="40dip"
+                android:layout_marginTop="20dip"
                 android:animateLayoutChanges="true"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:paddingBottom="44dip">
+                >
 
 
                 <ImageView
@@ -45,6 +51,7 @@
 
 
                 <EditText
+                    android:focusable="true"
                     android:id="@+id/UserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,7 +60,6 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
                     android:backgroundTint="#90fafafa"
-                    android:cursorVisible="false"
                     android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:drawablePadding="25dp"
                     android:drawableStart="@drawable/ic_man"
@@ -72,6 +78,7 @@
 
 
                 <EditText
+                    android:focusable="true"
                     android:id="@+id/Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +87,6 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#90fafafa"
-                    android:cursorVisible="false"
                     android:drawablePadding="25dp"
                     android:drawableStart="@drawable/ic_email_sv"
                     android:fontFamily="sans-serif-condensed"
@@ -130,7 +136,6 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#90fafafa"
-                    android:cursorVisible="false"
                     android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:drawablePadding="25dp"
                     android:drawableStart="@drawable/ic_yniver"
@@ -156,7 +161,6 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#90fafafa"
-                    android:cursorVisible="false"
                     android:drawablePadding="25dp"
                     android:drawableStart="@drawable/ic_phone"
                     android:fontFamily="sans-serif-condensed"
@@ -182,7 +186,6 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#90fafafa"
-                    android:cursorVisible="false"
                     android:drawablePadding="30dp"
                     android:drawableStart="@drawable/ic_password"
                     android:fontFamily="sans-serif-condensed"
@@ -221,6 +224,8 @@
         </ScrollView>
 
 
+
+
         <LinearLayout
             android:background="#a0000000"
             android:animateLayoutChanges="true"
@@ -252,5 +257,7 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+
+        </RelativeLayout>
+
 </FrameLayout>
