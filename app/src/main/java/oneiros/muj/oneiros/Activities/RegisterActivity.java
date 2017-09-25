@@ -102,59 +102,69 @@ public class RegisterActivity extends AppCompatActivity {
                 mAdapter = new TeamMemberAdapter(memberList, RegisterActivity.this);
                 members.setAdapter(mAdapter);
                 Fees.setText(String.valueOf(getTotalFees()));
+                //ss
             }
         }
-
+        if(memberList.size()<1){
+            MemberDetails.setVisibility(View.INVISIBLE);
+        }
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean bypass = true;
                 for (int i = 0; i < memberList.size(); i++) {
-                    Log.w("ArrayList Data", memberList.get(i).Name + " " + memberList.get(i).RegNum);
+                    if(memberList.get(i).Name.isEmpty() && memberList.get(i).RegNum.isEmpty())
+                    bypass = false;
                 }
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("Registration");
-                DatabaseReference eventData;
-                eventData = mDatabase.push();
-                Registraion newRegistration = new Registraion();
-                // TODO Add THe Correct Details to the New Registration
-                newRegistration.UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                newRegistration.EventId = getIntent().getStringExtra("EventKey");
-                newRegistration.Event = getIntent().getStringExtra("Name");
-                SharedPreferences pref = getSharedPreferences("UserCredentials", MODE_PRIVATE);
-                newRegistration.EmailId = pref.getString("EmailId", null);
-                if (getIntent().getIntExtra("FeesMode", -1) == 0) {
-                    newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1) * (memberList.size() + 1);
-                } else {
-                    newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1);
-                }
-                if (newRegistration.EventId.equals("-KtrYxH1JXCGmHicczIw")) {
-                    if (memberList.size() < 10) {
-                        newRegistration.TotalFees = 800;
+                if(bypass) {
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Registration");
+                    DatabaseReference eventData;
+                    eventData = mDatabase.push();
+                    Registraion newRegistration = new Registraion();
+                    // TODO Add THe Correct Details to the New Registration
+                    newRegistration.UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    newRegistration.EventId = getIntent().getStringExtra("EventKey");
+                    newRegistration.Event = getIntent().getStringExtra("Name");
+                    SharedPreferences pref = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+                    newRegistration.EmailId = pref.getString("EmailId", null);
+                    if (getIntent().getIntExtra("FeesMode", -1) == 0) {
+                        newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1) * (memberList.size() + 1);
                     } else {
-                        int n = memberList.size() - 10;
-                        newRegistration.TotalFees = 800 + (100 * (n + 1));
+                        newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1);
+                    }
+                    if (newRegistration.EventId.equals("-KtrYxH1JXCGmHicczIw")) {
+                        if (memberList.size() < 10) {
+                            newRegistration.TotalFees = 800;
+                        } else {
+                            int n = memberList.size() - 10;
+                            newRegistration.TotalFees = 800 + (100 * (n + 1));
+                        }
+                    }
+                    // Todo Update Date And Time
+
+                    Date todaysDate = new Date();
+                    DateFormat df = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
+                    newRegistration.Time = df.format(todaysDate);
+                    newRegistration.FeesStatus = 0;
+                    newRegistration.PaymentMode = "";
+                    if (isNetworkAvailable()) {
+                        eventData.setValue(newRegistration);
+
+                        RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
+                        dbHelper.add_data(new Registered(newRegistration.EventId, newRegistration.FeesStatus, newRegistration.UserId, newRegistration.Event, newRegistration.Time, newRegistration.TotalFees, eventData.getKey()));
+                        Log.w("Register Activity", eventData.getKey());
+                        for (int i = 0; i < memberList.size(); i++) {
+                            eventData.child("TeamMates").push().setValue(memberList.get(i));
+                        }
+                        Hidden.setVisibility(View.VISIBLE);
+                        NotHidden.setVisibility(View.INVISIBLE);
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Check Connection\nand try again", Toast.LENGTH_LONG).show();
                     }
                 }
-                // Todo Update Date And Time
-
-                Date todaysDate = new Date();
-                DateFormat df = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
-                newRegistration.Time = df.format(todaysDate);
-                newRegistration.FeesStatus = 0;
-                newRegistration.PaymentMode = "";
-                if (isNetworkAvailable()) {
-                     eventData.setValue(newRegistration);
-
-                    RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
-                    dbHelper.add_data(new Registered(newRegistration.EventId , newRegistration.FeesStatus, newRegistration.UserId, newRegistration.Event, newRegistration.Time, newRegistration.TotalFees, eventData.getKey()));
-                    Log.w("Register Activity", eventData.getKey());
-                    for (int i = 0; i < memberList.size(); i++) {
-                        eventData.child("TeamMates").push().setValue(memberList.get(i));
-                    }
-                    Hidden.setVisibility(View.VISIBLE);
-                    NotHidden.setVisibility(View.INVISIBLE);
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Check Connection\nand try again", Toast.LENGTH_LONG).show();
+                else{
+                    Toast.makeText(RegisterActivity.this, "All the fields are compulsory", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -166,6 +176,7 @@ public class RegisterActivity extends AppCompatActivity {
                     memberList.add(new TeamMembers("", ""));
                     mAdapter = new TeamMemberAdapter(memberList, RegisterActivity.this);
                     members.setAdapter(mAdapter);
+                    MemberDetails.setVisibility(View.VISIBLE);
                     Fees.setText(String.valueOf(getTotalFees()));
                 }
                 else{
@@ -210,6 +221,12 @@ public class RegisterActivity extends AppCompatActivity {
             if(position+1<getIntent().getIntExtra("MinParticipant",-1)){
                 holder.Close.setVisibility(View.INVISIBLE);
             }
+            if(currentMember.Name.isEmpty()){
+                holder.memberName.setHint("Member "+(position +2)+" Name");
+            }
+            if(currentMember.RegNum.isEmpty()){
+                holder.memberRegNo.setHint("Member "+(position+2)+" Registration Number");
+            }
             holder.memberRegNo.setText(currentMember.RegNum);
             holder.Close.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -218,6 +235,9 @@ public class RegisterActivity extends AppCompatActivity {
                     mAdapter = new TeamMemberAdapter(memberList, RegisterActivity.this);
                     members.setAdapter(mAdapter);
                     Fees.setText(String.valueOf(getTotalFees()));
+                    if(memberList.size()<1){
+                        MemberDetails.setVisibility(View.INVISIBLE);
+                    }
                 }
             });
 
