@@ -16,7 +16,9 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.R;
@@ -39,6 +41,9 @@ public class Events extends Fragment {
     LinearLayout Cinefilia, Aperture, Coreographia, Litmus, Scribbles, Shabd, Sophia, MusicClub;
 
     CircleImageView one,two,three,four,five,six,seven,eight;
+
+
+
 
 
 

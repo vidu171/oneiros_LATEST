@@ -8,12 +8,15 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.BarcodeFormat;
@@ -36,6 +39,8 @@ import oneiros.muj.oneiros.R;
 import static android.content.Context.MODE_PRIVATE;
 
 public class Home extends Fragment {
+
+    public  Boolean isCollapsed = false;
     FirebaseAuth mFirebaseAuth;
     private RegistrationAdapter rAdapter;
     SharedPreferences pref;
@@ -51,12 +56,35 @@ public class Home extends Fragment {
     TextView uUni;
     @BindView(R.id.uReg)
     TextView uReg;
+    @BindView(R.id.recycler_event)
+    LinearLayout recycle;
+
+    @OnClick(R.id.recycler_event)
+    public void COllapsed(View v){
+
+        if(!isCollapsed){
+            isCollapsed = true;
+            recycle.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,470,getResources().getDisplayMetrics());
+            recycle.requestLayout();
+        }
+
+        else {
+            isCollapsed = false;
+            recycle.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            recycle.requestLayout();
+        }
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         mFirebaseAuth = FirebaseAuth.getInstance();
         ButterKnife.bind(this,view);
+        isCollapsed = true;
+        recycle.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,470,getResources().getDisplayMetrics());
+        recycle.requestLayout();
         pref = view.getContext().getSharedPreferences("UserCredentials", MODE_PRIVATE);
         uName.setText(pref.getString("Name",null));
         uReg.setText(pref.getString("RegNo.",null));
