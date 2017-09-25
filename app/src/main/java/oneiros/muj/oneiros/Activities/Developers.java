@@ -132,6 +132,15 @@ public class Developers extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     public void SET_BACKGROUND(){
         int images[]= {R.drawable.sid_sid,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.akhil_akhil, R.drawable.hodor_hodor};
