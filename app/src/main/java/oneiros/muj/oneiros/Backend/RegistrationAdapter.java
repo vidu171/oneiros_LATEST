@@ -20,7 +20,6 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import java.util.ArrayList;
 
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.Activities.EventDetails;
 
     /**
      * Created by aesher on 9/12/2017.

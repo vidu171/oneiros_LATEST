@@ -5,18 +5,18 @@ package oneiros.muj.oneiros.DAO;
  */
 
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Future;
 
 import oneiros.muj.oneiros.Backend.Event;
 import oneiros.muj.oneiros.Constants;
-import oneiros.muj.oneiros.Backend.RetrivedEvent;
 
 public class FetchEventsDAO {
     private static FetchEventsDAO instance;

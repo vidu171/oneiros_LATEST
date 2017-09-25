@@ -1,7 +1,5 @@
 package oneiros.muj.oneiros.Fragments;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,11 +25,8 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import oneiros.muj.oneiros.Activities.MainActivity;
-import oneiros.muj.oneiros.Activities.SplashScreen;
 import oneiros.muj.oneiros.BuildConfig;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.Activities.Developers;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 

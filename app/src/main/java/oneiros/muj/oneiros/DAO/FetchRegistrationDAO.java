@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Future;
 
-import oneiros.muj.oneiros.Backend.Event;
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Constants;
 

@@ -2,7 +2,7 @@ package oneiros.muj.oneiros.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.media.Image;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -34,10 +34,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import oneiros.muj.oneiros.Backend.Registered;
+import oneiros.muj.oneiros.Backend.Registraion;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.RequestPreferences.TeamMembers;
-import oneiros.muj.oneiros.Backend.Registraion;
 
 /**
  * Created by vidu on 9/9/17.
@@ -51,13 +51,16 @@ public class RegisterActivity extends AppCompatActivity {
     RelativeLayout Hidden, NotHidden;
     ArrayList<TeamMembers> memberList;
     SharedPreferences pref;
+    RelativeLayout frameLayout;
     public static DatabaseReference mDatabase;
+    AnimationDrawable anim;
     TextView Fees, EventName, Name, RegNum, Contact, University, MemberDetails ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+        frameLayout = findViewById(R.id.image_container);
         Hidden = (RelativeLayout) findViewById(R.id.hidden);
         NotHidden = (RelativeLayout) findViewById(R.id.notHidden);
         Hidden.setVisibility(View.INVISIBLE);
@@ -69,6 +72,18 @@ public class RegisterActivity extends AppCompatActivity {
         Contact = (TextView) findViewById(R.id.Contact);
         University = (TextView) findViewById(R.id.University);
         MemberDetails = (TextView) findViewById(R.id.MemberDetails);
+
+
+
+
+
+        anim = (AnimationDrawable) frameLayout.getBackground();
+        anim.setEnterFadeDuration(1000);
+        anim.setExitFadeDuration(1000);
+
+
+
+
 
         Fees.setText(String.valueOf(getIntent().getIntExtra("Fees", -1)));
         EventName.setText(getIntent().getStringExtra("Name"));
@@ -314,6 +329,21 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return TotalFees;
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (anim != null && !anim.isRunning())
+            anim.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (anim != null && anim.isRunning())
+            anim.stop();
     }
 
 }

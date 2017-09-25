@@ -14,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.BarcodeFormat;
@@ -30,7 +28,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import oneiros.muj.oneiros.Activities.SplashScreen;
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.RegistrationAdapter;
 import oneiros.muj.oneiros.Database.RegisteredEvent;

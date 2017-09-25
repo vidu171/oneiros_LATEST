@@ -5,46 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="25dip"
-    android:layout_marginLeft="20dip"
-    android:layout_marginRight="20dip"
-    app:cardBackgroundColor="@android:color/transparent">
+    android:layout_marginLeft="10dip"
+
+    android:layout_marginRight="10dip"
+    app:cardBackgroundColor="#000000">
 
     <RelativeLayout
+        android:background="@drawable/button_register"
+       android:layout_marginTop="4dip"
+        android:layout_marginStart="4dip"
+        android:layout_marginEnd="4dip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
+            android:layout_marginTop="4dip"
+            android:background="@android:color/transparent"
             android:id="@+id/memberName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/One"
             android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:focusable="true"
             android:hint="Full Name"
             android:maxLines="1"
             android:paddingBottom="12dp"
-            android:paddingStart="6dip"
+            android:paddingStart="16dip"
             android:textColor="@android:color/white"
             android:textColorHighlight="#6cffffff"
             android:textColorHint="#90fafafa" />
 
         <EditText
+            android:background="@android:color/transparent"
             android:id="@+id/memberRegNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/memberName"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="@color/One"
             android:focusable="true"
             android:hint="Registration No."
             android:maxLines="1"
             android:paddingBottom="12dp"
-            android:paddingStart="6dip"
+            android:paddingStart="16dip"
             android:textColor="@android:color/white"
             android:textColorHighlight="#6cffffff"
             android:textColorHint="#90fafafa" />
 
         <ImageView
+            android:layout_marginTop="4dip"
+            android:layout_marginEnd="7dip"
             android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

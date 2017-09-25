@@ -16,14 +16,12 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
-import oneiros.muj.oneiros.Database.EventdbHelper;
-import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.Backend.RetrivedEvent;
 import oneiros.muj.oneiros.Backend.recyclerViewAdapter;
+import oneiros.muj.oneiros.Database.EventdbHelper;
+import oneiros.muj.oneiros.R;
 
 /**
  * Created by aesher on 9/12/2017.

@@ -1,33 +1,23 @@
 package oneiros.muj.oneiros.Activities;
 
-import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.common.BitMatrix;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import oneiros.muj.oneiros.Backend.RetrivedEvent;
+import oneiros.muj.oneiros.Backend.pagerAdapter;
 import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.Fragments.Events;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.Backend.RetrivedEvent;
-import oneiros.muj.oneiros.Backend.pagerAdapter;
 
 
 /**

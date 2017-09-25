@@ -3,7 +3,6 @@ package oneiros.muj.oneiros.Activities;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -19,11 +18,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,14 +26,14 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import oneiros.muj.oneiros.Backend.Contact;
+import oneiros.muj.oneiros.Backend.Event;
+import oneiros.muj.oneiros.Backend.Registered;
+import oneiros.muj.oneiros.Backend.RetrivedEvent;
 import oneiros.muj.oneiros.DAO.FetchEventsDAO;
 import oneiros.muj.oneiros.DAO.FetchRegistrationDAO;
 import oneiros.muj.oneiros.Database.EventdbHelper;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
-import oneiros.muj.oneiros.Backend.Event;
-import oneiros.muj.oneiros.Backend.Registered;
-import oneiros.muj.oneiros.Backend.RetrivedEvent;
 
 
 /**

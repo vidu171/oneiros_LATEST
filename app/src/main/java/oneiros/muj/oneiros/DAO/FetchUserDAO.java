@@ -11,12 +11,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.Future;
 
 import oneiros.muj.oneiros.Activities.UserCreds;
-import oneiros.muj.oneiros.Backend.Event;
 import oneiros.muj.oneiros.Constants;
 
 public class FetchUserDAO {

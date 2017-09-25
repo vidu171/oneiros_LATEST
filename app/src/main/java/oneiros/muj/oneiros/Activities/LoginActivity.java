@@ -23,14 +23,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.jar.Attributes;
 
-import oneiros.muj.oneiros.Backend.Registered;
-import oneiros.muj.oneiros.DAO.FetchEventsDAO;
-import oneiros.muj.oneiros.DAO.FetchRegistrationDAO;
 import oneiros.muj.oneiros.DAO.FetchUserDAO;
 import oneiros.muj.oneiros.R;
 
