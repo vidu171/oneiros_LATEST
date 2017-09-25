@@ -26,6 +26,7 @@ public class RegisteredEvent extends SQLiteOpenHelper {
     private static final String COLOUMN_USER_ID = "user_Id";
     private static final String COLOUMN_TIME = "time";
     private static final String COLOUMN_FEES = "Fees";
+    private static final String COLOUMN_REGKEY = "regKey";
 
 
 
@@ -37,7 +38,7 @@ public class RegisteredEvent extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+COLOUMN_ID+" INTEGER PRIMARY KEY, "+ COLOUMN_EVENT+
                 " TEXT,"+COLOUMN_STATUS+" INTEGER,"+COLOUMN_EVENT_ID+" TEXT,"+COLOUMN_USER_ID+" TEXT,"+COLOUMN_TIME+" TEXT,"+
-                COLOUMN_FEES+" INTEGER)";
+                COLOUMN_FEES+" INTEGER,"+COLOUMN_REGKEY+" TEXT)";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -59,6 +60,7 @@ public class RegisteredEvent extends SQLiteOpenHelper {
             values.put(COLOUMN_USER_ID, x.UserId);
             values.put(COLOUMN_TIME, x.Time);
             values.put(COLOUMN_FEES, x.TotalFees);
+            values.put(COLOUMN_REGKEY, x.RegKey);
             db.insert(TABLE_NAME, null, values);
         }
         db.close();
@@ -77,8 +79,9 @@ public class RegisteredEvent extends SQLiteOpenHelper {
                     String EventKey = cursor.getString(3);
                     String Time = cursor.getString(5);
                     int Fees = cursor.getInt(6);
-                    Log.w("while filling", name+"\n"+status+"\n"+EventKey);
-                    eventList.add(new Registered(EventKey, status,UserId, name,Time,Fees));
+                    String RegKey = cursor.getString(7);
+                Log.w("while filling", name+"\n"+status+"\n"+EventKey);
+                    eventList.add(new Registered(EventKey, status,UserId, name,Time,Fees,RegKey));
                 }
             while (cursor.moveToNext());
         }

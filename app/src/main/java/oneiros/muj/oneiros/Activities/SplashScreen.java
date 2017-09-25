@@ -128,7 +128,8 @@ public class SplashScreen extends AppCompatActivity {
                     for (Map.Entry<String, Registered> entry : registerations.entrySet())
                     {
                         Log.w("Retrived Registration","-->"+entry.getValue().TotalFees);
-                        mRegistered.add(entry.getValue());
+                        System.out.println(entry.getKey());
+                        mRegistered.add(new Registered(entry.getValue().EventId ,entry.getValue().FeesStatus, entry.getValue().UserId, entry.getValue().Event, entry.getValue().Time, entry.getValue().TotalFees, entry.getKey()));
                     }
                 }
                 Log.v("Tag",events.keySet().toString());
