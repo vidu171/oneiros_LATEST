@@ -70,6 +70,9 @@ public class SplashScreen extends AppCompatActivity {
         mRegistered = new ArrayList<>();
         mFirebaseAuth = FirebaseAuth.getInstance();
         tryFetching();
+
+        RegisteredEvent dbHelper = new RegisteredEvent(SplashScreen.this);
+        ArrayList<Registered> list = dbHelper.getRegisteredList();
     }
 
     @Override
@@ -116,16 +119,15 @@ public class SplashScreen extends AppCompatActivity {
                         {
                             ContactVal+=contactEntry.getValue().Name+"- ";
                             ContactVal+=contactEntry.getValue().Number+"\n\n";
-                            System.out.println(contactEntry.getValue().Name + "/" +contactEntry.getValue().Number);
                         }
                         mEvents.add(new RetrivedEvent(entry.getValue().Name,entry.getValue().Details,entry.getValue().Rules,entry.getValue().MinParticipant,entry.getValue().MaxParticipant,entry.getValue().Fees,entry.getValue().FeesMode,entry.getValue().JudgingCriteria,entry.getValue().Duration,entry.getValue().Club,entry.getKey(), ContactVal, entry.getValue().Time, entry.getValue().Location, entry.getValue().RegistrationOn));
-                        System.out.println(entry.getKey() + "/" + entry.getValue().Contact);
                     }
                 }
                 if (RegisterationMatches != null) {
                     registerations.putAll(RegisterationMatches);
                     for (Map.Entry<String, Registered> entry : registerations.entrySet())
                     {
+                        Log.w("Retrived Registration","-->"+entry.getValue().TotalFees);
                         mRegistered.add(entry.getValue());
                     }
                 }
@@ -181,7 +183,7 @@ public class SplashScreen extends AppCompatActivity {
                         tryFetching();
                     }
                 });
-        snackbar.setActionTextColor(getColor(R.color.One));
+        snackbar.setActionTextColor(getResources().getColor(R.color.One));
         try {
             snackbar.setDuration(Snackbar.LENGTH_INDEFINITE);
             snackbar.show();

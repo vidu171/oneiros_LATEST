@@ -164,10 +164,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 }
-
-
-
-
                 else {
                     if(Collapsed_check(EEmail,PPassword)){
 
@@ -185,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    Log.w("-->",mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Name").toString());
                                     editor.putString("Name",NName).commit();
                                     editor.putString("EmailId", finalEEmail.trim().toLowerCase()).commit();
                                     editor.putString("Contact",PPhone).commit();
