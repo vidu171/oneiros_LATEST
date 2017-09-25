@@ -49,24 +49,24 @@ public class Developers extends AppCompatActivity {
 
 
 
-        String aashis = "I really have no idea what to put here. I reaaly dont know what to say lol. I am just filling up the space. hahah Hope you like it";
-        String siddhart;
-        String vidyanshu;
-        String akhil;
+        String aashis = "I really have no idea what to put here. I really don't know what to say lol. I am just filling up the space. hahah Hope you like it. Oh and that on the top is my dog, Nibble. I love dogs. Are you a dog?";
+        String siddhart = "The wizard of Manipal University. He can do magic with his laptop. Need help? Stuck at code? Knock at his place. He'll be keen to help........ Didn't answer? Must be sleeping ;D.";
+        String vidyanshu = "CS engineer in making. Loves SpongeBob for no reason. Or maybe there is one. No one would ever know";
+        String akhil = "Dashing enthusiast and Dashing. Add one more of that Dashing. Also a survivor... Team Oneiros would know <3 ";
 
         private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.sid, R.drawable.sid_sid,"Siddhart Jaidka","Advisory"
-                        ,aashis),
+                        ,siddhart),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.aashis, R.drawable.nibble_nibble,"Aashis Kumar","Core Committee"
                         ,aashis),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.team_vidyanshu, R.drawable.vidu,"Vidhyanshu Jain","Core Committee"
-                        ,aashis),
+                        ,vidyanshu),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.akhil, R.drawable.akhil_akhil,"Akhil Gupta","Organizing Committee"
-                        ,aashis),
+                        ,akhil),
 
         };
 
