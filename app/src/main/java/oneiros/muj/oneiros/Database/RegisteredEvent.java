@@ -29,7 +29,7 @@ public class RegisteredEvent extends SQLiteOpenHelper {
     private static final String COLOUMN_REGKEY = "regKey";
 
 
-
+//sda
     public RegisteredEvent(Context context) {
         super(context, DATABASE_NAME, null, DATATBASE_VERSION);
     }

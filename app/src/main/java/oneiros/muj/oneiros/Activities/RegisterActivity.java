@@ -33,6 +33,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import oneiros.muj.oneiros.Backend.Registered;
+import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.RequestPreferences.TeamMembers;
 import oneiros.muj.oneiros.Backend.Registraion;
@@ -138,9 +140,10 @@ public class RegisterActivity extends AppCompatActivity {
                 newRegistration.FeesStatus = 0;
                 newRegistration.PaymentMode = "";
                 if (isNetworkAvailable()) {
+                     eventData.setValue(newRegistration);
 
-                    eventData.setValue(newRegistration);
-
+                    RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
+                    dbHelper.add_data(new Registered(newRegistration.EventId , newRegistration.FeesStatus, newRegistration.UserId, newRegistration.Event, newRegistration.Time, newRegistration.TotalFees, eventData.getKey()));
                     Log.w("Register Activity", eventData.getKey());
                     for (int i = 0; i < memberList.size(); i++) {
                         eventData.child("TeamMates").push().setValue(memberList.get(i));

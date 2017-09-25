@@ -51,7 +51,7 @@ public class Developers extends AppCompatActivity {
 
         String aashis = "I really have no idea what to put here. I really don't know what to say lol. I am just filling up the space. hahah Hope you like it. Oh and that on the top is my dog, Nibble. I love dogs. Are you a dog?";
         String siddhart = "The wizard of Manipal University. He can do magic with his laptop. Need help? Stuck at code? Knock at his place. He'll be keen to help........ Didn't answer? Must be sleeping ;D.";
-        String vidyanshu = "CS engineer in making. Loves SpongeBob for no reason. Or maybe there is one. No one would ever know.";
+        String vidyanshu = "CS engineer in making. Loves SpongeBob for no reason. Or maybe there is one. No one would ever know. And yeah Algorithms turns him on!";
         String akhil = "Dashing enthusiast and Dashing. Add one more of that Dashing. Also a survivor... Team Oneiros would know <3 ";
 
         private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
