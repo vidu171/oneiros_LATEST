@@ -96,13 +96,17 @@ public class RegisteredEvent extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-//    public void add_data(Registered x){
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COLOUMN_NAME, x.Name);
-//        values.put(COLOUMN_CLUB, x.Club);
-//        values.put(COLOUMN_EVENT_KEY, x.EventKey);
-//        db.insert(TABLE_NAME, null, values);
-//        db.close();
-//    }
+    public void add_data(Registered x){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLOUMN_EVENT, x.Event);
+        values.put(COLOUMN_STATUS, x.FeesStatus);
+        values.put(COLOUMN_EVENT_ID, x.EventId);
+        values.put(COLOUMN_USER_ID, x.UserId);
+        values.put(COLOUMN_TIME, x.Time);
+        values.put(COLOUMN_FEES, x.TotalFees);
+        values.put(COLOUMN_REGKEY, x.RegKey);
+        db.insert(TABLE_NAME, null, values);
+        db.close();
+    }
 }

@@ -10,7 +10,6 @@ public class Registraion {
     public String EventId;
     public String Event;
     public String EmailId;
-//    asd
     public int TotalFees;
     public int FeesStatus;
     public String PaymentMode;

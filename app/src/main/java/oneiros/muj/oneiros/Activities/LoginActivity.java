@@ -2,6 +2,7 @@ package oneiros.muj.oneiros.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +23,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.jar.Attributes;
 
+import oneiros.muj.oneiros.Backend.Registered;
+import oneiros.muj.oneiros.DAO.FetchEventsDAO;
+import oneiros.muj.oneiros.DAO.FetchRegistrationDAO;
+import oneiros.muj.oneiros.DAO.FetchUserDAO;
 import oneiros.muj.oneiros.R;
 
 /**
@@ -158,8 +166,6 @@ public class LoginActivity extends AppCompatActivity {
                                             UserCreds user = new UserCreds(NName, finalEEmail2.trim(), PPhone.trim(), RRegistration,UUniversity);
                                             mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
 
-                                            startActivity(new Intent(LoginActivity.this, SplashScreen.class));
-                                            finish();
                                         }
                                     }
                                 });
@@ -177,22 +183,47 @@ public class LoginActivity extends AppCompatActivity {
                         final String finalEEmail = EEmail;
                         mAuth.signInWithEmailAndPassword(EEmail, PPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                            public void onComplete(@NonNull final Task<AuthResult> task) {
 
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Log.w("-->",mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Name").toString());
-                                    editor.putString("Name",NName).commit();
-                                    editor.putString("EmailId", finalEEmail.trim().toLowerCase()).commit();
-                                    editor.putString("Contact",PPhone).commit();
-                                    editor.putString("RegNo.",RRegistration).commit();
-                                    editor.putString("University",UUniversity).commit();
-                                    editor.putString("UserId",task.getResult().getUser().getUid()).commit();
-                                    startActivity(new Intent(LoginActivity.this, SplashScreen.class));
-                                    finish();
+                                    final Future<UserCreds> listFutureForUserData = FetchUserDAO
+                                            .getInstance()
+                                            .getUserData(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                    AsyncTask.execute(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            try {
+                                                while(!listFutureForUserData.isDone()) {
+                                                    Thread.sleep(500);
+                                                }
+                                                final UserCreds User = listFutureForUserData.get();
+                                                if (User != null) {
+                                                    runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            Log.w("-->",mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Name").toString());
+                                                            editor.putString("Name",User.Name).commit();
+                                                            editor.putString("EmailId", User.EmailId.trim().toLowerCase()).commit();
+                                                            editor.putString("Contact",User.Contact).commit();
+                                                            editor.putString("RegNo.",User.RegNum).commit();
+                                                            editor.putString("University",User.University).commit();
+                                                            editor.putString("UserId",task.getResult().getUser().getUid()).commit();
+                                                        }
+                                                    });
+                                                }
+
+                                            } catch (InterruptedException e) {
+
+                                            } catch (ExecutionException e) {
+
+                                            }
+                                        }
+                                    });
+
                                 }
                             }
                         });

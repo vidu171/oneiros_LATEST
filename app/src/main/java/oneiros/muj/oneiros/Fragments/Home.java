@@ -99,4 +99,13 @@ public class Home extends Fragment {
         builder.create().show();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        RegisteredEvent dbHelper = new RegisteredEvent(getContext());
+        ArrayList<Registered> list = dbHelper.getRegisteredList();
+        rAdapter = new RegistrationAdapter(getActivity(),list);
+        rListView.setAdapter(rAdapter);
+
+    }
 }
