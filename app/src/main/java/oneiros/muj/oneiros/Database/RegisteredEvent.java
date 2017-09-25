@@ -75,10 +75,10 @@ public class RegisteredEvent extends SQLiteOpenHelper {
                     String UserId = cursor.getString(4);
                     int status = cursor.getInt(2);
                     String EventKey = cursor.getString(3);
-                    String Time = cursor.getString(4);
-                    int Fees = cursor.getInt(5);
+                    String Time = cursor.getString(5);
+                    int Fees = cursor.getInt(6);
                     Log.w("while filling", name+"\n"+status+"\n"+EventKey);
-                    eventList.add(new Registered(UserId, status,UserId, name,Time,Fees));
+                    eventList.add(new Registered(EventKey, status,UserId, name,Time,Fees));
                 }
             while (cursor.moveToNext());
         }
