@@ -1,5 +1,6 @@
 package oneiros.muj.oneiros.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     Boolean isOpen=true;
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
     TextView textView;
+    ProgressDialog progressDialog;
     private FirebaseDatabase mFirebaseData;
     private DatabaseReference mMessagesDatabaseReference;
     private FirebaseAuth mAuth;
@@ -62,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         textView = findViewById(R.id.hint_text);
 
 
+        progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setCancelable(false);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -138,18 +142,20 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim();
                         final String finalEEmail1 = EEmail;
                         final String finalEEmail2 = EEmail;
+
+                        progressDialog.show();
                         mAuth.createUserWithEmailAndPassword(EEmail, PPassword)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-
+                                        progressDialog.dismiss();
                                         if (!task.isSuccessful()) {
                                             Log.w("LoginActivity",task.getException());
-                                            Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException(),
+                                            Toast.makeText(LoginActivity.this, "" + task.getException().getMessage(),
                                                     Toast.LENGTH_SHORT).show();
 
                                         } else {
-                                            Toast.makeText(LoginActivity.this, "Successs" + task.getException(),
+                                            Toast.makeText(LoginActivity.this, "Successs",
                                                     Toast.LENGTH_SHORT).show();
                                             editor.putString("Name",NName).commit();
                                             editor.putString("EmailId", finalEEmail1).commit();
@@ -176,15 +182,18 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim().toLowerCase();
 
                         final String finalEEmail = EEmail;
+                        progressDialog.show();
                         mAuth.signInWithEmailAndPassword(EEmail, PPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull final Task<AuthResult> task) {
-
+                                progressDialog.dismiss();
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    Toast.makeText(LoginActivity.this, "Successs",
+                                            Toast.LENGTH_SHORT).show();
                                     final Future<UserCreds> listFutureForUserData = FetchUserDAO
                                             .getInstance()
                                             .getUserData(FirebaseAuth.getInstance().getCurrentUser().getUid());
