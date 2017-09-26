@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 EventdbHelper eventdbHelper = new EventdbHelper(getBaseContext());
                 RetrivedEvent currentEvent = eventdbHelper.getEventFromKey(result.getContents());
-                if(currentEvent!=null) {
+                if(currentEvent.Name!=null) {
                     Intent i = new Intent(MainActivity.this, EventDetails.class);
                     Log.w("this", result.getContents());
                     i.putExtra("Name", currentEvent.Name);

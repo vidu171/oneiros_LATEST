@@ -90,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
         mAuth.addAuthStateListener(mAuthListener);
-
+//
 
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
