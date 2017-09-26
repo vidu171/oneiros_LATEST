@@ -88,11 +88,12 @@ import oneiros.muj.oneiros.R;
                 public void onChildAdded(DataSnapshot dataSnapshot, String previousKey) {}
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                     Long feesVal = dataSnapshot.getValue(Long.class);
-                    if(feesVal==1) {
-                        holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
-                    }
-                    else {
-                        holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
+                    if(feesVal!=null) {
+                        if (feesVal == 1) {
+                            holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
+                        } else {
+                            holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
+                        }
                     }
                 }
                 @Override

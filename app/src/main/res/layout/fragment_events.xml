@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    
     sothree:umanoPanelHeight="0dp"
     sothree:umanoDragView="@+id/dragView"
     sothree:umanoOverlay="true"
@@ -305,17 +304,22 @@
 </LinearLayout>
 
 
-    <LinearLayout
+    <FrameLayout
         android:clickable="true"
         android:focusable="true"
         android:background="#ea151515"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <View
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="#ff999999"
+            android:layout_marginLeft="32dp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/RECYCLE"
             android:nestedScrollingEnabled="true"
             android:layout_marginBottom="15dip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
+    </FrameLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
