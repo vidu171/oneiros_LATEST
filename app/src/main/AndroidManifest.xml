@@ -72,7 +72,7 @@
             android:screenOrientation="portrait">
             </activity>
         <activity android:name=".Activities.RegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@style/Transparancy"
             android:noHistory="true"
             android:screenOrientation="portrait">
         </activity>

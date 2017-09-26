@@ -89,7 +89,7 @@ public class Home extends Fragment {
             anim.start();
             rotationAngle += 180;
             rotationAngle = rotationAngle%360;
-            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,260,getResources().getDisplayMetrics());
+            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,172,getResources().getDisplayMetrics());
             rListView.requestLayout();
 
 
@@ -130,7 +130,7 @@ public class Home extends Fragment {
         isCollapsed = true;
         ButterKnife.bind(this,view);
         rListView = view.findViewById(R.id.rEventList);
-        rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,260,getResources().getDisplayMetrics());
+        rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,172,getResources().getDisplayMetrics());
         rListView.requestLayout();
         pref = view.getContext().getSharedPreferences("UserCredentials", MODE_PRIVATE);
         uName.setText(pref.getString("Name",null));
@@ -143,6 +143,11 @@ public class Home extends Fragment {
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);
+
+        if(list.size()<2){
+            arrow_collapse.setVisibility(View.INVISIBLE);
+            rListView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        }
         return view;
     }
 
