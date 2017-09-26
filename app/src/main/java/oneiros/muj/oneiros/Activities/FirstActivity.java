@@ -17,11 +17,13 @@ import com.google.firebase.auth.FirebaseUser;
  */
 
 public class FirstActivity extends AppCompatActivity {
-    private FirebaseAuth.AuthStateListener mAuthListener;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+        SharedPreferences pref = getSharedPreferences("UserCredentials",MODE_PRIVATE);
+        String s = "" +pref.getString("Name",null);
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null && s.length()<1 ){
+            Log.w("-->", "I am being called");
             startActivity(new Intent(FirstActivity.this, SplashScreen.class));
             finish();
         }
@@ -29,8 +31,11 @@ public class FirstActivity extends AppCompatActivity {
             // User is signed out
             startActivity(new Intent(FirstActivity.this, LoginActivity.class));
             finish();
+            Log.w("-->", "I am being called s = "+s+ "<---");
         }
 
 
     }
+
+
 }
