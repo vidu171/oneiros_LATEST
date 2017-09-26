@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -63,6 +64,9 @@ public class Home extends Fragment {
     @BindView(R.id.arrow)
     ImageView arrow_collapse;
 
+    @BindView(R.id.scrollableContents)
+    ScrollView scrollView;
+
     @OnClick(R.id.recycler_event)
     public void COllapsed(View v){
 
@@ -76,6 +80,14 @@ public class Home extends Fragment {
             recycle.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,470,getResources().getDisplayMetrics());
             recycle.requestLayout();
 
+
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.fullScroll(View.FOCUS_DOWN);
+                }
+            });
+
         }
 
         else {
@@ -87,6 +99,12 @@ public class Home extends Fragment {
             rotationAngle = rotationAngle%360;
             recycle.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
             recycle.requestLayout();
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.fullScroll(View.FOCUS_DOWN);
+                }
+            });
         }
 
     }
