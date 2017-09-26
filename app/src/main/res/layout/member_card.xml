@@ -29,12 +29,14 @@
             android:hint="Full Name"
             android:maxLines="1"
             android:paddingBottom="12dp"
+            android:inputType="textPersonName"
             android:paddingStart="16dip"
             android:textColor="@android:color/white"
             android:textColorHighlight="#6cffffff"
             android:textColorHint="#90fafafa" />
 
         <EditText
+            android:inputType="phone"
             android:background="@android:color/transparent"
             android:id="@+id/memberRegNo"
             android:layout_width="match_parent"
