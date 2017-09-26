@@ -12,6 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
@@ -19,6 +24,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.ArrayList;
 
+import oneiros.muj.oneiros.Constants;
 import oneiros.muj.oneiros.R;
 
     /**
@@ -75,6 +81,27 @@ import oneiros.muj.oneiros.R;
                     }
                     builder.create().show();
                 }
+            });
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference ref = database.getReference().child(Constants.REGISTRATION_TABLE_REFERENCE).child(currentReg.RegKey);
+            ref.addChildEventListener(new ChildEventListener() {
+                public void onChildAdded(DataSnapshot dataSnapshot, String previousKey) {}
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    Long feesVal = dataSnapshot.getValue(Long.class);
+                    if(feesVal==1) {
+                        holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
+                    }
+                    else {
+                        holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
+                    }
+                }
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {}
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+
             });
         }
 

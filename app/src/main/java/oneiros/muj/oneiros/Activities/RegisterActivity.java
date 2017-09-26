@@ -110,6 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
             MemberDetails.setVisibility(View.INVISIBLE);
 
         }
+        //
         if(getIntent().getIntExtra("MinParticipant",-1)>0){
             int n=getIntent().getIntExtra("MinParticipant",-1)-1;
             while(n-->0){
