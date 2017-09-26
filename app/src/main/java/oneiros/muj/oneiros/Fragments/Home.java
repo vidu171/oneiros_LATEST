@@ -1,5 +1,6 @@
 package oneiros.muj.oneiros.Fragments;
 
+import android.animation.ObjectAnimator;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -37,6 +38,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Home extends Fragment {
 
+
+
+
+    int rotationAngle = 0;
     public  Boolean isCollapsed = false;
     FirebaseAuth mFirebaseAuth;
     private RegistrationAdapter rAdapter;
@@ -55,18 +60,31 @@ public class Home extends Fragment {
     TextView uReg;
     @BindView(R.id.recycler_event)
     LinearLayout recycle;
+    @BindView(R.id.arrow)
+    ImageView arrow_collapse;
 
     @OnClick(R.id.recycler_event)
     public void COllapsed(View v){
 
         if(!isCollapsed){
             isCollapsed = true;
+            ObjectAnimator anim = ObjectAnimator.ofFloat(arrow_collapse, "rotation",rotationAngle, rotationAngle + 180);
+            anim.setDuration(500);
+            anim.start();
+            rotationAngle += 180;
+            rotationAngle = rotationAngle%360;
             recycle.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,470,getResources().getDisplayMetrics());
             recycle.requestLayout();
+
         }
 
         else {
             isCollapsed = false;
+            ObjectAnimator anim = ObjectAnimator.ofFloat(arrow_collapse, "rotation",rotationAngle, rotationAngle + 180);
+            anim.setDuration(500);
+            anim.start();
+            rotationAngle += 180;
+            rotationAngle = rotationAngle%360;
             recycle.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
             recycle.requestLayout();
         }
