@@ -19,6 +19,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
@@ -32,6 +38,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.RegistrationAdapter;
+import oneiros.muj.oneiros.Constants;
+import oneiros.muj.oneiros.DAO.FetchRegistrationDAO;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 

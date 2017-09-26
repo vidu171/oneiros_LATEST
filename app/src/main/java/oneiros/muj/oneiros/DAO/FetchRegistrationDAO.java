@@ -21,7 +21,6 @@ import oneiros.muj.oneiros.Constants;
 public class FetchRegistrationDAO {
     private static FetchRegistrationDAO instance;
     private static DatabaseReference registrationTable;
-
     private FetchRegistrationDAO() {
         registrationTable = FirebaseDatabase
                 .getInstance()
