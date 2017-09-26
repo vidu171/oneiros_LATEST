@@ -52,7 +52,7 @@ public class Events extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_events,container,false);
         mLayout = v.findViewById(R.id.sliding_layout);
-
+        mLayout.setTouchEnabled(false);
         List = new ArrayList<>();
         mAdapter = new recyclerViewAdapter(getContext(),List);
         recyclerView = v.findViewById(R.id.RECYCLE);
@@ -100,7 +100,10 @@ public class Events extends Fragment {
                 mAdapter = new recyclerViewAdapter(getContext(),List);
                 recyclerView.setAdapter(mAdapter);
                 mLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+
+
                 mLayout.setTouchEnabled(false);
+
             }
         });
         Aperture.setOnClickListener(new View.OnClickListener() {
