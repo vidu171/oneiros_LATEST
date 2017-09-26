@@ -17,23 +17,24 @@
         app:timeline_type="middle"
         app:timeline_drawInternal="false"
         app:timeline_internalColor="@color/Nav"
-        app:timeline_lineWidth="1dip"
+        app:timeline_lineWidth="0dip"
         app:timeline_lineColor="#ff999999"
         app:timeline_indicatorColor="@color/One"/>
 
     <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:minHeight="40dip"
-        android:background="@drawable/button_shape"
         android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="-15dip"
+        android:layout_marginRight="50dip"
+        android:layout_toEndOf="@+id/timeline1"
+        android:background="@drawable/button_shape"
+        android:fontFamily="sans-serif-light"
+        android:minHeight="40dip"
+        android:padding="10dp"
         android:text="TEXT"
         android:textColor="#ff999999"
-        android:textSize="22sp"
-        android:fontFamily="sans-serif-light"
-        android:padding="10dp"
-        android:layout_marginLeft="-15dip"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/timeline1" />
+        android:textSize="22sp" />
 
 </RelativeLayout>
