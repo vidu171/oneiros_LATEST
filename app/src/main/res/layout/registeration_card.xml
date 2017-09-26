@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-
+        android:animateLayoutChanges="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#ff5065a1"
@@ -19,10 +19,11 @@
         <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="140dip">
 
 
             <ImageView
+                android:layout_alignParentBottom="true"
                 android:paddingEnd="15dip"
                 android:paddingStart="10dip"
                 android:id="@+id/arrow"
