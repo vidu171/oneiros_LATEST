@@ -109,4 +109,20 @@ public class RegisteredEvent extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
+
+    public void confirmUpdate(String  Key){
+
+        String select_query = "SELECT *FROM "+TABLE_NAME +" SET "+COLOUMN_STATUS+" = 1 "+" WHERE "+COLOUMN_REGKEY+" = "+"'"+Key+"'";
+        SQLiteDatabase db  = this.getReadableDatabase();
+        db.execSQL(select_query);
+        db.close();
+    }
+    public void RefundUpdate(String  Key){
+        String select_query = "SELECT *FROM "+TABLE_NAME +" SET "+COLOUMN_STATUS+" = 0 "+" WHERE "+COLOUMN_REGKEY+" = "+"'"+Key+"'";
+        SQLiteDatabase db  = this.getReadableDatabase();
+        db.execSQL(select_query);
+        db.close();
+    }
+
+
 }
