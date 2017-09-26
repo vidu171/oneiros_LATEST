@@ -23,6 +23,7 @@
 
 
             <ImageView
+                android:layout_marginBottom="12dip"
                 android:layout_alignParentBottom="true"
                 android:paddingEnd="15dip"
                 android:paddingStart="10dip"
@@ -73,7 +74,6 @@
 
 
         <android.support.v7.widget.RecyclerView
-            android:animateLayoutChanges="true"
             android:nestedScrollingEnabled="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:id="@+id/rEventList"
