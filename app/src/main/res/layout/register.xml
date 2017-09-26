@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"
         android:id="@+id/add"
-        android:backgroundTint="@color/main"
+        app:backgroundTint="@color/One"
         app:srcCompat="@drawable/ic_add"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
@@ -94,7 +94,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
-                            android:background="@drawable/button_register"
                             android:orientation="horizontal">
 
                             <TextView
@@ -112,6 +111,17 @@
                                 android:text="Fees"
                                 android:textColor="#000000" />
                         </LinearLayout>
+
+
+                        <View
+                            android:layout_marginTop="-7dip"
+                            android:layout_below="@+id/bar"
+                            android:layout_width="match_parent"
+                            android:layout_height="2dip"
+                            android:background="#000000"/>
+
+
+
 
                         <LinearLayout
                             android:id="@+id/details"
