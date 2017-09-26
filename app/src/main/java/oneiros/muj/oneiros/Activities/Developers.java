@@ -1,5 +1,6 @@
 package oneiros.muj.oneiros.Activities;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -43,7 +45,7 @@ public class Developers extends AppCompatActivity {
                 horizontalInfiniteCycleViewPager.setVisibility(View.INVISIBLE);
                 horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(getApplicationContext()));
             }
-        };handler.postDelayed(runnable,37);
+        };handler.postDelayed(runnable,100);
 
 
         Handler handler2 = new Handler();
@@ -51,10 +53,17 @@ public class Developers extends AppCompatActivity {
             @Override
             public void run() {
 
+                int cx = horizontalInfiniteCycleViewPager.getWidth();
+                int cy = horizontalInfiniteCycleViewPager.getHeight();
+                float finalRadius = (float) Math.hypot(cx, cy)+100;
+                int CX = cx-80;
+                Animator anim = ViewAnimationUtils.createCircularReveal(horizontalInfiniteCycleViewPager,CX,0,0,finalRadius);
                 horizontalInfiniteCycleViewPager.setVisibility(View.VISIBLE);
+                anim.start();
+
 
             }
-        };handler2.postDelayed(runnable2,41);
+        };handler2.postDelayed(runnable2,101);
 
     }
 

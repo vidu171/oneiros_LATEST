@@ -19,6 +19,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
@@ -32,6 +38,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.RegistrationAdapter;
+import oneiros.muj.oneiros.Constants;
+import oneiros.muj.oneiros.DAO.FetchRegistrationDAO;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 
@@ -47,6 +55,7 @@ public class Home extends Fragment {
     FirebaseAuth mFirebaseAuth;
     private RegistrationAdapter rAdapter;
     SharedPreferences pref;
+    ArrayList<Registered> list;
     View view;
     RecyclerView rListView;
     @BindView(R.id.uName)
@@ -64,6 +73,9 @@ public class Home extends Fragment {
     @BindView(R.id.arrow)
     ImageView arrow_collapse;
 
+    @BindView(R.id.focus)
+    ImageView FOCUS;
+
     @BindView(R.id.scrollableContents)
     ScrollView scrollView;
 
@@ -77,28 +89,29 @@ public class Home extends Fragment {
             anim.start();
             rotationAngle += 180;
             rotationAngle = rotationAngle%360;
-            recycle.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,470,getResources().getDisplayMetrics());
-            recycle.requestLayout();
+            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,260,getResources().getDisplayMetrics());
+            rListView.requestLayout();
 
 
             scrollView.post(new Runnable() {
                 @Override
                 public void run() {
-                    scrollView.fullScroll(View.FOCUS_DOWN);
+                    scrollView.fullScroll(View.FOCUS_UP);
                 }
             });
 
         }
 
         else {
+
             isCollapsed = false;
             ObjectAnimator anim = ObjectAnimator.ofFloat(arrow_collapse, "rotation",rotationAngle, rotationAngle + 180);
             anim.setDuration(500);
             anim.start();
             rotationAngle += 180;
             rotationAngle = rotationAngle%360;
-            recycle.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            recycle.requestLayout();
+            rListView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            rListView.requestLayout();
             scrollView.post(new Runnable() {
                 @Override
                 public void run() {
@@ -114,10 +127,11 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         mFirebaseAuth = FirebaseAuth.getInstance();
-        ButterKnife.bind(this,view);
         isCollapsed = true;
-        recycle.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,470,getResources().getDisplayMetrics());
-        recycle.requestLayout();
+        ButterKnife.bind(this,view);
+        rListView = view.findViewById(R.id.rEventList);
+        rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,260,getResources().getDisplayMetrics());
+        rListView.requestLayout();
         pref = view.getContext().getSharedPreferences("UserCredentials", MODE_PRIVATE);
         uName.setText(pref.getString("Name",null));
         uReg.setText(pref.getString("RegNo.",null));
@@ -125,8 +139,7 @@ public class Home extends Fragment {
         uEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
         uID.setText(mFirebaseAuth.getCurrentUser().getUid());
         RegisteredEvent dbHelper = new RegisteredEvent(getContext());
-        ArrayList<Registered> list = dbHelper.getRegisteredList();
-        rListView = view.findViewById(R.id.rEventList);
+        list = dbHelper.getRegisteredList();
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);

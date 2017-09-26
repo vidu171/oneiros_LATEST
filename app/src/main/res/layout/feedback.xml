@@ -110,6 +110,7 @@
             android:textSize="14sp" />
 
         <EditText
+            android:maxLines="3"
             android:id="@+id/feedback_message"
             android:layout_width="fill_parent"
             android:layout_height="100dp"
