@@ -135,6 +135,11 @@ public class Home extends Fragment {
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);
+
+        if(list.size()<2){
+            arrow_collapse.setVisibility(View.INVISIBLE);
+            rListView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        }
         return view;
     }
 
