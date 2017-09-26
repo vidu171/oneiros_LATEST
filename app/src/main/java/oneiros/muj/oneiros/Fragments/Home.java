@@ -81,7 +81,7 @@ public class Home extends Fragment {
             anim.start();
             rotationAngle += 180;
             rotationAngle = rotationAngle%360;
-            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,260,getResources().getDisplayMetrics());
+            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,172,getResources().getDisplayMetrics());
             rListView.requestLayout();
 
 
@@ -122,7 +122,7 @@ public class Home extends Fragment {
         isCollapsed = true;
         ButterKnife.bind(this,view);
         rListView = view.findViewById(R.id.rEventList);
-        rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,260,getResources().getDisplayMetrics());
+        rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,172,getResources().getDisplayMetrics());
         rListView.requestLayout();
         pref = view.getContext().getSharedPreferences("UserCredentials", MODE_PRIVATE);
         uName.setText(pref.getString("Name",null));

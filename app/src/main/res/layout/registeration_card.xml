@@ -81,11 +81,12 @@
 
     <LinearLayout
         android:animateLayoutChanges="true"
-        android:background="#c8363636"
+        android:background="#FFFFFF"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:layout_marginTop="-7dip"
             android:paddingEnd="15dip"
             android:paddingStart="10dip"
             android:id="@+id/arrow"
