@@ -50,16 +50,23 @@ public class EventDetails extends AppCompatActivity {
         if(i.getIntExtra("MaxParticipant",-1)>1){
             Participation.setText("Team \nMinimum : "+i.getIntExtra("MinParticipant",-1)+"\nMaximum : "+i.getIntExtra("MaxParticipant",-1));
         }
+
+        if(i.getIntExtra("MaxParticipant",-1)==i.getIntExtra("MinParticipant",-1)){
+            Participation.setText(i.getIntExtra("MaxParticipant",-1) + " Participants");
+        }
         if(i.getIntExtra("MaxParticipant",-1)==1){
             Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Person");
             Participation.setText("Single");
         }
-
+//
         if(i.getStringExtra("EventKey").equals("-KtrYxH1JXCGmHicczIw")){
             Fees.setText("Rs. 800 for first 10 pesron\nAnd then Rs. 100 per person");
             Participation.setText("Team");
         }
 
+        if(getIntent().getBooleanExtra("RegistrationOpen",true)){
+            Register.setEnabled(false);
+        }
         if (Build.VERSION.SDK_INT >= 24) {
             JudgingCriteria.setText(Html.fromHtml(i.getStringExtra("JudgingCriteria"), Html.FROM_HTML_MODE_COMPACT));
         } else {
