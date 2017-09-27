@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
@@ -58,6 +59,8 @@ public class Home extends Fragment {
     ArrayList<Registered> list;
     View view;
     RecyclerView rListView;
+    @BindView(R.id.RegCard)
+    CardView RegCard;
     @BindView(R.id.uName)
     TextView uName;
     @BindView(R.id.uEmail)
@@ -92,7 +95,7 @@ public class Home extends Fragment {
             int height = prefs.getInt("Height", 172);
             if (height != 0) {
                 System.out.println("height"+height);
-                rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,(height/ getContext().getResources().getDisplayMetrics().density)*2,getResources().getDisplayMetrics());
+                rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,height*2,getResources().getDisplayMetrics());
             }
             rListView.requestLayout();
             scrollView.post(new Runnable() {
@@ -103,7 +106,6 @@ public class Home extends Fragment {
             });
 
         }
-
         else {
 
             isCollapsed = false;
@@ -143,14 +145,19 @@ public class Home extends Fragment {
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);
+        if(list.size()!=0){
+            RegCard.setVisibility(View.VISIBLE);
+        }else
+            {
+        RegCard.setVisibility(View.GONE);
+        }
         prefs =getContext().getSharedPreferences("HeightPref", MODE_PRIVATE);
         int height = prefs.getInt("Height", 172);
         if (height != 0) {
             System.out.println("height"+height);
-            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,(height/ getContext().getResources().getDisplayMetrics().density)*2,getResources().getDisplayMetrics());
+            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,height*2,getResources().getDisplayMetrics());
         }
         rListView.requestLayout();
-
         if(list.size()<2){
             arrow_collapse.setVisibility(View.INVISIBLE);
             rListView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -190,8 +197,14 @@ public class Home extends Fragment {
         super.onResume();
         RegisteredEvent dbHelper = new RegisteredEvent(getContext());
         ArrayList<Registered> list = dbHelper.getRegisteredList();
-        rAdapter = new RegistrationAdapter(getActivity(),list);
-        rListView.setAdapter(rAdapter);
+        if(list.size()!=0) {
+            RegCard.setVisibility(View.VISIBLE);
+            rAdapter = new RegistrationAdapter(getActivity(), list);
+            rListView.setAdapter(rAdapter);
+        }else
+            {
+                RegCard.setVisibility(View.GONE);
+            }
 
     }
 }
