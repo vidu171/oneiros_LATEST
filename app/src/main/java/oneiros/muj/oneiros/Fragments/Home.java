@@ -49,7 +49,7 @@ public class Home extends Fragment {
 
 
 
-
+    SharedPreferences prefs;
     int rotationAngle = 0;
     public  Boolean isCollapsed = false;
     FirebaseAuth mFirebaseAuth;
@@ -89,10 +89,12 @@ public class Home extends Fragment {
             anim.start();
             rotationAngle += 180;
             rotationAngle = rotationAngle%360;
-            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,172,getResources().getDisplayMetrics());
+            int height = prefs.getInt("Height", 172);
+            if (height != 0) {
+                System.out.println("height"+height);
+                rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,(height/ getContext().getResources().getDisplayMetrics().density)*2,getResources().getDisplayMetrics());
+            }
             rListView.requestLayout();
-
-
             scrollView.post(new Runnable() {
                 @Override
                 public void run() {
@@ -130,8 +132,6 @@ public class Home extends Fragment {
         isCollapsed = true;
         ButterKnife.bind(this,view);
         rListView = view.findViewById(R.id.rEventList);
-        rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,172,getResources().getDisplayMetrics());
-        rListView.requestLayout();
         pref = view.getContext().getSharedPreferences("UserCredentials", MODE_PRIVATE);
         uName.setText(pref.getString("Name",null));
         uReg.setText(pref.getString("RegNo.",null));
@@ -143,6 +143,13 @@ public class Home extends Fragment {
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);
+        prefs =getContext().getSharedPreferences("HeightPref", MODE_PRIVATE);
+        int height = prefs.getInt("Height", 172);
+        if (height != 0) {
+            System.out.println("height"+height);
+            rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,(height/ getContext().getResources().getDisplayMetrics().density)*2,getResources().getDisplayMetrics());
+        }
+        rListView.requestLayout();
 
         if(list.size()<2){
             arrow_collapse.setVisibility(View.INVISIBLE);

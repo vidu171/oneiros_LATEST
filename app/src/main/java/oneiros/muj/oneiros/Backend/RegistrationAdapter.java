@@ -1,6 +1,7 @@
 package oneiros.muj.oneiros.Backend;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
@@ -27,7 +28,9 @@ import java.util.ArrayList;
 import oneiros.muj.oneiros.Constants;
 import oneiros.muj.oneiros.R;
 
-    /**
+import static android.content.Context.MODE_PRIVATE;
+
+/**
      * Created by aesher on 9/12/2017.
      */
 
@@ -35,7 +38,7 @@ import oneiros.muj.oneiros.R;
 
         private Context myContext;
         private ArrayList<Registered> registrationList;
-
+        int count=0;
 
         public  RegistrationAdapter(Context mContext, ArrayList<Registered> registrationList){
             this.myContext= mContext;
@@ -61,6 +64,22 @@ import oneiros.muj.oneiros.R;
                 holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
             else
                 holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
+            holder.itemView.post(new Runnable()
+            {
+                @Override
+                public void run()
+                {   try{
+                    if(count==0) {
+                        int Height = holder.itemView.getHeight();
+                        SharedPreferences.Editor editor = myContext.getSharedPreferences("HeightPre", MODE_PRIVATE).edit();
+                        editor.putInt("Height", Height);
+                        editor.apply();
+                        count++;
+                    }}
+                catch (Exception e){}
+
+                }
+            });
             holder.viewQR.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
