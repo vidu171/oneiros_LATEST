@@ -1,11 +1,17 @@
 package oneiros.muj.oneiros.Activities;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 
+import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -35,7 +41,20 @@ public class Easter_egg extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                Snackbar.make(imageView,"Glad you could make it to the Easter Egg menu ;D",Snackbar.LENGTH_LONG).show();
+               Snackbar snackbar =  Snackbar.make(imageView,"GLAD YOU COULD MAKE IT TO THE EASTER EGG MENU ;D",Snackbar.LENGTH_LONG);
+                View view = snackbar.getView();
+                Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
+
+                view.setBackgroundColor(Color.BLACK);
+                TextView textView = view.findViewById(android.support.design.R.id.snackbar_text);
+                if(textView!=null) {
+                    view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    textView.setGravity(Gravity.CENTER_HORIZONTAL);
+                    textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                }
+
+                    snackbar.show();
+
             }
         };handler.postDelayed(runnable,1000);
 

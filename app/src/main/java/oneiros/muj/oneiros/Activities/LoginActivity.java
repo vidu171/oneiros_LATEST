@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         layout = findViewById(R.id.login_to_register);
         login = findViewById(R.id.Login);
         textView = findViewById(R.id.hint_text);
+
         ForgetPassword = findViewById(R.id.forgot_password);
 
         progressDialog = new ProgressDialog(LoginActivity.this);
@@ -97,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(isOpen){
                     isOpen= false;
-
+                    ForgetPassword.setVisibility(View.VISIBLE);
                     ONO_username.setVisibility(View.GONE);
                     ONO_registration.setVisibility(View.GONE);
                     ONO_university.setVisibility(View.GONE);
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else{
                     isOpen = true;
+                    ForgetPassword.setVisibility(View.INVISIBLE);
                     ONO_username.setVisibility(View.VISIBLE);
                     ONO_registration.setVisibility(View.VISIBLE);
                     ONO_university.setVisibility(View.VISIBLE);

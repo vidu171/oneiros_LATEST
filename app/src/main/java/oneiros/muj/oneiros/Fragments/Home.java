@@ -16,16 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.common.BitMatrix;
@@ -39,8 +34,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.RegistrationAdapter;
-import oneiros.muj.oneiros.Constants;
-import oneiros.muj.oneiros.DAO.FetchRegistrationDAO;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 
@@ -61,8 +54,9 @@ public class Home extends Fragment {
     RecyclerView rListView;
     @BindView(R.id.RegCard)
     CardView RegCard;
-    @BindView(R.id.ScanCard)
-    CardView ScanCard;
+
+
+
     @BindView(R.id.uName)
     TextView uName;
     @BindView(R.id.uEmail)
@@ -75,8 +69,16 @@ public class Home extends Fragment {
     TextView uReg;
     @BindView(R.id.recycler_event)
     LinearLayout recycle;
+
+
     @BindView(R.id.arrow)
     ImageView arrow_collapse;
+
+    @BindView(R.id.hide)
+    RelativeLayout hiding;
+
+    @BindView(R.id.count)
+    TextView counter;
 
     @BindView(R.id.focus)
     ImageView FOCUS;
@@ -89,6 +91,12 @@ public class Home extends Fragment {
 
         if(!isCollapsed){
             isCollapsed = true;
+
+
+
+            rListView.setVisibility(View.GONE);
+            hiding.setVisibility(View.VISIBLE);
+
             ObjectAnimator anim = ObjectAnimator.ofFloat(arrow_collapse, "rotation",rotationAngle, rotationAngle + 180);
             anim.setDuration(500);
             anim.start();
@@ -97,20 +105,26 @@ public class Home extends Fragment {
             int height = prefs.getInt("Height", 172);
             if (height != 0) {
                 System.out.println("height"+height);
-                rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,height*2,getResources().getDisplayMetrics());
+                rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,344,getResources().getDisplayMetrics());
             }
             rListView.requestLayout();
             scrollView.post(new Runnable() {
                 @Override
                 public void run() {
-                    scrollView.fullScroll(View.FOCUS_UP);
+                    scrollView.fullScroll(View.FOCUS_DOWN);
                 }
             });
 
+
+
         }
         else {
-
             isCollapsed = false;
+
+            rListView.setVisibility(View.VISIBLE);
+            hiding.setVisibility(View.GONE);
+
+
             ObjectAnimator anim = ObjectAnimator.ofFloat(arrow_collapse, "rotation",rotationAngle, rotationAngle + 180);
             anim.setDuration(500);
             anim.start();
@@ -147,6 +161,9 @@ public class Home extends Fragment {
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);
+
+        counter.setText(""+list.size());
+
         if(list.size()!=0){
             RegCard.setVisibility(View.VISIBLE);
         }else

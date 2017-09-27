@@ -15,6 +15,7 @@
             android:layout_height="match_parent">
 
         <ScrollView
+            android:paddingBottom="14dip"
             android:layout_centerVertical="true"
             android:scrollbarStyle="outsideOverlay"
             android:scrollbarFadeDuration="1000"
@@ -25,6 +26,7 @@
 
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dip"
