@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -32,10 +33,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.Registraion;
@@ -76,7 +83,8 @@ public class RegisterActivity extends AppCompatActivity {
         Contact = findViewById(R.id.Contact);
         University = findViewById(R.id.University);
         MemberDetails = findViewById(R.id.MemberDetails);
-        //
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         dialog = new ProgressDialog(RegisterActivity.this);
         dialog.setMessage("Processing");
 
@@ -166,7 +174,6 @@ public class RegisterActivity extends AppCompatActivity {
                     dialog.show();
                     if (isNetworkAvailable() && isOnline() ) {
                         eventData.setValue(newRegistration);
-
                         RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
                         dbHelper.add_data(new Registered(newRegistration.EventId, newRegistration.FeesStatus, newRegistration.UserId, newRegistration.Event, newRegistration.Time, newRegistration.TotalFees, eventData.getKey()));
                         Log.w("Register Activity", eventData.getKey());
@@ -191,6 +198,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                     } else {
+                        dialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "Check Connection and try again", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -218,10 +226,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
 
     }
 
@@ -370,16 +374,15 @@ public class RegisterActivity extends AppCompatActivity {
             anim.stop();
     }
     public Boolean isOnline() {
-
         try {
-            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
-            int returnVal = p1.waitFor();
-            boolean reachable = (returnVal==0);
-            return reachable;
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return false;
+            int timeoutMs = 1500;
+            Socket sock = new Socket();
+            SocketAddress sockaddr = new InetSocketAddress("8.8.8.8", 53);
+
+            sock.connect(sockaddr, timeoutMs);
+            sock.close();
+
+            return true;
+        } catch (IOException e) { return false; }
     }
 }
