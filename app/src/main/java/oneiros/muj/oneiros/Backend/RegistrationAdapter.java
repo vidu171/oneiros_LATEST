@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
@@ -130,8 +131,6 @@ import static android.content.Context.MODE_PRIVATE;
                             }catch(Exception es){}
                             NotificationManager mNotificationManager = (NotificationManager) myContext.getSystemService(Context.NOTIFICATION_SERVICE);
                             mNotificationManager.notify(1, notification);
-                            Vibrator v = (Vibrator) myContext.getSystemService(Context.VIBRATOR_SERVICE);
-                            v.vibrate(500);
                         } else {
                             holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
                             new RegisteredEvent(myContext).RefundUpdate(holder.rID.getText().toString());
