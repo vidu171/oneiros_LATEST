@@ -30,6 +30,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="22sp"
+            android:textColor="@color/half_black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Great!!"/>
@@ -41,6 +42,7 @@
             android:layout_marginTop="10dip"
             android:gravity="center"
             android:textSize="16sp"
+            android:textColor="@color/half_black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pay the fee at the desk to complete registration process."/>

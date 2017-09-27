@@ -27,7 +27,6 @@ public class Easter_egg extends AppCompatActivity {
 
         imageView = findViewById(R.id.easter);
 
-
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageView);
         Glide.with(getApplicationContext()).load(R.drawable.easteregg).into(imageViewTarget);
 
