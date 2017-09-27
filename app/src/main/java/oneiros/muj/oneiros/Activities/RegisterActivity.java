@@ -80,10 +80,9 @@ public class RegisterActivity extends AppCompatActivity {
         Contact = findViewById(R.id.Contact);
         University = findViewById(R.id.University);
         MemberDetails = findViewById(R.id.MemberDetails);
+        //
         dialog = new ProgressDialog(RegisterActivity.this);
         dialog.setMessage("Processing");
-
-
 
         anim = (AnimationDrawable) frameLayout.getBackground();
         anim.setEnterFadeDuration(1000);
