@@ -13,11 +13,11 @@
         android:layout_width="?android:listPreferredItemHeight"
         android:layout_height="80dip"
         app:timeline_indicatorSize="8dp"
-        app:timeline_type="hidden"
+        app:timeline_type="middle"
         app:timeline_drawInternal="false"
         app:timeline_internalColor="@color/Nav"
         app:timeline_lineWidth="0dip"
-        app:timeline_lineColor="#ff999999"
+        app:timeline_lineColor="@android:color/transparent"
         app:timeline_indicatorColor="@color/One"/>
 
     <Button

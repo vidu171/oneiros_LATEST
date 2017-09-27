@@ -81,10 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
         anim.setEnterFadeDuration(1000);
         anim.setExitFadeDuration(1000);
 
-
-
-
-
         Fees.setText(String.valueOf(getIntent().getIntExtra("Fees", -1)));
         EventName.setText(getIntent().getStringExtra("Name"));
         pref = getSharedPreferences("UserCredentials",MODE_PRIVATE);

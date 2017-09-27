@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
+import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 
 
@@ -58,14 +59,18 @@ public class EventDetails extends AppCompatActivity {
             Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Person");
             Participation.setText("Single");
         }
-//
+
         if(i.getStringExtra("EventKey").equals("-KtrYxH1JXCGmHicczIw")){
             Fees.setText("Rs. 800 for first 10 pesron\nAnd then Rs. 100 per person");
             Participation.setText("Team");
         }
+//
 
         if(!getIntent().getBooleanExtra("RegistrationOpen",true)){
             Register.setEnabled(false);
+            Register.setText("Registration Closed");
+            Register.setTextColor(getResources().getColor(R.color.half_black));
+            Register.setBackground(getDrawable(R.drawable.button_shape));
         }
         if (Build.VERSION.SDK_INT >= 24) {
             JudgingCriteria.setText(Html.fromHtml(i.getStringExtra("JudgingCriteria"), Html.FROM_HTML_MODE_COMPACT));
@@ -80,6 +85,13 @@ public class EventDetails extends AppCompatActivity {
         try{
             Contacts.setText(i.getStringExtra("Contact"));
         }catch (Exception es){}
+        RegisteredEvent db = new RegisteredEvent(EventDetails.this);
+        if(db.isAlreadyRegistered(i.getStringExtra("EventKey"))){
+            Register.setEnabled(false);
+            Register.setText("Already Registered");
+            Register.setTextColor(getResources().getColor(R.color.half_black));
+            Register.setBackground(getDrawable(R.drawable.button_shape));
+        }
 
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
