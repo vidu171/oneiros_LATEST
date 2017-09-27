@@ -1,12 +1,10 @@
 package oneiros.muj.oneiros.Activities;
 
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import oneiros.muj.oneiros.R;

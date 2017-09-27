@@ -3,7 +3,6 @@ package oneiros.muj.oneiros.Backend;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -34,8 +33,6 @@ import java.util.ArrayList;
 import oneiros.muj.oneiros.Constants;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
-
-import static android.content.Context.MODE_PRIVATE;
 
 /**
      * Created by aesher on 9/12/2017.
