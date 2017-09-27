@@ -80,8 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    startActivity(new Intent(LoginActivity.this, SplashScreen.class));
-                    finish();
+//                    startActivity(new Intent(LoginActivity.this, SplashScreen.class));
+//                    finish();
                 } else {
                     // User is signed out
                     Log.d("FAIL ", "onAuthStateChanged:signed_out");
@@ -166,7 +166,8 @@ public class LoginActivity extends AppCompatActivity {
 
                                             UserCreds user = new UserCreds(NName, finalEEmail2.trim(), PPhone.trim(), RRegistration,UUniversity);
                                             mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-
+                                            startActivity(new Intent(LoginActivity.this, SplashScreen.class));
+                                            finish();
                                         }
                                     }
                                 });
@@ -206,18 +207,15 @@ public class LoginActivity extends AppCompatActivity {
                                                 }
                                                 final UserCreds User = listFutureForUserData.get();
                                                 if (User != null) {
-                                                    runOnUiThread(new Runnable() {
-                                                        @Override
-                                                        public void run() {
-                                                            Log.w("-->",mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Name").toString());
-                                                            editor.putString("Name",User.Name).commit();
-                                                            editor.putString("EmailId", User.EmailId.trim().toLowerCase()).commit();
-                                                            editor.putString("Contact",User.Contact).commit();
-                                                            editor.putString("RegNo.",User.RegNum).commit();
-                                                            editor.putString("University",User.University).commit();
-                                                            editor.putString("UserId",task.getResult().getUser().getUid()).commit();
-                                                        }
-                                                    });
+                                                        Log.w("-->",mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Name").toString());
+                                                        editor.putString("Name",User.Name).commit();
+                                                        editor.putString("EmailId", User.EmailId.trim().toLowerCase()).commit();
+                                                        editor.putString("Contact",User.Contact).commit();
+                                                        editor.putString("RegNo.",User.RegNum).commit();
+                                                        editor.putString("University",User.University).commit();
+                                                        editor.putString("UserId",task.getResult().getUser().getUid()).commit();
+                                                    startActivity(new Intent(LoginActivity.this, SplashScreen.class));
+                                                    finish();
                                                 }
 
                                             } catch (InterruptedException e) {
