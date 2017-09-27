@@ -61,6 +61,8 @@ public class Home extends Fragment {
     RecyclerView rListView;
     @BindView(R.id.RegCard)
     CardView RegCard;
+    @BindView(R.id.ScanCard)
+    CardView ScanCard;
     @BindView(R.id.uName)
     TextView uName;
     @BindView(R.id.uEmail)
