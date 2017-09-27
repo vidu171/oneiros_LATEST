@@ -65,7 +65,6 @@ public class EventDetails extends AppCompatActivity {
             Participation.setText("Team");
         }
 //
-
         if(!getIntent().getBooleanExtra("RegistrationOpen",true)){
             Register.setEnabled(false);
             Register.setText("Registration Closed");

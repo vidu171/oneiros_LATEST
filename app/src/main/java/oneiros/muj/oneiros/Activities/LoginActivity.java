@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout layout;
     Boolean isOpen=true;
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
-    TextView textView;
+    TextView textView, ForgetPassword;
     ProgressDialog progressDialog;
     private FirebaseDatabase mFirebaseData;
     private DatabaseReference mMessagesDatabaseReference;
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         layout = findViewById(R.id.login_to_register);
         login = findViewById(R.id.Login);
         textView = findViewById(R.id.hint_text);
-
+        ForgetPassword = findViewById(R.id.forgot_password);
 
         progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setCancelable(false);
@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim();
                         final String finalEEmail1 = EEmail;
                         final String finalEEmail2 = EEmail;
-
+                        progressDialog.setMessage("Please Wait");
                         progressDialog.show();
                         mAuth.createUserWithEmailAndPassword(EEmail, PPassword)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -155,8 +155,6 @@ public class LoginActivity extends AppCompatActivity {
                                                     Toast.LENGTH_SHORT).show();
 
                                         } else {
-                                            Toast.makeText(LoginActivity.this, "Successs",
-                                                    Toast.LENGTH_SHORT).show();
                                             editor.putString("Name",NName).commit();
                                             editor.putString("EmailId", finalEEmail1).commit();
                                             editor.putString("Contact",PPhone).commit();
@@ -183,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim().toLowerCase();
 
                         final String finalEEmail = EEmail;
+                        progressDialog.setMessage("Please Wait");
                         progressDialog.show();
                         mAuth.signInWithEmailAndPassword(EEmail, PPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -190,11 +189,9 @@ public class LoginActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 if (!task.isSuccessful()) {
                                     // there was an error
-                                    Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException(),
+                                    Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException().getMessage(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(LoginActivity.this, "Successs",
-                                            Toast.LENGTH_SHORT).show();
                                     final Future<UserCreds> listFutureForUserData = FetchUserDAO
                                             .getInstance()
                                             .getUserData(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -236,6 +233,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
+        ForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Collapsed_check(ONO_email.getText().toString().trim().toLowerCase(), "nullnull")) {
+
+                    progressDialog.setMessage("Please Wait");
+                    progressDialog.show();
+                    mAuth.sendPasswordResetEmail(ONO_email.getText().toString().trim().toLowerCase())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(LoginActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            });
+                }
+            }
+        });
 
 
     }
