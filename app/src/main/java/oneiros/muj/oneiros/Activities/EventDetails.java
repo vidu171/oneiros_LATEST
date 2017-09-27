@@ -31,16 +31,16 @@ public class EventDetails extends AppCompatActivity {
         setContentView(R.layout.eventlayout);
 
         final Intent i = getIntent();
-        Name = (TextView) findViewById(R.id.Name);
-        Fees = (TextView) findViewById(R.id.Fees);
-        Participation = (TextView) findViewById(R.id.participation);
-        EventRule = (WebView) findViewById(R.id.Rules);
+        Name = findViewById(R.id.Name);
+        Fees = findViewById(R.id.Fees);
+        Participation = findViewById(R.id.participation);
+        EventRule = findViewById(R.id.Rules);
         EventRule.setBackgroundColor(Color.parseColor("#000000"));
 
-        JudgingCriteria = (TextView) findViewById(R.id.JudgingCriteria);
-        Details = (TextView) findViewById(R.id.Details);
-        Contacts = (TextView) findViewById(R.id.Contact);
-        Register = (Button) findViewById(R.id.register);
+        JudgingCriteria = findViewById(R.id.JudgingCriteria);
+        Details = findViewById(R.id.Details);
+        Contacts = findViewById(R.id.Contact);
+        Register = findViewById(R.id.register);
         Name.setText(i.getStringExtra("Name"));
         if(i.getIntExtra("FeesMode",-1)==0) {
             Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Person");

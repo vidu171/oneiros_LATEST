@@ -16,7 +16,7 @@
     <LinearLayout android:orientation="vertical" android:background="#ffffff" android:padding="20dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-4dp">
 
         <TextView android:textSize="24sp" android:ellipsize="middle" android:id="@+id/classTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp"
-            android:text="App development team" android:maxLines="2" android:alpha="0.75" android:fontFamily="sans-serif-light"
+            android:text="Working Team" android:maxLines="2" android:alpha="0.75" android:fontFamily="sans-serif-light"
             android:textColor="#000000" />
 
     </LinearLayout>

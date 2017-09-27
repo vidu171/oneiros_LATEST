@@ -10,15 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:alpha="0.4"
-            android:layout_marginTop="14dip"
-            android:layout_marginStart="14dip"
-            android:src="@drawable/log_me"
-            android:layout_width="30dip"
-            android:layout_height="30dip"
-            android:id="@+id/logout"
-            />
 
         <ImageView
             android:layout_alignParentEnd="true"
