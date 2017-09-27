@@ -25,6 +25,7 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import oneiros.muj.oneiros.Activities.Easter_egg;
 import oneiros.muj.oneiros.BuildConfig;
 import oneiros.muj.oneiros.R;
 
@@ -39,8 +40,7 @@ public class Misc extends Fragment {
 
     @OnClick(R.id.footer)
     public void open_dev(){
-
-        Toast.makeText(getContext(),"This is an easter egg. Feels good that you found it",Toast.LENGTH_SHORT).show();
+       startActivity(new Intent(getContext(), Easter_egg.class));
     }
     @OnClick(R.id.RateUs)
     public void appRateCardClick(View view) {
