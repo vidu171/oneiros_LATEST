@@ -1,9 +1,11 @@
 package oneiros.muj.oneiros.Fragments;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,6 +21,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +31,8 @@ import java.util.Map;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import oneiros.muj.oneiros.Activities.Easter_egg;
+import oneiros.muj.oneiros.Activities.FirstActivity;
+import oneiros.muj.oneiros.Activities.MainActivity;
 import oneiros.muj.oneiros.BuildConfig;
 import oneiros.muj.oneiros.R;
 
@@ -132,6 +139,19 @@ public class Misc extends Fragment {
         }
     }
 
+    @OnClick(R.id.logoutCard)
+    public void logout(){
+        try {
+            FirebaseAuth.getInstance().signOut();
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                // user is now signed out
+                getContext().getSharedPreferences("UserCredentials", Context.MODE_PRIVATE).edit().clear().commit();
+                startActivity(new Intent(getContext(), FirstActivity.class));
+                getActivity().finishAffinity();
+                Toast.makeText(getContext(),"Logged out Successfully!",Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception es){}
+    }
 
 
 }

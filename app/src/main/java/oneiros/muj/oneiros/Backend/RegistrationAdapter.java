@@ -64,22 +64,22 @@ import static android.content.Context.MODE_PRIVATE;
                 holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
             else
                 holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
-            holder.itemView.post(new Runnable()
-            {
-                @Override
-                public void run()
-                {   try{
-                    if(count==0) {
-                        int Height = holder.itemView.getHeight();
-                        SharedPreferences.Editor editor = myContext.getSharedPreferences("HeightPre", MODE_PRIVATE).edit();
-                        editor.putInt("Height", Height);
-                        editor.apply();
-                        count++;
-                    }}
-                catch (Exception e){}
-
-                }
-            });
+//            holder.itemView.post(new Runnable()
+//            {
+//                @Override
+//                public void run()
+//                {   try{
+//                    if(count==0) {
+//                        int Height = holder.itemView.getHeight();
+//                        SharedPreferences.Editor editor = myContext.getSharedPreferences("HeightPref", MODE_PRIVATE).edit();
+//                        editor.putInt("Height", Height);
+//                        editor.apply();
+//                        count++;
+//                    }}
+//                catch (Exception e){}
+//
+//                }
+//            });
             holder.viewQR.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
