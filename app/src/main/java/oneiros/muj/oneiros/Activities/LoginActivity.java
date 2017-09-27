@@ -142,14 +142,14 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim();
                         final String finalEEmail1 = EEmail;
                         final String finalEEmail2 = EEmail;
-                        progressDialog.setMessage("Please Wait");
+                        progressDialog.setMessage("Signing Up");
                         progressDialog.show();
                         mAuth.createUserWithEmailAndPassword(EEmail, PPassword)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        progressDialog.dismiss();
                                         if (!task.isSuccessful()) {
+                                            progressDialog.dismiss();
                                             Log.w("LoginActivity",task.getException());
                                             Toast.makeText(LoginActivity.this, "" + task.getException().getMessage(),
                                                     Toast.LENGTH_SHORT).show();
@@ -164,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                             UserCreds user = new UserCreds(NName, finalEEmail2.trim(), PPhone.trim(), RRegistration,UUniversity);
                                             mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                                            progressDialog.dismiss();
                                             startActivity(new Intent(LoginActivity.this, SplashScreen.class));
                                             finish();
                                         }
@@ -181,14 +182,14 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim().toLowerCase();
 
                         final String finalEEmail = EEmail;
-                        progressDialog.setMessage("Please Wait");
+                        progressDialog.setMessage("Signing In");
                         progressDialog.show();
                         mAuth.signInWithEmailAndPassword(EEmail, PPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull final Task<AuthResult> task) {
-                                progressDialog.dismiss();
                                 if (!task.isSuccessful()) {
                                     // there was an error
+                                    progressDialog.dismiss();
                                     Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException().getMessage(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
@@ -211,6 +212,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         editor.putString("RegNo.",User.RegNum).commit();
                                                         editor.putString("University",User.University).commit();
                                                         editor.putString("UserId",task.getResult().getUser().getUid()).commit();
+                                                    progressDialog.dismiss();
                                                     startActivity(new Intent(LoginActivity.this, SplashScreen.class));
                                                     finish();
                                                 }
