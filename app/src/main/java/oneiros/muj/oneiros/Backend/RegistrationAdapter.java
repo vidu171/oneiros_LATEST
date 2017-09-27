@@ -1,7 +1,6 @@
 package oneiros.muj.oneiros.Backend;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
@@ -27,8 +26,6 @@ import java.util.ArrayList;
 
 import oneiros.muj.oneiros.Constants;
 import oneiros.muj.oneiros.R;
-
-import static android.content.Context.MODE_PRIVATE;
 
 /**
      * Created by aesher on 9/12/2017.

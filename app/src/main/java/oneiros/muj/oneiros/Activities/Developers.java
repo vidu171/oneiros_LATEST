@@ -1,23 +1,18 @@
 package oneiros.muj.oneiros.Activities;
 
-import android.animation.Animator;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 
-import jp.wasabeef.blurry.Blurry;
 import oneiros.muj.oneiros.Backend.HorizontalPager_utilities;
 import oneiros.muj.oneiros.R;
 
@@ -42,13 +37,7 @@ public class Developers extends AppCompatActivity {
         frameLayout.setScaleType(ImageView.ScaleType.CENTER_CROP);
         horizontalInfiniteCycleViewPager = findViewById(R.id.hicvp);
         horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(getApplicationContext()));
-//        int cx = horizontalInfiniteCycleViewPager.getWidth();
-//        int cy = horizontalInfiniteCycleViewPager.getHeight();
-//        float finalRadius = (float) Math.hypot(cx, cy)+100;
-//        int CX = cx-80;
-//        Animator anim = ViewAnimationUtils.createCircularReveal(horizontalInfiniteCycleViewPager,CX,0,0,finalRadius);
-//        horizontalInfiniteCycleViewPager.setVisibility(View.VISIBLE);
-//        anim.start();
+
     }
 
 
@@ -61,11 +50,10 @@ public class Developers extends AppCompatActivity {
         String aashis = "I really have no idea what to put here. I really don't know what to say lol. I am just filling up the space. hahah Hope you like it. Oh and that on the top is my dog, Nibble. I love dogs. Are you a dog?";
         String siddhart = "The wizard of Manipal University. He can do magic with his laptop. Need help? Stuck at code? Knock at his place. He'll be keen to help........ Didn't answer? Must be sleeping ;D.";
         String vidyanshu = "CS engineer in making. Loves SpongeBob for no reason. Or maybe there is one. No one would ever know. And yeah Algorithms turns him on!";
-
         String vineet = "One of the most hard working lad you'll get to meet in Manipal University. Age 20, Working as Student, Human. We thank our EC for working day and night for the website setup.";
-        String sadana = "Error 404. ";
-        String sasank = "Error 404. ";
-        String Parth =  "Error 404. ";
+        String sadana = "Coder and designer combined, Mr sadana played a key role in the making of the website. Team oneiros would forever be thankful to you for those pop corns and late night shelters.";
+        String sasank = "Chilled personality with a 'ye to aaj rat hi ho jeaga' motto.";
+        String Parth = "Being a student of CSE, he has a inquisitive personality and a zeal to learn more with inclination towards Android Development and Cyber Security.";
 
 
         private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
