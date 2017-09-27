@@ -190,7 +190,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Intent I = new Intent(RegisterActivity.this, MainActivity.class);
                                 startActivity(I);
                             }
-                        };handler.postDelayed(runnable,2000);
+                        };handler.postDelayed(runnable,650);
 
 
                     } else {
