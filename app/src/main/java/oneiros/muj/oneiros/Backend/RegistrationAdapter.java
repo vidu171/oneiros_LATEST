@@ -1,8 +1,14 @@
 package oneiros.muj.oneiros.Backend;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,6 +31,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import java.util.ArrayList;
 
 import oneiros.muj.oneiros.Constants;
+import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 
 /**
@@ -36,7 +43,6 @@ import oneiros.muj.oneiros.R;
         private Context myContext;
         private ArrayList<Registered> registrationList;
         int count=0;
-
         public  RegistrationAdapter(Context mContext, ArrayList<Registered> registrationList){
             this.myContext= mContext;
             this.registrationList = registrationList;
@@ -107,8 +113,24 @@ import oneiros.muj.oneiros.R;
                     if(feesVal!=null) {
                         if (feesVal == 1) {
                             holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
+                            new RegisteredEvent(myContext).confirmUpdate(holder.rID.getText().toString());
+                            Bitmap icon = BitmapFactory.decodeResource(myContext.getResources(), R.drawable.ono_notify);
+                            Notification notification = new NotificationCompat.Builder(myContext)
+                                    .setContentTitle("Event Fee Receipt")
+                                    .setContentText("Payment for event "+holder.eventTitle.getText().toString().toLowerCase()+" received successfully!")
+                                    .setLargeIcon(icon)
+                                    .setSmallIcon(R.drawable.ic_snotify)
+                                    .setWhen(System.currentTimeMillis())
+                                    .setOngoing(false)
+                                    .build();
+                            try {
+                                notification.contentView.setViewVisibility(myContext.getResources().getIdentifier("right_icon", "id", android.R.class.getPackage().getName()), View.INVISIBLE);
+                            }catch(Exception es){}
+                            NotificationManager mNotificationManager = (NotificationManager) myContext.getSystemService(Context.NOTIFICATION_SERVICE);
+                            mNotificationManager.notify(1, notification);
                         } else {
                             holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
+                            new RegisteredEvent(myContext).RefundUpdate(holder.rID.getText().toString());
                         }
                     }
                 }

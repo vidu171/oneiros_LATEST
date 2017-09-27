@@ -139,7 +139,6 @@ public class Developers extends AppCompatActivity {
 
     public void SET_BACKGROUND(View v){
         Glide.with(v.getContext()).load(images2[horizontalInfiniteCycleViewPager.getRealItem()]).into(frameLayout);
-
     }
 
 
