@@ -77,23 +77,37 @@ public class Developers extends AppCompatActivity {
         String aashis = "I really have no idea what to put here. I really don't know what to say lol. I am just filling up the space. hahah Hope you like it. Oh and that on the top is my dog, Nibble. I love dogs. Are you a dog?";
         String siddhart = "The wizard of Manipal University. He can do magic with his laptop. Need help? Stuck at code? Knock at his place. He'll be keen to help........ Didn't answer? Must be sleeping ;D.";
         String vidyanshu = "CS engineer in making. Loves SpongeBob for no reason. Or maybe there is one. No one would ever know. And yeah Algorithms turns him on!";
-        String akhil = "Dashing enthusiast and Dashing. Add one more of that Dashing. Also a survivor... Team Oneiros would know <3 ";
-        String hodor = "Being a student of Information Technology, he has a inquisitive personality and a zeal to learn more with inclination towards Android Development and Cyber Security.";
+
+        String vineet = "One of the most hard working lad you'll get to meet in Manipal University. Age 20, Working as Student, Human. We thank our EC for working day and night for the website setup.";
+        String sadana = "Error 404. ";
+        String sasank = "Error 404. ";
+        String Parth =  "Error 404. ";
+
+
         private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
+
+                new HorizontalPager_utilities.LibraryObject(R.drawable.vineet, R.drawable.vineet_vinnet,"Vineet Sharma","Executive Committee"
+                        ,vineet),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.sid, R.drawable.sid_sid,"Siddhart Jaidka","Advisory"
                         ,siddhart),
 
-                new HorizontalPager_utilities.LibraryObject(R.drawable.aashis, R.drawable.nibble_nibble,"Aashis Kumar","Core Committee"
+                new HorizontalPager_utilities.LibraryObject(R.drawable.aashis, R.drawable.nibble_nibble,"Aashis Kumar","Core Committee: App Development"
                         ,aashis),
 
-                new HorizontalPager_utilities.LibraryObject(R.drawable.team_vidyanshu, R.drawable.vidu,"Vidhyanshu Jain","Core Committee"
+                new HorizontalPager_utilities.LibraryObject(R.drawable.team_vidyanshu, R.drawable.vidu,"Vidhyanshu Jain","Core Committee: App Development"
                         ,vidyanshu),
 
-                new HorizontalPager_utilities.LibraryObject(R.drawable.akhil, R.drawable.akhil_akhil,"Akhil Gupta","Organizing Committee"
-                        ,akhil),
-                new HorizontalPager_utilities.LibraryObject(R.drawable.hodor, R.drawable.hodor_hodor,"Sanidhya Kumar","Volunteer"
-                        ,hodor),
+                new HorizontalPager_utilities.LibraryObject(R.drawable.tushar, R.drawable.tushar_tushar,"Tushar Sadana","Core Committee: Web Development"
+                        ,sadana),
+
+                new HorizontalPager_utilities.LibraryObject(R.drawable.sha_sha, R.drawable.sha_sha,"Shashank Singh Solanki","Core Committee: Web Development"
+                        ,sasank),
+
+                new HorizontalPager_utilities.LibraryObject(R.drawable.mad, R.drawable.mad_mad,"Suyash Mandhana","Core Committee: Web Development"
+                        ,Parth),
+
+
 
         };
 
@@ -101,14 +115,14 @@ public class Developers extends AppCompatActivity {
         private LayoutInflater mLayoutInflater;
 
 
-        public HorizontalPagerAdapter_developers(final Context context) {
+        HorizontalPagerAdapter_developers(final Context context) {
             mLayoutInflater = LayoutInflater.from(context);
 
         }
 
         @Override
         public int getCount() {
-            return 5;
+            return 7;
         }
 
         @Override
@@ -152,7 +166,7 @@ public class Developers extends AppCompatActivity {
     }
 
     public void SET_BACKGROUND(){
-        int images[]= {R.drawable.sid_sid,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.akhil_akhil, R.drawable.hodor_hodor};
+        int images[]= {R.drawable.vineet_vinnet,R.drawable.sid_sid,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.tushar_tushar, R.drawable.sha_sha,R.drawable.mad_mad};
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), images[horizontalInfiniteCycleViewPager.getRealItem()]);
         frameLayout.setScaleType(ImageView.ScaleType.CENTER_CROP);
         Blurry.with(Developers.this).animate(200).radius(13).async().from(largeIcon).into(frameLayout);
