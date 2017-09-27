@@ -121,6 +121,18 @@ public class RegisteredEvent extends SQLiteOpenHelper {
         db.execSQL(select_query);
         db.close();
     }
+    public boolean isAlreadyRegistered(String  Key){
+        boolean b = false;
+        ArrayList<Registered>retrived =  this.getRegisteredList();
+        for(Registered x: retrived){
+            Log.w("-->", "Event Id ->"+x.EventId+"\nKey ->"+Key);
+            if(x.EventId.equals(Key)){
+                b = true;
+                break;
+            }
+        }
+        return b;
+    }
 
 
 }

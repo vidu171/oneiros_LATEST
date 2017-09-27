@@ -59,11 +59,12 @@ public class EventDetails extends AppCompatActivity {
             Fees.setText("Rs. "+i.getIntExtra("Fees", -1)+" per Person");
             Participation.setText("Single");
         }
-//
+
         if(i.getStringExtra("EventKey").equals("-KtrYxH1JXCGmHicczIw")){
             Fees.setText("Rs. 800 for first 10 pesron\nAnd then Rs. 100 per person");
             Participation.setText("Team");
         }
+//
 
         if(!getIntent().getBooleanExtra("RegistrationOpen",true)){
             Register.setEnabled(false);
