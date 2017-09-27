@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -58,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     TeamMemberAdapter mAdapter;
     FloatingActionButton mAdd;
+    Button registerButton;
     RecyclerView members;
     RelativeLayout Hidden, NotHidden;
     ArrayList<TeamMembers> memberList;
@@ -66,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static DatabaseReference mDatabase;
     AnimationDrawable anim;
     TextView Fees, EventName, Name, RegNum, Contact, University, MemberDetails;
-    ProgressDialog dialog;
+    MaterialDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +87,12 @@ public class RegisterActivity extends AppCompatActivity {
         MemberDetails = findViewById(R.id.MemberDetails);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        dialog = new ProgressDialog(RegisterActivity.this);
-        dialog.setMessage("Processing");
+        dialog=new MaterialDialog.Builder(this)
+                .title("Please Wait!")
+                .content("Processing")
+                .progress(true, 0)
+                .cancelable(false)
+                .build();
 
         anim = (AnimationDrawable) frameLayout.getBackground();
         anim.setEnterFadeDuration(1000);
@@ -101,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
         Contact.setText(pref.getString("Contact",null));
         University.setText(pref.getString("University",null));
         mAdd = findViewById(R.id.add);
-        Button registerButton = findViewById(R.id.register);
+        registerButton = findViewById(R.id.register);
         Log.w("Fees", String.valueOf(getIntent().getIntExtra("Fees", -1)));
         memberList = new ArrayList<>();
         mAdapter = new TeamMemberAdapter(memberList, RegisterActivity.this);
@@ -135,6 +141,8 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                registerButton.setEnabled(false);
+                dialog.show();
                 boolean bypass = true;
                 for (int i = 0; i < memberList.size(); i++) {
                     if(memberList.get(i).Name.isEmpty() && memberList.get(i).RegNum.isEmpty())
@@ -171,7 +179,6 @@ public class RegisterActivity extends AppCompatActivity {
                     newRegistration.Time = df.format(todaysDate);
                     newRegistration.FeesStatus = 0;
                     newRegistration.PaymentMode = "";
-                    dialog.show();
                     if (isNetworkAvailable() && isOnline() ) {
                         eventData.setValue(newRegistration);
                         RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
@@ -198,11 +205,13 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                     } else {
+                        registerButton.setEnabled(true);
                         dialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "Check Connection and try again", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
+                    registerButton.setEnabled(true);
                     Toast.makeText(RegisterActivity.this, "All the fields are compulsory", Toast.LENGTH_LONG).show();
                 }
             }

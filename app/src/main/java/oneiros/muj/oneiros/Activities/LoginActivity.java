@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -40,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     Boolean isOpen=true;
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
     TextView textView, ForgetPassword;
-    ProgressDialog progressDialog;
+    MaterialDialog progressDialog;
     private FirebaseDatabase mFirebaseData;
     private DatabaseReference mMessagesDatabaseReference;
     private FirebaseAuth mAuth;
@@ -62,11 +63,13 @@ public class LoginActivity extends AppCompatActivity {
         layout = findViewById(R.id.login_to_register);
         login = findViewById(R.id.Login);
         textView = findViewById(R.id.hint_text);
-
+        progressDialog= new MaterialDialog.Builder(this)
+                .title("Please Wait!")
+                .progress(true, 0)
+                .cancelable(false)
+                .build();
         ForgetPassword = findViewById(R.id.forgot_password);
 
-        progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setCancelable(false);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -115,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                     ONO_university.setVisibility(View.VISIBLE);
                     ONO_phonenumber.setVisibility(View.VISIBLE);
                     ONO_username.requestFocus();
-                    login.setText("Signup");
+                    login.setText("SignUp");
                     textView.setText("Already have an account? SignIn ");
                 }
             }
@@ -139,12 +142,12 @@ public class LoginActivity extends AppCompatActivity {
                 if(isOpen){
 
                     if(Expanded_check(NName,RRegistration,UUniversity,PPhone)&&Collapsed_check(EEmail,PPassword)){
-                        //Todo Signup
+                        //Todo SignUp
                         PPassword = PPassword.trim();
                         EEmail = EEmail.trim();
                         final String finalEEmail1 = EEmail;
                         final String finalEEmail2 = EEmail;
-                        progressDialog.setMessage("Signing Up");
+                        progressDialog.setContent("Signing Up");
                         progressDialog.show();
                         mAuth.createUserWithEmailAndPassword(EEmail, PPassword)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -184,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim().toLowerCase();
 
                         final String finalEEmail = EEmail;
-                        progressDialog.setMessage("Signing In");
+                        progressDialog.setContent("Signing In");
                         progressDialog.show();
                         mAuth.signInWithEmailAndPassword(EEmail, PPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -244,7 +247,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(Collapsed_check(ONO_email.getText().toString().trim().toLowerCase(), "nullnull")) {
 
-                    progressDialog.setMessage("Please Wait");
+                    progressDialog.setContent("Please Wait");
                     progressDialog.show();
                     mAuth.sendPasswordResetEmail(ONO_email.getText().toString().trim().toLowerCase())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {

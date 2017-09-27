@@ -177,10 +177,6 @@ public class Home extends Fragment {
             rListView.getLayoutParams().height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,height*2,getResources().getDisplayMetrics());
         }
         rListView.requestLayout();
-        if(list.size()<2){
-            arrow_collapse.setVisibility(View.INVISIBLE);
-            rListView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        }
         return view;
     }
 

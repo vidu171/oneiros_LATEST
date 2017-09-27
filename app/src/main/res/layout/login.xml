@@ -205,13 +205,14 @@
                     android:paddingEnd="30dip"
                     android:paddingStart="30dip"
                     android:paddingTop="5dip"
-                    android:text="Signup"
+                    android:text="SignUp"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="19sp" />
 
 
                 <TextView
+                    android:visibility="invisible"
                     android:id="@+id/forgot_password"
                     android:textColor="#ffffff"
                     android:textSize="19sp"
