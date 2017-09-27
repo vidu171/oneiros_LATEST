@@ -75,7 +75,7 @@ public class Events extends Fragment {
         Glide.with(getActivity()).load(R.drawable.ono_shabd).fitCenter().into(two);
         Glide.with(getActivity()).load(R.drawable.ono_litmus).fitCenter().into(three);
         Glide.with(getActivity()).load(R.drawable.ono_tmc).fitCenter().into(four);
-        Glide.with(getActivity()).load(R.drawable.scr).fitCenter().into(five);
+        Glide.with(getActivity()).load(R.drawable.ono_scrib).fitCenter().into(five);
         Glide.with(getActivity()).load(R.drawable.ono_sophia).fitCenter().into(six);
         Glide.with(getActivity()).load(R.drawable.ono_aper).fitCenter().into(seven);
         Glide.with(getActivity()).load(R.drawable.ono_coreo).fitCenter().into(eight);

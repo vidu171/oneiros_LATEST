@@ -21,8 +21,9 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences pref = getSharedPreferences("UserCredentials",MODE_PRIVATE);
-        String s = "" +pref.getString("Name",null);
-        if(FirebaseAuth.getInstance().getCurrentUser()!=null && s.length()<1 ){
+        String s = pref.getString("Name",null);
+//        Log.w("okay", String.valueOf(s.length())+" "+s);
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null && s != null  ){
             Log.w("-->", "I am being called");
             startActivity(new Intent(FirstActivity.this, SplashScreen.class));
             finish();
