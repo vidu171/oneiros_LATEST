@@ -30,15 +30,6 @@
         android:src="@drawable/nav_logo" />
 
 
-    <TextView
-        android:gravity="center_vertical|center"
-        android:textSize="44sp"
-        android:text="We thank you for stopping by :)"
-        android:textColor="#FFFFFF"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
     <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
         android:id="@+id/hicvp"
         android:layout_width="match_parent"

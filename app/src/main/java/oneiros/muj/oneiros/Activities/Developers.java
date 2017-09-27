@@ -28,7 +28,9 @@ public class Developers extends AppCompatActivity {
 
 
     ImageView frameLayout;
+    Bitmap largeIcon;
     HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager;
+    int images[]= {R.drawable.sid_sid,R.drawable.vineet_vinnet,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.tushar_tushar, R.drawable.sha_sha,R.drawable.mad_mad};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,35 +38,15 @@ public class Developers extends AppCompatActivity {
         setContentView(R.layout.developers);
         frameLayout = findViewById(R.id.background_changer);
 
-
-        Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                horizontalInfiniteCycleViewPager = findViewById(R.id.hicvp);
-                horizontalInfiniteCycleViewPager.setVisibility(View.INVISIBLE);
-                horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(getApplicationContext()));
-            }
-        };handler.postDelayed(runnable,100);
-
-
-        Handler handler2 = new Handler();
-        Runnable runnable2 = new Runnable() {
-            @Override
-            public void run() {
-
-                int cx = horizontalInfiniteCycleViewPager.getWidth();
-                int cy = horizontalInfiniteCycleViewPager.getHeight();
-                float finalRadius = (float) Math.hypot(cx, cy)+100;
-                int CX = cx-80;
-                Animator anim = ViewAnimationUtils.createCircularReveal(horizontalInfiniteCycleViewPager,CX,0,0,finalRadius);
-                horizontalInfiniteCycleViewPager.setVisibility(View.VISIBLE);
-                anim.start();
-
-
-            }
-        };handler2.postDelayed(runnable2,101);
-
+        horizontalInfiniteCycleViewPager = findViewById(R.id.hicvp);
+        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(getApplicationContext()));
+//        int cx = horizontalInfiniteCycleViewPager.getWidth();
+//        int cy = horizontalInfiniteCycleViewPager.getHeight();
+//        float finalRadius = (float) Math.hypot(cx, cy)+100;
+//        int CX = cx-80;
+//        Animator anim = ViewAnimationUtils.createCircularReveal(horizontalInfiniteCycleViewPager,CX,0,0,finalRadius);
+//        horizontalInfiniteCycleViewPager.setVisibility(View.VISIBLE);
+//        anim.start();
     }
 
 
@@ -86,11 +68,11 @@ public class Developers extends AppCompatActivity {
 
         private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
 
-                new HorizontalPager_utilities.LibraryObject(R.drawable.vineet, R.drawable.vineet_vinnet,"Vineet Sharma","Executive Committee"
-                        ,vineet),
-
                 new HorizontalPager_utilities.LibraryObject(R.drawable.sid, R.drawable.sid_sid,"Siddhart Jaidka","Advisory"
                         ,siddhart),
+
+                new HorizontalPager_utilities.LibraryObject(R.drawable.vineet, R.drawable.vineet_vinnet,"Vineet Sharma","Executive Committee"
+                        ,vineet),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.aashis, R.drawable.nibble_nibble,"Aashis Kumar","Core Committee: App Development"
                         ,aashis),
@@ -136,7 +118,7 @@ public class Developers extends AppCompatActivity {
             view = mLayoutInflater.inflate(R.layout.developer_item, container, false);
             HorizontalPager_utilities.setupItem(view, LIBRARIES[position]);
             container.addView(view);
-            SET_BACKGROUND();
+
             return view;
         }
 
@@ -166,8 +148,7 @@ public class Developers extends AppCompatActivity {
     }
 
     public void SET_BACKGROUND(){
-        int images[]= {R.drawable.vineet_vinnet,R.drawable.sid_sid,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.tushar_tushar, R.drawable.sha_sha,R.drawable.mad_mad};
-        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), images[horizontalInfiniteCycleViewPager.getRealItem()]);
+        largeIcon = BitmapFactory.decodeResource(getResources(), images[horizontalInfiniteCycleViewPager.getRealItem()]);
         frameLayout.setScaleType(ImageView.ScaleType.CENTER_CROP);
         Blurry.with(Developers.this).animate(200).radius(13).async().from(largeIcon).into(frameLayout);
 
