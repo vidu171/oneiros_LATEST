@@ -160,7 +160,8 @@ public class RegisterActivity extends AppCompatActivity {
                     newRegistration.Time = df.format(todaysDate);
                     newRegistration.FeesStatus = 0;
                     newRegistration.PaymentMode = "";
-                    if (isNetworkAvailable()) {
+
+                    if (isNetworkAvailable() && isOnline() ) {
                         eventData.setValue(newRegistration);
 
                         RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
@@ -172,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Hidden.setVisibility(View.VISIBLE);
                         NotHidden.setVisibility(View.INVISIBLE);
                     } else {
-                        Toast.makeText(RegisterActivity.this, "Check Connection\nand try again", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "Check Connection and try again", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
@@ -342,5 +343,16 @@ public class RegisterActivity extends AppCompatActivity {
         if (anim != null && anim.isRunning())
             anim.stop();
     }
-
+    public Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
