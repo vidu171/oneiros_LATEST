@@ -1,5 +1,6 @@
 package oneiros.muj.oneiros.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -62,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static DatabaseReference mDatabase;
     AnimationDrawable anim;
     TextView Fees, EventName, Name, RegNum, Contact, University, MemberDetails;
-
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +80,8 @@ public class RegisterActivity extends AppCompatActivity {
         Contact = findViewById(R.id.Contact);
         University = findViewById(R.id.University);
         MemberDetails = findViewById(R.id.MemberDetails);
-
-
+        dialog = new ProgressDialog(RegisterActivity.this);
+        dialog.setMessage("Processing");
 
 
 
@@ -167,7 +168,7 @@ public class RegisterActivity extends AppCompatActivity {
                     newRegistration.Time = df.format(todaysDate);
                     newRegistration.FeesStatus = 0;
                     newRegistration.PaymentMode = "";
-
+                    dialog.show();
                     if (isNetworkAvailable() && isOnline() ) {
                         eventData.setValue(newRegistration);
 
@@ -177,8 +178,9 @@ public class RegisterActivity extends AppCompatActivity {
                         for (int i = 0; i < memberList.size(); i++) {
                             eventData.child("TeamMates").push().setValue(memberList.get(i));
                         }
+                        dialog.dismiss();
                         AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this);
-                        LayoutInflater inflater = getLayoutInflater();
+                        LayoutInflater inflater = getLayoutInflater();//
                         View dialogueView = inflater.inflate(R.layout.sucess_dialogue,null);
                         builder.setView(dialogueView);
                         builder.setCancelable(false);
@@ -373,6 +375,7 @@ public class RegisterActivity extends AppCompatActivity {
             anim.stop();
     }
     public Boolean isOnline() {
+
         try {
             Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
             int returnVal = p1.waitFor();
