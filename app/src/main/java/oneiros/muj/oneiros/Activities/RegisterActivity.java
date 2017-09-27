@@ -61,17 +61,17 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
         frameLayout = findViewById(R.id.image_container);
-        Hidden = (RelativeLayout) findViewById(R.id.hidden);
-        NotHidden = (RelativeLayout) findViewById(R.id.notHidden);
+        Hidden = findViewById(R.id.hidden);
+        NotHidden = findViewById(R.id.notHidden);
         Hidden.setVisibility(View.INVISIBLE);
         NotHidden.setVisibility(View.VISIBLE);
-        Fees = (TextView) findViewById(R.id.Totalfees);
-        EventName = (TextView) findViewById(R.id.event_name);
-        Name = (TextView) findViewById(R.id.Name);
-        RegNum = (TextView) findViewById(R.id.RegNum);
-        Contact = (TextView) findViewById(R.id.Contact);
-        University = (TextView) findViewById(R.id.University);
-        MemberDetails = (TextView) findViewById(R.id.MemberDetails);
+        Fees = findViewById(R.id.Totalfees);
+        EventName = findViewById(R.id.event_name);
+        Name = findViewById(R.id.Name);
+        RegNum = findViewById(R.id.RegNum);
+        Contact = findViewById(R.id.Contact);
+        University = findViewById(R.id.University);
+        MemberDetails = findViewById(R.id.MemberDetails);
 
 
 
@@ -93,13 +93,13 @@ public class RegisterActivity extends AppCompatActivity {
         RegNum.setText(pref.getString("RegNo.",null));
         Contact.setText(pref.getString("Contact",null));
         University.setText(pref.getString("University",null));
-        mAdd = (FloatingActionButton) findViewById(R.id.add);
-        Button registerButton = (Button) findViewById(R.id.register);
+        mAdd = findViewById(R.id.add);
+        Button registerButton = findViewById(R.id.register);
         Log.w("Fees", String.valueOf(getIntent().getIntExtra("Fees", -1)));
         memberList = new ArrayList<>();
         mAdapter = new TeamMemberAdapter(memberList, RegisterActivity.this);
 
-        members = (RecyclerView) findViewById(R.id.team_members);
+        members = findViewById(R.id.team_members);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
         members.setLayoutManager(mLayoutManager);
         members.setItemAnimator(new DefaultItemAnimator());
@@ -184,6 +184,9 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        //TODO inflate ->  sucess_dialogue inflate
 
         mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -304,10 +307,10 @@ public class RegisterActivity extends AppCompatActivity {
 
             public MemberViewHolder(View itemView) {
                 super(itemView);
-                Close = (ImageView) itemView.findViewById(R.id.close);
-                cardView = (CardView) itemView.findViewById(R.id.memberCard);
-                memberName = (TextView) itemView.findViewById(R.id.memberName);
-                memberRegNo = (TextView) itemView.findViewById(R.id.memberRegNo);
+                Close = itemView.findViewById(R.id.close);
+                cardView = itemView.findViewById(R.id.memberCard);
+                memberName = itemView.findViewById(R.id.memberName);
+                memberRegNo = itemView.findViewById(R.id.memberRegNo);
             }
         }
 

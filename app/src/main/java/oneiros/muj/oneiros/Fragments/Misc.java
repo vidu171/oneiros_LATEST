@@ -40,7 +40,7 @@ public class Misc extends Fragment {
 
     @OnClick(R.id.footer)
     public void open_dev(){
-       startActivity(new Intent(getContext(), Easter_egg.class));
+        startActivity(new Intent(getContext(), Easter_egg.class));
     }
     @OnClick(R.id.RateUs)
     public void appRateCardClick(View view) {
