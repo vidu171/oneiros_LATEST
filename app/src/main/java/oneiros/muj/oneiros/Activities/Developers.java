@@ -14,6 +14,7 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 
 import jp.wasabeef.blurry.Blurry;
@@ -31,13 +32,14 @@ public class Developers extends AppCompatActivity {
     Bitmap largeIcon;
     HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager;
     int images[]= {R.drawable.sid_sid,R.drawable.vineet_vinnet,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.tushar_tushar, R.drawable.sha_sha,R.drawable.mad_mad};
+    int images2[]= {R.drawable.asid_sid,R.drawable.avineet_vinnet,R.drawable.anibble_nibble,R.drawable.avidu  ,R.drawable.atushar_tushar, R.drawable.asha_sha,R.drawable.amad_mad};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.developers);
         frameLayout = findViewById(R.id.background_changer);
-
+        frameLayout.setScaleType(ImageView.ScaleType.CENTER_CROP);
         horizontalInfiniteCycleViewPager = findViewById(R.id.hicvp);
         horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter_developers(getApplicationContext()));
 //        int cx = horizontalInfiniteCycleViewPager.getWidth();
@@ -118,7 +120,7 @@ public class Developers extends AppCompatActivity {
             view = mLayoutInflater.inflate(R.layout.developer_item, container, false);
             HorizontalPager_utilities.setupItem(view, LIBRARIES[position]);
             container.addView(view);
-
+            SET_BACKGROUND(view);
             return view;
         }
 
@@ -147,10 +149,8 @@ public class Developers extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void SET_BACKGROUND(){
-        largeIcon = BitmapFactory.decodeResource(getResources(), images[horizontalInfiniteCycleViewPager.getRealItem()]);
-        frameLayout.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        Blurry.with(Developers.this).animate(200).radius(13).async().from(largeIcon).into(frameLayout);
+    public void SET_BACKGROUND(View v){
+        Glide.with(v.getContext()).load(images2[horizontalInfiniteCycleViewPager.getRealItem()]).into(frameLayout);
 
     }
 
