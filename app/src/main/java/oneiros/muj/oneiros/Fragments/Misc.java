@@ -83,7 +83,7 @@ public class Misc extends Fragment {
         }
         Toast.makeText(v.getContext(), "Sending feedback", 0).show();
         RequestQueue requestQueue = Volley.newRequestQueue(v.getContext());
-        requestQueue.add(new msgcheck(1, "http://mitas.esy.es/test.php", new Response.Listener<String>() {
+        requestQueue.add(new msgcheck(1, "http://siddharthjaidka.me/test.php", new Response.Listener<String>() {
             public void onResponse(String response) {
                 if(response.equals("success")) {
                     Toast.makeText(v.getContext(), "We have received your feedback!", 1).show();
