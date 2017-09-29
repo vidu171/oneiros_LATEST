@@ -1,6 +1,5 @@
 package oneiros.muj.oneiros.Activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -79,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
         login = findViewById(R.id.Login);
         textView = findViewById(R.id.hint_text);
         progressDialog= new MaterialDialog.Builder(this)
-                .title("Please Wait!")
                 .progress(true, 0)
                 .cancelable(false)
                 .build();

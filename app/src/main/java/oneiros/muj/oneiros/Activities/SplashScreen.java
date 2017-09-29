@@ -55,10 +55,10 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        layout = (LinearLayout) findViewById(R.id.layoutsplash);
+        layout = findViewById(R.id.layoutsplash);
 
-        imageView = (ImageView) findViewById(R.id.moto);
-        transactionimage = (ImageView) findViewById(R.id.OHNO);
+        imageView = findViewById(R.id.moto);
+        transactionimage = findViewById(R.id.OHNO);
         animation = AnimationUtils.loadAnimation(this,R.anim.blink);
         mEvents = new ArrayList<>();
         mRegistered = new ArrayList<>();
