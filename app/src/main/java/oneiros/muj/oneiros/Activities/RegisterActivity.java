@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if(bypass) {
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Registration");
-                    if (isNetworkAvailable()  ) {
+                    if (isNetworkAvailable() && isOnline() ) {
                         incrementCounter(FirebaseDatabase.getInstance().getReference().child("Registration Counter"));
                     }
                     else {
@@ -339,15 +339,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
     public Boolean isOnline() {
         try {
-            int timeoutMs = 1500;
-            Socket sock = new Socket();
-            SocketAddress sockaddr = new InetSocketAddress("8.8.8.8", 53);
-
-            sock.connect(sockaddr, timeoutMs);
-            sock.close();
-
-            return true;
-        } catch (IOException e) { return false; }
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
 
 
@@ -411,7 +411,7 @@ public class RegisterActivity extends AppCompatActivity {
                             eventData.child("TeamMates").push().setValue(memberList.get(i));
                         }
                         dialog.dismiss();
-                        AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this);
+                        final AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this);
                         LayoutInflater inflater = getLayoutInflater();//
                         View dialogueView = inflater.inflate(R.layout.sucess_dialogue,null);
                         builder.setView(dialogueView);

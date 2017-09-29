@@ -361,13 +361,13 @@ public class LoginActivity extends AppCompatActivity {
             public Transaction.Result doTransaction(final MutableData currentData) {
                 if (currentData.getValue() == null) {
                     currentData.setValue(10000);
-                    value=(Long) currentData.getValue() ;
+                    value=(Long) currentData.getValue();
                 } else {
                     value=(Long) currentData.getValue() + 1;
                     currentData.setValue(value);
 //                    Log.w("Time", String.valueOf(System.currentTimeMillis()));
                 }
-
+//
                 return Transaction.success(currentData);
             }
 

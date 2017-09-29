@@ -109,7 +109,13 @@ import oneiros.muj.oneiros.R;
             ref.addChildEventListener(new ChildEventListener() {
                 public void onChildAdded(DataSnapshot dataSnapshot, String previousKey) {}
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    Long feesVal = dataSnapshot.getValue(Long.class);
+                    Long feesVal;
+                    try {
+                        feesVal    = dataSnapshot.getValue(Long.class);
+                    }
+                    catch (Exception e){
+                        feesVal = null;
+                    }
                     if(feesVal!=null) {
                         if (feesVal == 1) {
                             holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
