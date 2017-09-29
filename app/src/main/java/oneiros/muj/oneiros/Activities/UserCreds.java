@@ -10,14 +10,15 @@ public class UserCreds {
     public String Contact;
     public String RegNum;
     public String University;
+    public int WalkinId;
 
-
-    public UserCreds(String Name, String EmailId, String Contact, String RegNum, String University){
+    public UserCreds(String Name, String EmailId, String Contact, String RegNum, String University,int WalkinId){
         this.Name = Name;
         this.EmailId = EmailId;
         this.RegNum = RegNum;
         this.Contact = Contact;
         this.University = University;
+        this.WalkinId = WalkinId;
     }
     public UserCreds(){}
 

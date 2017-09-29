@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     TabLayout top;
     ViewPager Pagerfragments;
+    ImageView Ono;
 
     String Generate_name;
 
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         top = (TabLayout) findViewById(R.id.tab);
         Pagerfragments = (ViewPager) findViewById(R.id.viewpager);
+        Ono = (ImageView) findViewById(R.id.ONO);
+        Ono.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
+            }
+        });
 
         Pagerfragments.setOffscreenPageLimit(2);
         top.setupWithViewPager(Pagerfragments);

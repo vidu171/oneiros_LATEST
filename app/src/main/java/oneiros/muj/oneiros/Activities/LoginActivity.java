@@ -22,12 +22,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+import oneiros.muj.oneiros.DAO.FetchCounterDAO;
 import oneiros.muj.oneiros.DAO.FetchUserDAO;
 import oneiros.muj.oneiros.R;
 
@@ -38,6 +43,7 @@ import oneiros.muj.oneiros.R;
 public class LoginActivity extends AppCompatActivity {
     Button login;
     LinearLayout layout;
+    long value;
     Boolean isOpen=true;
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
     TextView textView, ForgetPassword;
@@ -48,6 +54,15 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences pref ;
     SharedPreferences.Editor editor;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+
+    String NName = new String();
+    String RRegistration = new String() ;
+    String UUniversity = new String();
+    String PPhone = new String();
+    String EEmail = new String();
+    String PPassword = new String();
+
 
 
     @Override
@@ -131,12 +146,12 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String NName = ONO_username.getText().toString();
-                final String RRegistration = ONO_registration.getText().toString();
-                final String UUniversity = ONO_university.getText().toString();
-                final String PPhone = ONO_phonenumber.getText().toString();
-                String EEmail = ONO_email.getText().toString();
-                String PPassword = ONO_password.getText().toString();
+                NName = ONO_username.getText().toString();
+                RRegistration = ONO_registration.getText().toString();
+                 UUniversity = ONO_university.getText().toString();
+                PPhone = ONO_phonenumber.getText().toString();
+                EEmail = ONO_email.getText().toString();
+                 PPassword = ONO_password.getText().toString();
 
 
                 if(isOpen){
@@ -160,18 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     Toast.LENGTH_SHORT).show();
 
                                         } else {
-                                            editor.putString("Name",NName).commit();
-                                            editor.putString("EmailId", finalEEmail1).commit();
-                                            editor.putString("Contact",PPhone).commit();
-                                            editor.putString("RegNo.",RRegistration).commit();
-                                            editor.putString("University",UUniversity).commit();
-                                            editor.putString("UserId",task.getResult().getUser().getUid()).commit();
-
-                                            UserCreds user = new UserCreds(NName, finalEEmail2.trim(), PPhone.trim(), RRegistration,UUniversity);
-                                            mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-                                            progressDialog.dismiss();
-                                            startActivity(new Intent(LoginActivity.this, SplashScreen.class));
-                                            finish();
+                                            incrementCounter(FetchCounterDAO.getInstance().counterRef);
                                         }
                                     }
                                 });
@@ -216,6 +220,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         editor.putString("Contact",User.Contact).commit();
                                                         editor.putString("RegNo.",User.RegNum).commit();
                                                         editor.putString("University",User.University).commit();
+                                                        editor.putString("WalkinId", String.valueOf(User.WalkinId));
                                                         editor.putString("UserId",task.getResult().getUser().getUid()).commit();
                                                     progressDialog.dismiss();
                                                     startActivity(new Intent(LoginActivity.this, SplashScreen.class));
@@ -350,5 +355,42 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
+    public void incrementCounter(DatabaseReference counterRef) {
+        counterRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(final MutableData currentData) {
+                if (currentData.getValue() == null) {
+                    currentData.setValue(10000);
+                    value=(Long) currentData.getValue() ;
+                } else {
+                    value=(Long) currentData.getValue() + 1;
+                    currentData.setValue(value);
+//                    Log.w("Time", String.valueOf(System.currentTimeMillis()));
+                }
 
+                return Transaction.success(currentData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                if (databaseError != null) {
+                    System.out.println("Firebase counter increment failed.");
+                } else {
+                    editor.putString("Name",NName).commit();
+                    editor.putString("EmailId", EEmail).commit();
+                    editor.putString("Contact",PPhone).commit();
+                    editor.putString("RegNo.",RRegistration).commit();
+                    editor.putString("University",UUniversity).commit();
+                    editor.putString("UserId",FirebaseAuth.getInstance().getCurrentUser().getUid()).commit();
+                    Log.w("Login Activity", String.valueOf(FetchCounterDAO.getInstance().val));
+                    editor.putString("WalkinId", String.valueOf(value)).commit();
+                    UserCreds user = new UserCreds(NName, EEmail.trim(), PPhone.trim(), RRegistration,UUniversity, (int) value);
+                    mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+                    progressDialog.dismiss();
+                    startActivity(new Intent(LoginActivity.this, SplashScreen.class));
+                    finish();
+                }
+            }
+        });
+    }
 }

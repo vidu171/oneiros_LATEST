@@ -12,14 +12,14 @@ public class Registraion {
     public String EmailId;
     public int TotalFees;
     public int FeesStatus;
-    public String PaymentMode;
+    public String FinanceId;
     public String Time;
     public Registraion(){}
-    Registraion(String UserId, String EventId, String Event, int TotalFees, int FeesStatus, String PaymentMode, String Time){
+    Registraion(String UserId, String EventId, String Event, int TotalFees, int FeesStatus, String FinanceId, String Time){
         this.UserId=UserId;
         this.TotalFees=TotalFees;
         this.FeesStatus=FeesStatus;
-        this.PaymentMode=PaymentMode;
+        this.FinanceId=FinanceId;
         this.EventId = EventId;
         this.Event = Event;
         this.Time = Time;

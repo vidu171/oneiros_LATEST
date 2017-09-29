@@ -31,8 +31,12 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -47,6 +51,7 @@ import java.util.concurrent.TimeUnit;
 
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.Registraion;
+import oneiros.muj.oneiros.DAO.FetchCounterDAO;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.RequestPreferences.TeamMembers;
@@ -60,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
     TeamMemberAdapter mAdapter;
     FloatingActionButton mAdd;
     Button registerButton;
+    Long value;
     RecyclerView members;
     RelativeLayout Hidden, NotHidden;
     ArrayList<TeamMembers> memberList;
@@ -150,61 +156,10 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if(bypass) {
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Registration");
-                    DatabaseReference eventData;
-                    eventData = mDatabase.push();
-                    Registraion newRegistration = new Registraion();
-                    // TODO Add THe Correct Details to the New Registration
-                    newRegistration.UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                    newRegistration.EventId = getIntent().getStringExtra("EventKey");
-                    newRegistration.Event = getIntent().getStringExtra("Name");
-                    SharedPreferences pref = getSharedPreferences("UserCredentials", MODE_PRIVATE);
-                    newRegistration.EmailId = pref.getString("EmailId", null);
-                    if (getIntent().getIntExtra("FeesMode", -1) == 0) {
-                        newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1) * (memberList.size() + 1);
-                    } else {
-                        newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1);
+                    if (isNetworkAvailable()  ) {
+                        incrementCounter(FirebaseDatabase.getInstance().getReference().child("Registration Counter"));
                     }
-                    if (newRegistration.EventId.equals("-KtrYxH1JXCGmHicczIw")) {
-                        if (memberList.size() < 10) {
-                            newRegistration.TotalFees = 800;
-                        } else {
-                            int n = memberList.size() - 10;
-                            newRegistration.TotalFees = 800 + (100 * (n + 1));
-                        }
-                    }
-                    // Todo Update Date And Time
-
-                    Date todaysDate = new Date();
-                    DateFormat df = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
-                    newRegistration.Time = df.format(todaysDate);
-                    newRegistration.FeesStatus = 0;
-                    newRegistration.PaymentMode = "";
-                    if (isNetworkAvailable() && isOnline() ) {
-                        eventData.setValue(newRegistration);
-                        RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
-                        dbHelper.add_data(new Registered(newRegistration.EventId, newRegistration.FeesStatus, newRegistration.UserId, newRegistration.Event, newRegistration.Time, newRegistration.TotalFees, eventData.getKey()));
-                        Log.w("Register Activity", eventData.getKey());
-                        for (int i = 0; i < memberList.size(); i++) {
-                            eventData.child("TeamMates").push().setValue(memberList.get(i));
-                        }
-                        dialog.dismiss();
-                        AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this);
-                        LayoutInflater inflater = getLayoutInflater();//
-                        View dialogueView = inflater.inflate(R.layout.sucess_dialogue,null);
-                        builder.setView(dialogueView);
-                        builder.setCancelable(false);
-                        builder.create().show();
-                        Handler handler = new Handler();
-                        Runnable runnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent I = new Intent(RegisterActivity.this, MainActivity.class);
-                                startActivity(I);
-                            }
-                        };handler.postDelayed(runnable,650);
-
-
-                    } else {
+                    else {
                         registerButton.setEnabled(true);
                         dialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "Check Connection and try again", Toast.LENGTH_LONG).show();
@@ -394,4 +349,88 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         } catch (IOException e) { return false; }
     }
+
+
+    public void incrementCounter(DatabaseReference counterRef) {
+        counterRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(final MutableData currentData) {
+                if (currentData.getValue() == null) {
+                    currentData.setValue(65000);
+                    value=(Long) currentData.getValue();
+                } else {
+                    value=(Long) currentData.getValue() + 1;
+                    Log.w("value-->", String.valueOf(value));
+                    currentData.setValue(value);
+//                    Log.w("Time", String.valueOf(System.currentTimeMillis()));
+                }
+
+                return Transaction.success(currentData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                if (databaseError != null) {
+                    System.out.println("Firebase counter increment failed.");
+                } else {
+                    DatabaseReference eventData;
+                    Log.w("---->", String.valueOf(value));
+                    eventData = mDatabase.child(String.valueOf(value));
+                    Registraion newRegistration = new Registraion();
+                    // TODO Add THe Correct Details to the New Registration
+                    newRegistration.UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    newRegistration.EventId = getIntent().getStringExtra("EventKey");
+                    newRegistration.Event = getIntent().getStringExtra("Name");
+                    SharedPreferences pref = getSharedPreferences("UserCredentials", MODE_PRIVATE);
+                    newRegistration.EmailId = pref.getString("EmailId", null);
+                    if (getIntent().getIntExtra("FeesMode", -1) == 0) {
+                        newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1) * (memberList.size() + 1);
+                    } else {
+                        newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1);
+                    }
+                    if (newRegistration.EventId.equals("-KtrYxH1JXCGmHicczIw")) {
+                        if (memberList.size() < 10) {
+                            newRegistration.TotalFees = 800;
+                        } else {
+                            int n = memberList.size() - 10;
+                            newRegistration.TotalFees = 800 + (100 * (n + 1));
+                        }
+                    }
+                    // Todo Update Date And Time
+
+                    Date todaysDate = new Date();
+                    DateFormat df = new SimpleDateFormat("dd-MMM-yyyy, hh:mm a");
+                    newRegistration.Time = df.format(todaysDate);
+                    newRegistration.FeesStatus = 0;
+                    newRegistration.FinanceId = "N/A";
+                        eventData.setValue(newRegistration);
+                        RegisteredEvent dbHelper = new RegisteredEvent(RegisterActivity.this);
+                        dbHelper.add_data(new Registered(newRegistration.EventId, newRegistration.FeesStatus, newRegistration.UserId, newRegistration.Event, newRegistration.Time, newRegistration.TotalFees, eventData.getKey()));
+                        Log.w("Register Activity", eventData.getKey());
+                        for (int i = 0; i < memberList.size(); i++) {
+                            eventData.child("TeamMates").push().setValue(memberList.get(i));
+                        }
+                        dialog.dismiss();
+                        AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this);
+                        LayoutInflater inflater = getLayoutInflater();//
+                        View dialogueView = inflater.inflate(R.layout.sucess_dialogue,null);
+                        builder.setView(dialogueView);
+                        builder.setCancelable(false);
+                        builder.create().show();
+                        Handler handler = new Handler();
+                        Runnable runnable = new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent I = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(I);
+                            }
+                        };handler.postDelayed(runnable,650);
+
+                }
+            }
+        });
+    }
+
+
+
 }

@@ -4,6 +4,8 @@ package oneiros.muj.oneiros.DAO;
  * Created by Siddharth on 24-09-2017.
  */
 
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.util.Log;
 
 import com.google.common.util.concurrent.SettableFuture;
@@ -22,8 +24,8 @@ import oneiros.muj.oneiros.Constants;
 
 public class FetchCounterDAO {
     private static FetchCounterDAO instance;
-    private static DatabaseReference counterRef;
-
+    public static DatabaseReference counterRef;
+    public long val = 0;
     private FetchCounterDAO() {
         counterRef = FirebaseDatabase
                 .getInstance()
@@ -37,28 +39,46 @@ public class FetchCounterDAO {
         return instance;
     }
 
-    public void incrementCounter(DatabaseReference counterRef) {
-        counterRef.runTransaction(new Transaction.Handler() {
-            @Override
-            public Transaction.Result doTransaction(final MutableData currentData) {
-                if (currentData.getValue() == null) {
-                    currentData.setValue(1000);
-                } else {
-                    currentData.setValue((Long) currentData.getValue() + 1);
-                }
 
-                return Transaction.success(currentData);
+    public String getCounter(){
+        counterRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    val = Long.valueOf(dataSnapshot.getValue().toString());
+                    Log.w("thossd", ""+val);
+
+                }
+                else{
+                    val = 0;
+                }
             }
 
             @Override
-            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
-                if (databaseError != null) {
-                    System.out.println("Firebase counter increment failed.");
-                } else {
-                    System.out.println("Firebase counter increment succeeded.");
-                }
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+        return  ""+val;
+
     }
+
+//    public Future<Integer> getUserData(final String UID) {
+//        final SettableFuture<Integer> CounterFuture = SettableFuture.create();
+//        counterRef.runTransaction(new Transaction.Handler() {
+//            @Override
+//            public Transaction.Result doTransaction(final MutableData currentData) {
+//                if (currentData.getValue() == null) {
+//                    currentData.setValue(10000);
+//                } else {
+//                    currentData.setValue((Long) currentData.getValue() + 1);
+////                    Log.w("Time", String.valueOf(System.currentTimeMillis()));
+//                }
+//
+//                return Transaction.success(currentData);
+//        return null;
+//    }
+//
+
 
 }
