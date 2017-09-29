@@ -23,7 +23,7 @@
                 android:alpha="0.6"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center_horizontal"
-                android:text="Scan event qr code to get started."
+                android:text="Scan event QR code to get started."
                 android:textColor="#000000" />
         </LinearLayout>
 
