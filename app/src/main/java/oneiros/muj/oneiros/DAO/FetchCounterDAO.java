@@ -4,23 +4,13 @@ package oneiros.muj.oneiros.DAO;
  * Created by Siddharth on 24-09-2017.
  */
 
-import android.os.AsyncTask;
-import android.os.Handler;
 import android.util.Log;
 
-import com.google.common.util.concurrent.SettableFuture;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.concurrent.Future;
-
-import oneiros.muj.oneiros.Activities.UserCreds;
-import oneiros.muj.oneiros.Constants;
 
 public class FetchCounterDAO {
     private static FetchCounterDAO instance;

@@ -1,6 +1,5 @@
 package oneiros.muj.oneiros.Activities;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,7 +38,6 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
@@ -47,11 +45,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.Registraion;
-import oneiros.muj.oneiros.DAO.FetchCounterDAO;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.RequestPreferences.TeamMembers;
