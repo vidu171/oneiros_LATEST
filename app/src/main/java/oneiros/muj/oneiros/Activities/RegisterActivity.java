@@ -202,20 +202,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        final AlertDialog.Builder builder= new AlertDialog.Builder(RegisterActivity.this);
-                                        LayoutInflater inflater = getLayoutInflater();//
-                                        View dialogueView = inflater.inflate(R.layout.sucess_dialogue,null);
-                                        builder.setView(dialogueView);
-                                        builder.setCancelable(false);
-                                        builder.create().show();
-                                        Handler handler = new Handler();
-                                Runnable runnable = new Runnable() {
-                                    @Override
-                                    public void run() {
                                         Intent I = new Intent(RegisterActivity.this, MainActivity.class);
+                                        I.putExtra("showDialogue", "true");
                                         startActivity(I);
-                                    }
-                                };handler.postDelayed(runnable,650);
                                     }
                                 });
 

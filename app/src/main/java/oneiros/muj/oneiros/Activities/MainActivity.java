@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -47,7 +49,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, TestActivity.class));
             }
         });
-
+        if (getIntent().getStringExtra("showDialogue") != null) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            LayoutInflater inflater = getLayoutInflater();//
+            View dialogueView = inflater.inflate(R.layout.sucess_dialogue, null);
+            builder.setView(dialogueView);
+            builder.setCancelable(true);
+            builder.create().show();
+        }
         Pagerfragments.setOffscreenPageLimit(2);
         top.setupWithViewPager(Pagerfragments);
 
