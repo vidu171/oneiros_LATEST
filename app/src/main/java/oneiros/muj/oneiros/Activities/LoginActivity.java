@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
+import com.katepratik.msg91api.MSG91;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -42,6 +43,7 @@ import oneiros.muj.oneiros.R;
 public class LoginActivity extends AppCompatActivity {
     Button login;
     LinearLayout layout;
+    MSG91 msg91;
     long value;
     Boolean isOpen=true;
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        msg91 = new MSG91("176579Aj3z4wdz9g59ca63b3");
         ONO_username = findViewById(R.id.UserName);
         ONO_email = findViewById(R.id.Email);
         ONO_registration = findViewById(R.id.Rid);
@@ -174,6 +177,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                         } else {
                                             incrementCounter(FetchCounterDAO.getInstance().counterRef);
+                                            msg91.composeMessage("ONODGT", "Thank you for registering with Oneiros '17. Your credentials are: \r\nEmail: " + EEmail + "\r\nPassword: " + PPassword);
+                                            msg91.to(PPhone);
+                                            msg91.unicode(true);
+                                            msg91.setRoute("4");
+                                            String sendStatus = msg91.send();
+                                            Log.w("SMS Status", sendStatus);
                                         }
                                     }
                                 });

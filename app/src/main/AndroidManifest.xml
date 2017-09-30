@@ -52,8 +52,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http"
-                    android:host="www.oneiros.com"
-                    android:pathPrefix="/oneiros" />
+                    android:host="Siddharth"
+                    android:pathPrefix="/ono" />
             </intent-filter>
         </activity>
 

@@ -90,12 +90,36 @@
                 android:textColor="#ff444444"
                 android:textSize="14.0sp" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Regid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="16.0dip"
+            android:layout_marginTop="-5dip"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="12.0dip"
+                android:layout_height="12.0dip"
+                android:layout_gravity="center_vertical"
+                android:alpha="0.6"
+                android:src="@drawable/ic_info" />
+
             <TextView
                 android:id="@+id/rID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registeration ID"
-                android:visibility="gone" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8.0dip"
+                android:ellipsize="end"
+                android:text="Registration ID"
+                android:textColor="#ff444444"
+                android:textSize="14.0sp" />
+
         </LinearLayout>
     </LinearLayout>
 

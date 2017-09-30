@@ -37,7 +37,7 @@ public class FetchRegistrationDAO {
 
     public Future<Map<String, Registered>> getRegistrations(final String UID) {
         final SettableFuture<Map<String, Registered>> matchedRegistrationsFuture = SettableFuture.create();
-        registrationTable.addListenerForSingleValueEvent(new ValueEventListener() {
+        registrationTable.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {

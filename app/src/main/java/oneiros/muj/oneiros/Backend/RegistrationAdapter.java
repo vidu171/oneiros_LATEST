@@ -60,7 +60,7 @@ import oneiros.muj.oneiros.R;
             holder.eventTitle.setText(currentReg.Event);
             holder.totalFees.setText("Total Fees: "+currentReg.TotalFees);
             holder.time.setText(currentReg.Time);
-            holder.rID.setText(currentReg.RegKey);
+            holder.rID.setText("Event ID: " + currentReg.RegKey);
             if(currentReg.FeesStatus==1)
                 holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
             else

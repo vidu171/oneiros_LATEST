@@ -155,7 +155,7 @@ public class Home extends Fragment {
         uReg.setText(pref.getString("RegNo.",null));
         uUni.setText(pref.getString("University",null));
         uEmail.setText(mFirebaseAuth.getCurrentUser().getEmail());
-        uID.setText(pref.getString("WalkinId",null));
+        uID.setText("Walk-In Id: " + pref.getString("WalkinId", null));
         RegisteredEvent dbHelper = new RegisteredEvent(getContext());
         list = dbHelper.getRegisteredList();
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
