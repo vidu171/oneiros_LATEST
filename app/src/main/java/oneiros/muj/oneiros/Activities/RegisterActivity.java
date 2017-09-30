@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -143,28 +144,51 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerButton.setEnabled(false);
-                dialog.show();
-                boolean bypass = true;
-                for (int i = 0; i < memberList.size(); i++) {
-                    if(memberList.get(i).Name.isEmpty() && memberList.get(i).RegNum.isEmpty())
-                    bypass = false;
-                }
-                if(bypass) {
-                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Registration");
-                    if (isNetworkAvailable() && isOnline() ) {
-                        incrementCounter(FirebaseDatabase.getInstance().getReference().child("Registration Counter"));
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        registerButton.setEnabled(false);
+                        dialog.show();
                     }
-                    else {
-                        registerButton.setEnabled(true);
-                        dialog.dismiss();
-                        Toast.makeText(RegisterActivity.this, "Check Connection and try again", Toast.LENGTH_LONG).show();
+                });
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        boolean bypass = true;
+                        for (int i = 0; i < memberList.size(); i++) {
+                            if (memberList.get(i).Name.isEmpty() && memberList.get(i).RegNum.isEmpty())
+                                bypass = false;
+                        }
+                        if (bypass) {
+                            mDatabase = FirebaseDatabase.getInstance().getReference().child("Registration");
+                            if (isNetworkAvailable() && isOnline()) {
+                                incrementCounter(FirebaseDatabase.getInstance().getReference().child("Registration Counter"));
+                            } else {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        registerButton.setEnabled(true);
+                                        dialog.dismiss();
+                                        Toast.makeText(RegisterActivity.this, "Check Connection and try again", Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
+                            }
+
+                        } else {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    registerButton.setEnabled(true);
+                                    Toast.makeText(RegisterActivity.this, "All the fields are compulsory", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
                     }
-                }
-                else{
-                    registerButton.setEnabled(true);
-                    Toast.makeText(RegisterActivity.this, "All the fields are compulsory", Toast.LENGTH_LONG).show();
-                }
+                });
+
+
             }
         });
 

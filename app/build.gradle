@@ -4,13 +4,13 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "oneiros.muj.oneiros"
+        applicationId 'com.siddharthjaidka.ono'
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 21
         targetSdkVersion 26
-        versionName '1.0.1'
+        versionName '1.0.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 2
+        versionCode 1
     }
     buildTypes {
         release {
