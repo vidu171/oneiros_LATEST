@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         ForgetPassword = findViewById(R.id.forgot_password);
 
-
+        layout.requestFocus();
 
         mAuth = FirebaseAuth.getInstance();
         pref = getSharedPreferences("UserCredentials", MODE_PRIVATE);

@@ -36,6 +36,7 @@
 
 
                 <ImageView
+
                     android:layout_width="100dip"
                     android:layout_height="100dip"
                     android:layout_gravity="center_horizontal"
@@ -229,6 +230,7 @@
 
 
         <LinearLayout
+            android:focusableInTouchMode="true"
             android:background="#a0000000"
             android:animateLayoutChanges="true"
             android:focusable="true"
