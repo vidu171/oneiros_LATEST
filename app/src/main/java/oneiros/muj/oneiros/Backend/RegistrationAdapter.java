@@ -27,6 +27,7 @@ import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import oneiros.muj.oneiros.Constants;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
@@ -37,7 +38,7 @@ import oneiros.muj.oneiros.R;
      */
 
     public class RegistrationAdapter extends RecyclerView.Adapter <oneiros.muj.oneiros.Backend.RegistrationAdapter.MyViewHolder>  {
-
+    int notifyVal;
         private Context myContext;
         private ArrayList<Registered> registrationList;
         int count=0;
@@ -126,12 +127,14 @@ import oneiros.muj.oneiros.R;
                                     .setSmallIcon(R.drawable.ic_snotify)
                                     .setWhen(System.currentTimeMillis())
                                     .setOngoing(false)
+                                    .setVibrate(new long[]{1000, 1000})
                                     .build();
                             try {
                                 notification.contentView.setViewVisibility(myContext.getResources().getIdentifier("right_icon", "id", android.R.class.getPackage().getName()), View.INVISIBLE);
                             }catch(Exception es){}
                             NotificationManager mNotificationManager = (NotificationManager) myContext.getSystemService(Context.NOTIFICATION_SERVICE);
-                            mNotificationManager.notify(1, notification);
+                            notifyVal = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+                            mNotificationManager.notify(notifyVal, notification);
                         } else {
                             holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
                             new RegisteredEvent(myContext).RefundUpdate(holder.rID.getText().toString().trim().replace("Event ID: ", ""));
