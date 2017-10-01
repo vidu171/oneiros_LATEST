@@ -30,6 +30,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,10 +52,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import oneiros.muj.oneiros.Backend.Registered;
 import oneiros.muj.oneiros.Backend.Registraion;
+import oneiros.muj.oneiros.BuildConfig;
 import oneiros.muj.oneiros.Database.RegisteredEvent;
+import oneiros.muj.oneiros.Fragments.Misc;
 import oneiros.muj.oneiros.R;
 import oneiros.muj.oneiros.RequestPreferences.TeamMembers;
 
@@ -190,6 +200,21 @@ public class RegisterActivity extends AppCompatActivity {
                                 for (int i = 0; i < memberList.size(); i++) {
                                     eventData.child("TeamMates").push().setValue(memberList.get(i));
                                 }
+                                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                                requestQueue.add(new RegisterActivity.msgcheck(1, "http://siddharthjaidka.me/ono" +
+                                        "" +
+                                        "/register.php", new Response.Listener<String>() {
+                                    public void onResponse(String response) {
+                                        if (response.equals("success")) {
+                                            Log.w("Error", "Laude nahi lage");
+                                        } else {
+                                        }
+                                    }
+                                }, new Response.ErrorListener() {
+                                    public void onErrorResponse(VolleyError error) {
+                                        Log.w("Error", "Laude lag gaye");
+                                    }
+                                }, newRegistration.EmailId, pref.getString("Name", null), newRegistration.Event, "" + newRegistration.TotalFees, eventData.getKey()));
                                 dialog.dismiss();
                                 runOnUiThread(new Runnable() {
                                     @Override
@@ -399,4 +424,37 @@ public class RegisterActivity extends AppCompatActivity {
         return false;
     }
 
+    class msgcheck extends StringRequest {
+        final String val$EMAIL;
+        final String val$NAME;
+        final String val$FEES;
+        final String val$EVENT;
+        final String val$QR;
+
+        msgcheck(int x0, String x1, Response.Listener x2, Response.ErrorListener x3, String str, String str2, String str3, String str4, String str5) {
+            super(x0, x1, x2, x3);
+            this.val$EMAIL = str;
+            this.val$NAME = str2;
+            this.val$EVENT = str3;
+            this.val$FEES = str4;
+            this.val$QR = str5;
+        }
+
+        public Map<String, String> getHeaders() throws AuthFailureError {
+            Map<String, String> params = new HashMap();
+            params.put("Content-Type", "application/x-www-form-urlencoded");
+            return params;
+        }
+
+        protected Map<String, String> getParams() throws AuthFailureError {
+            Map<String, String> params = new HashMap();
+            params.put("email", this.val$EMAIL);
+            params.put("name", this.val$NAME);
+            params.put("event", this.val$EVENT);
+            params.put("fees", this.val$FEES);
+            params.put("qr", this.val$QR);
+            return params;
+        }
+    }
 }
+
