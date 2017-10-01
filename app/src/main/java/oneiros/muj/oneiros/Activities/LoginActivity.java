@@ -47,7 +47,9 @@ public class LoginActivity extends AppCompatActivity {
     MSG91 msg91;
     long value;
     FrameLayout focus_master;
+
     Boolean isOpen=true;
+
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
     TextView textView, ForgetPassword;
     MaterialDialog progressDialog;
@@ -129,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                     ONO_email.requestFocus();
                     textView.setText("Don't have an account? SignUp ");
                 }
+
                 else{
                     isOpen = true;
                     ForgetPassword.setVisibility(View.INVISIBLE);

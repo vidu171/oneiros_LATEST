@@ -231,10 +231,8 @@
 
 
         <LinearLayout
-            android:focusableInTouchMode="true"
             android:background="#a0000000"
             android:animateLayoutChanges="true"
-            android:focusable="true"
             android:id="@+id/login_to_register"
             android:paddingBottom="10dip"
             android:gravity="bottom"

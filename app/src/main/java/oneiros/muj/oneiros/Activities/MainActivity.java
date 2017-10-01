@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        top = (TabLayout) findViewById(R.id.tab);
-        Pagerfragments = (ViewPager) findViewById(R.id.viewpager);
-        Ono = (ImageView) findViewById(R.id.ONO);
+        top = findViewById(R.id.tab);
+        Pagerfragments = findViewById(R.id.viewpager);
+        Ono = findViewById(R.id.ONO);
         Ono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
