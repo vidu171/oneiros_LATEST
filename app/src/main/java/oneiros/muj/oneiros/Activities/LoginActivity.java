@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         ONO_registration = findViewById(R.id.Rid);
         ONO_university = findViewById(R.id.University);
         ONO_phonenumber = findViewById(R.id.PhoneNumber);
+        textView = findViewById(R.id.hint_text);
         ONO_password = findViewById(R.id.Password);
         layout = findViewById(R.id.login_to_register);
         login = findViewById(R.id.Login);
