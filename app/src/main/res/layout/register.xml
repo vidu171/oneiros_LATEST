@@ -91,7 +91,7 @@
                         >
 
                         <RelativeLayout
-                            android:background="#4507f0cd"
+                            android:background="#505050"
                             android:id="@+id/bar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
                                 android:text="Team Leader"
-                                android:textColor="#000000" />
+                                android:textColor="#FFFFFF" />
                             <TextView
                                 android:id="@+id/fee"
                                 android:layout_marginEnd="14dip"
@@ -112,7 +112,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:text="Fees"
-                                android:textColor="#000000" />
+                                android:textColor="#FFFFFF" />
                         </RelativeLayout>
 
 
@@ -134,7 +134,7 @@
 
                         <LinearLayout
                             android:paddingTop="5dip"
-                            android:background="#f9fafafa"
+                            android:background="#242424"
                             android:layout_below="@id/viewpager"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -154,7 +154,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="5dp"
                                 android:text="Vidhyanshu Kumar Jain Jain"
-                                android:textColor="#000000" />
+                                android:textColor="#FFFFFF" />
 
                             <TextView
                                 android:id="@+id/RegNum"
@@ -163,7 +163,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="5dp"
                                 android:text="169105214"
-                                android:textColor="#000000" />
+                                android:textColor="#FFFFFF" />
 
                             <TextView
                                 android:id="@+id/Contact"
@@ -172,7 +172,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="5dp"
                                 android:text="7869530027"
-                                android:textColor="#000000" />
+                                android:textColor="#FFFFFF" />
 
                             <TextView
                                 android:id="@+id/University"
@@ -181,7 +181,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="5dp"
                                 android:text="Manipal University Jaipur"
-                                android:textColor="#000000" />
+                                android:textColor="#FFFFFF" />
                         </LinearLayout>
 
                         <TextView
@@ -192,7 +192,7 @@
                             android:layout_below="@+id/bar"
                             android:text="250 Rs."
                             android:paddingEnd="17dip"
-                            android:textColor="#000000" />
+                            android:textColor="#FFFFFF" />
 
 
                         </LinearLayout>

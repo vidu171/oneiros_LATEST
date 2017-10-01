@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout layout;
     MSG91 msg91;
     long value;
+    FrameLayout focus_master;
     Boolean isOpen=true;
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
     TextView textView, ForgetPassword;
@@ -70,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        focus_master = findViewById(R.id.layout_l);
         msg91 = new MSG91("176579Aj3z4wdz9g59ca63b3");
         ONO_username = findViewById(R.id.UserName);
         ONO_email = findViewById(R.id.Email);
@@ -86,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         ForgetPassword = findViewById(R.id.forgot_password);
 
-        layout.requestFocus();
+        focus_master.requestFocus();
 
         mAuth = FirebaseAuth.getInstance();
         pref = getSharedPreferences("UserCredentials", MODE_PRIVATE);
