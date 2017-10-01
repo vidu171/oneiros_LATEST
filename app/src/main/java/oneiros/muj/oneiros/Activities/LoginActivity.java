@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -138,6 +139,23 @@ public class LoginActivity extends AppCompatActivity {
                     login.setText("SignIn");
                     ONO_email.requestFocus();
                     textView.setText("Don't have an account? SignUp ");
+
+
+                    ONO_email.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                                    (i == KeyEvent.KEYCODE_ENTER))
+                            {
+                                ONO_email.clearFocus();
+                                ONO_password.requestFocus();
+                                return true;
+                            }
+                            return false;
+
+                        }
+                    });
+
                 }
 
                 else{
@@ -150,6 +168,82 @@ public class LoginActivity extends AppCompatActivity {
                     ONO_username.requestFocus();
                     login.setText("SignUp");
                     textView.setText("Already have an account? SignIn ");
+
+                    ONO_username.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                                    (i == KeyEvent.KEYCODE_ENTER))
+                            {
+                                ONO_username.clearFocus();
+                                ONO_email.requestFocus();
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
+
+
+                    ONO_email.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                                    (i == KeyEvent.KEYCODE_ENTER))
+                            {
+                                ONO_email.clearFocus();
+                                ONO_registration.requestFocus();
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
+
+
+
+                    ONO_registration.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                                    (i == KeyEvent.KEYCODE_ENTER))
+                            {
+                                ONO_registration.clearFocus();
+                                ONO_university.requestFocus();
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
+
+
+                    ONO_university.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                                    (i == KeyEvent.KEYCODE_ENTER))
+                            {
+                                ONO_university.clearFocus();
+                                ONO_phonenumber.requestFocus();
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
+
+
+
+                    ONO_phonenumber.setOnKeyListener(new View.OnKeyListener() {
+                        @Override
+                        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                            if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) &&
+                                    (i == KeyEvent.KEYCODE_ENTER))
+                            {
+                                ONO_phonenumber.clearFocus();
+                                ONO_password.requestFocus();
+                                return true;
+                            }
+                            return false;
+                        }
+                    });
                 }
             }
         });

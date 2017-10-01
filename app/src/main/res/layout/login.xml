@@ -45,7 +45,7 @@
 
 
                 <EditText
-                    android:focusable="true"
+
                     android:id="@+id/UserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -53,6 +53,7 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="40dp"
+                    android:inputType="textPersonName"
                     android:backgroundTint="#90fafafa"
                     android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:drawablePadding="25dp"
@@ -72,7 +73,6 @@
 
 
                 <EditText
-                    android:focusable="true"
                     android:id="@+id/Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,6 +80,7 @@
                     android:layout_marginEnd="30dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
+                    android:inputType="textEmailAddress"
                     android:backgroundTint="#90fafafa"
                     android:drawablePadding="25dp"
                     android:drawableStart="@drawable/ic_email_sv"
@@ -121,6 +122,7 @@
 
 
                 <EditText
+
                     android:id="@+id/University"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,7 +147,6 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:digits="+0987654321"
                     android:id="@+id/PhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -154,13 +155,13 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#90fafafa"
+                    android:cursorVisible="false"
                     android:drawablePadding="25dp"
                     android:drawableStart="@drawable/ic_phone"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="left"
                     android:hint="Phone Number"
                     android:inputType="phone"
-                    android:maxLines="1"
                     android:paddingBottom="15dp"
                     android:paddingEnd="24dip"
                     android:paddingStart="34dip"
