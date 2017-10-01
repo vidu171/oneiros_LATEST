@@ -91,7 +91,7 @@
                         >
 
                         <RelativeLayout
-                            android:background="#505050"
+                            android:background="#88d8d2"
                             android:id="@+id/bar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
