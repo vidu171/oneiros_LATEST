@@ -43,12 +43,7 @@ public class MainActivity extends AppCompatActivity {
         top = findViewById(R.id.tab);
         Pagerfragments = findViewById(R.id.viewpager);
         Ono = findViewById(R.id.ONO);
-        Ono.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, TestActivity.class));
-            }
-        });
+
         if (getIntent().getStringExtra("showDialogue") != null) {
             final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             LayoutInflater inflater = getLayoutInflater();//
