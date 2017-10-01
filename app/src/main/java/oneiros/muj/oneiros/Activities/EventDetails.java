@@ -29,7 +29,7 @@ public class EventDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eventlayout);
-
+        
         final Intent i = getIntent();
         Name = findViewById(R.id.Name);
         Fees = findViewById(R.id.Fees);
