@@ -17,7 +17,6 @@
         android:hardwareAccelerated="true"
         android:largeHeap="true"
         >
-        <activity android:name=".Activities.TestActivity"/>
 
         <activity android:name=".Activities.FirstActivity"
             android:screenOrientation="portrait"
