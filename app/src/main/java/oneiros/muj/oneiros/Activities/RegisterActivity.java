@@ -176,14 +176,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 } else {
                                     newRegistration.TotalFees = getIntent().getIntExtra("Fees", -1);
                                 }
-                                if (newRegistration.EventId.equals("-KtrYxH1JXCGmHicczIw")) {
-                                    if (memberList.size() < 10) {
-                                        newRegistration.TotalFees = 800;
-                                    } else {
-                                        int n = memberList.size() - 10;
-                                        newRegistration.TotalFees = 800 + (100 * (n + 1));
-                                    }
-                                }
                                 // Todo Update Date And Time
 
                                 Date todaysDate = new Date();
@@ -375,14 +367,6 @@ public class RegisterActivity extends AppCompatActivity {
             TotalFees = getIntent().getIntExtra("Fees", -1) * (memberList.size() + 1);
         } else {
             TotalFees = getIntent().getIntExtra("Fees", -1);
-        }
-        if (getIntent().getStringExtra("EventKey").equals("-KtrYxH1JXCGmHicczIw")) {
-            if (memberList.size() < 10) {
-                TotalFees = 800;
-            } else {
-                int n = memberList.size() - 10;
-                TotalFees = 800 + (100 * (n + 1));
-            }
         }
 
         return TotalFees;

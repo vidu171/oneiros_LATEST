@@ -29,7 +29,7 @@ public class EventDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eventlayout);
-
+        
         final Intent i = getIntent();
         Name = findViewById(R.id.Name);
         Fees = findViewById(R.id.Fees);
@@ -60,11 +60,10 @@ public class EventDetails extends AppCompatActivity {
             Participation.setText("Single");
         }
 
-        if(i.getStringExtra("EventKey").equals("-KtrYxH1JXCGmHicczIw")){
-            Fees.setText("Rs. 800 for first 10 pesron\nAnd then Rs. 100 per person");
-            Participation.setText("Team");
+        if(i.getStringExtra("EventKey").equals("-KtrYxGHWjtAOWTR3u_A")){
+            Fees.setText("Rs. 300 per Team ");
+            Participation.setText("Team\nPlease Give the Details of\nthe members in the Email");
         }
-//
         if(!getIntent().getBooleanExtra("RegistrationOpen",true)){
             Register.setEnabled(false);
             Register.setText("Registration Closed");
@@ -91,7 +90,6 @@ public class EventDetails extends AppCompatActivity {
             Register.setTextColor(getResources().getColor(R.color.half_black));
             Register.setBackground(getDrawable(R.drawable.button_shape));
         }
-
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -82,7 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         ONO_password = findViewById(R.id.Password);
         layout = findViewById(R.id.login_to_register);
         login = findViewById(R.id.Login);
-        textView = findViewById(R.id.hint_text);
         progressDialog= new MaterialDialog.Builder(this)
                 .progress(true, 0)
                 .cancelable(false)
