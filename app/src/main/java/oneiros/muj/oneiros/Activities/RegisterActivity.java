@@ -201,9 +201,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     eventData.child("TeamMates").push().setValue(memberList.get(i));
                                 }
                                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                                requestQueue.add(new RegisterActivity.msgcheck(1, "http://siddharthjaidka.me/ono" +
-                                        "" +
-                                        "/register.php", new Response.Listener<String>() {
+                                requestQueue.add(new RegisterActivity.msgcheck(1, "http://siddharthjaidka.me/ono/register.php", new Response.Listener<String>() {
                                     public void onResponse(String response) {
                                         if (response.equals("success")) {
                                             Log.w("Error", "Laude nahi lage");

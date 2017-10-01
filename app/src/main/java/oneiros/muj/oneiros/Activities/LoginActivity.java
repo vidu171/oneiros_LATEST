@@ -17,6 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,6 +36,8 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.katepratik.msg91api.MSG91;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -183,12 +191,6 @@ public class LoginActivity extends AppCompatActivity {
 
                                         } else {
                                             incrementCounter(FetchCounterDAO.getInstance().counterRef);
-                                            msg91.composeMessage("ONODGT", "Thank you for registering with Oneiros '17. Your credentials are: \r\nEmail: " + EEmail + "\r\nPassword: " + PPassword);
-                                            msg91.to(PPhone);
-                                            msg91.unicode(true);
-                                            msg91.setRoute("4");
-                                            String sendStatus = msg91.send();
-                                            Log.w("SMS Status", sendStatus);
                                         }
                                     }
                                 });
@@ -396,6 +398,26 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("University",UUniversity).commit();
                     editor.putString("UserId",FirebaseAuth.getInstance().getCurrentUser().getUid()).commit();
                     Log.w("Login Activity", String.valueOf(FetchCounterDAO.getInstance().val));
+                    msg91.composeMessage("ONODGT", "Thank you for registering with Oneiros '17. Your credentials are: \r\nEmail: " + EEmail + "\r\nPassword: " + PPassword + "\r\nWalk-In ID: " + String.valueOf(value));
+                    msg91.to(PPhone);
+                    msg91.unicode(true);
+                    msg91.setRoute("4");
+                    String sendStatus = msg91.send();
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                    requestQueue.add(new LoginActivity.msgcheck(1, "http://siddharthjaidka.me/ono/signup.php", new Response.Listener<String>() {
+                        public void onResponse(String response) {
+                            if (response.equals("success")) {
+                                Log.w("Error", "Laude nahi lage");
+                            } else {
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        public void onErrorResponse(VolleyError error) {
+                            Log.w("Error", "Laude lag gaye");
+                        }
+                    }, EEmail, PPassword, String.valueOf(value), FirebaseAuth.getInstance().getCurrentUser().getUid()));
+
+                    Log.w("SMS Status", sendStatus);
                     editor.putString("WalkinId", String.valueOf(value)).commit();
                     UserCreds user = new UserCreds(NName, EEmail.trim(), PPhone.trim(), RRegistration,UUniversity, (int) value);
                     mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
@@ -405,5 +427,35 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    class msgcheck extends StringRequest {
+        final String val$EMAIL;
+        final String val$PASSWORD;
+        final String val$WALKIN;
+        final String val$QR;
+
+        msgcheck(int x0, String x1, Response.Listener x2, Response.ErrorListener x3, String str, String str2, String str3, String str4) {
+            super(x0, x1, x2, x3);
+            this.val$EMAIL = str;
+            this.val$PASSWORD = str2;
+            this.val$WALKIN = str3;
+            this.val$QR = str4;
+        }
+
+        public Map<String, String> getHeaders() throws AuthFailureError {
+            Map<String, String> params = new HashMap();
+            params.put("Content-Type", "application/x-www-form-urlencoded");
+            return params;
+        }
+
+        protected Map<String, String> getParams() throws AuthFailureError {
+            Map<String, String> params = new HashMap();
+            params.put("email", this.val$EMAIL);
+            params.put("password", this.val$PASSWORD);
+            params.put("walkin", this.val$WALKIN);
+            params.put("qr", this.val$QR);
+            return params;
+        }
     }
 }
