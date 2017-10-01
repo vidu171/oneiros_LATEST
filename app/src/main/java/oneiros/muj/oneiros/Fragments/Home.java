@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -222,4 +223,25 @@ public class Home extends Fragment {
             }
 
     }
+
+    @Override
+    public void setUserVisibleHint(boolean visible) {
+        super.setUserVisibleHint(visible);
+        if (visible) {
+            Log.w("Status", "Visible");
+            try {
+                RegisteredEvent dbHelper = new RegisteredEvent(getContext());
+                ArrayList<Registered> list = dbHelper.getRegisteredList();
+                if (list.size() != 0) {
+                    RegCard.setVisibility(View.VISIBLE);
+                    rAdapter = new RegistrationAdapter(getActivity(), list);
+                    rListView.setAdapter(rAdapter);
+                } else {
+                    RegCard.setVisibility(View.GONE);
+                }
+            } catch (Exception es) {
+            }
+        }
+    }
+
 }

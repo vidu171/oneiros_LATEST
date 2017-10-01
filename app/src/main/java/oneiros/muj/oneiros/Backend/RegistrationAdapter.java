@@ -117,7 +117,7 @@ import oneiros.muj.oneiros.R;
                     if(feesVal!=null) {
                         if (feesVal == 1) {
                             holder.fees_status.setBackgroundColor(Color.parseColor("#8cc152"));//green
-                            new RegisteredEvent(myContext).confirmUpdate(holder.rID.getText().toString());
+                            new RegisteredEvent(myContext).confirmUpdate(holder.rID.getText().toString().trim().replace("Event ID: ", ""));
                             Bitmap icon = BitmapFactory.decodeResource(myContext.getResources(), R.drawable.ono_notify);
                             Notification notification = new NotificationCompat.Builder(myContext)
                                     .setContentTitle("Event Fee Receipt")
@@ -134,7 +134,7 @@ import oneiros.muj.oneiros.R;
                             mNotificationManager.notify(1, notification);
                         } else {
                             holder.fees_status.setBackgroundColor(Color.parseColor("#da4453"));//red
-                            new RegisteredEvent(myContext).RefundUpdate(holder.rID.getText().toString());
+                            new RegisteredEvent(myContext).RefundUpdate(holder.rID.getText().toString().trim().replace("Event ID: ", ""));
                         }
                     }
                 }
