@@ -44,7 +44,7 @@
             android:layout_below="@id/memberName"
             android:layout_gravity="center_horizontal"
             android:focusable="true"
-            android:hint="Registration No."
+            android:hint="College ID"
             android:maxLines="1"
             android:paddingBottom="12dp"
             android:paddingStart="16dip"
