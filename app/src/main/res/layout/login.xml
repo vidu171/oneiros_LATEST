@@ -94,7 +94,6 @@
 
 
                 <EditText
-                    android:digits="0987654321"
                     android:id="@+id/Rid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,7 +107,7 @@
                     android:drawableStart="@drawable/ic_rid"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="left"
-                    android:hint="Registration Number"
+                    android:hint="College ID"
                     android:inputType="phone"
                     android:paddingBottom="15dp"
                     android:paddingEnd="24dip"
