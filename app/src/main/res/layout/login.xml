@@ -35,6 +35,7 @@
 
 
                 <ImageView
+
                     android:layout_width="100dip"
                     android:layout_height="100dip"
                     android:layout_gravity="center_horizontal"
@@ -93,7 +94,6 @@
 
 
                 <EditText
-                    android:digits="0987654321"
                     android:id="@+id/Rid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                     android:drawableStart="@drawable/ic_rid"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="left"
-                    android:hint="Registration Number"
+                    android:hint="College ID"
                     android:inputType="phone"
                     android:paddingBottom="15dp"
                     android:paddingEnd="24dip"
@@ -229,6 +229,7 @@
 
 
         <LinearLayout
+            android:focusableInTouchMode="true"
             android:background="#a0000000"
             android:animateLayoutChanges="true"
             android:focusable="true"
