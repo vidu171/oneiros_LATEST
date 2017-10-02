@@ -37,6 +37,11 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.katepratik.msg91api.MSG91;
 
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -55,8 +60,9 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout layout;
     MSG91 msg91;
     long value;
+    boolean valueC;
     FrameLayout focus_master;
-
+    String errorMsg;
     Boolean isOpen=true;
 
     EditText ONO_username, ONO_email,ONO_registration,ONO_university,ONO_phonenumber,ONO_password;
@@ -205,19 +211,34 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim();
                         final String finalEEmail1 = EEmail;
                         final String finalEEmail2 = EEmail;
-                        progressDialog.setContent("Signing Up");
-                        progressDialog.show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressDialog.setContent("Signing Up");
+                                progressDialog.show();
+                            }
+                        });
                         mAuth.createUserWithEmailAndPassword(EEmail, PPassword)
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
+                                        Log.w("LoginActivity", task.getException());
+                                        try {
+                                            errorMsg = task.getException().getMessage();
+                                        } catch (Exception e) {
+                                        }
                                         if (!task.isSuccessful()) {
-                                            progressDialog.dismiss();
-                                            Log.w("LoginActivity",task.getException());
-                                            Toast.makeText(LoginActivity.this, "" + task.getException().getMessage(),
-                                                    Toast.LENGTH_SHORT).show();
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(LoginActivity.this, "" + errorMsg,
+                                                            Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
 
                                         } else {
+                                            Log.w("Status", "Entered");
                                             incrementCounter(FetchCounterDAO.getInstance().counterRef);
                                         }
                                     }
@@ -234,14 +255,24 @@ public class LoginActivity extends AppCompatActivity {
                         EEmail = EEmail.trim().toLowerCase();
 
                         final String finalEEmail = EEmail;
-                        progressDialog.setContent("Signing In");
-                        progressDialog.show();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressDialog.setContent("Signing In");
+                                progressDialog.show();
+                            }
+                        });
                         mAuth.signInWithEmailAndPassword(EEmail, PPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull final Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
                                     // there was an error
-                                    progressDialog.dismiss();
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                        }
+                                    });
                                     Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException().getMessage(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
@@ -257,17 +288,22 @@ public class LoginActivity extends AppCompatActivity {
                                                 }
                                                 final UserCreds User = listFutureForUserData.get();
                                                 if (User != null) {
-                                                        Log.w("-->",mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Name").toString());
-                                                        editor.putString("Name",User.Name).commit();
-                                                        editor.putString("EmailId", User.EmailId.trim().toLowerCase()).commit();
-                                                        editor.putString("Contact",User.Contact).commit();
-                                                        editor.putString("RegNo.",User.RegNum).commit();
-                                                        editor.putString("University",User.University).commit();
-                                                        editor.putString("WalkinId", String.valueOf(User.WalkinId));
-                                                        editor.putString("UserId",task.getResult().getUser().getUid()).commit();
-                                                    progressDialog.dismiss();
-                                                    startActivity(new Intent(LoginActivity.this, SplashScreen.class));
-                                                    finish();
+                                                    runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            Log.w("-->", mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Name").toString());
+                                                            editor.putString("Name", User.Name).commit();
+                                                            editor.putString("EmailId", User.EmailId.trim().toLowerCase()).commit();
+                                                            editor.putString("Contact", User.Contact).commit();
+                                                            editor.putString("RegNo.", User.RegNum).commit();
+                                                            editor.putString("University", User.University).commit();
+                                                            editor.putString("WalkinId", String.valueOf(User.WalkinId));
+                                                            editor.putString("UserId", task.getResult().getUser().getUid()).commit();
+                                                            progressDialog.dismiss();
+                                                            startActivity(new Intent(LoginActivity.this, SplashScreen.class));
+                                                            finish();
+                                                        }
+                                                    });
                                                 }
 
                                             } catch (InterruptedException e) {
@@ -294,16 +330,25 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(Collapsed_check(ONO_email.getText().toString().trim().toLowerCase(), "nullnull")) {
-
-                    progressDialog.setContent("Please Wait");
-                    progressDialog.show();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.setContent("Please Wait");
+                            progressDialog.show();
+                        }
+                    });
                     mAuth.sendPasswordResetEmail(ONO_email.getText().toString().trim().toLowerCase())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        progressDialog.dismiss();
-                                        Toast.makeText(LoginActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(LoginActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                     } else {
                                         Toast.makeText(LoginActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                     }
@@ -419,71 +464,70 @@ public class LoginActivity extends AppCompatActivity {
                 if (databaseError != null) {
                     System.out.println("Firebase counter increment failed.");
                 } else {
-                    editor.putString("Name",NName).commit();
-                    editor.putString("EmailId", EEmail).commit();
-                    editor.putString("Contact",PPhone).commit();
-                    editor.putString("RegNo.",RRegistration).commit();
-                    editor.putString("University",UUniversity).commit();
-                    editor.putString("UserId",FirebaseAuth.getInstance().getCurrentUser().getUid()).commit();
-                    Log.w("Login Activity", String.valueOf(FetchCounterDAO.getInstance().val));
-                    msg91.composeMessage("ONODGT", "Thank you for registering with Oneiros '17. Your credentials are: \r\nEmail: " + EEmail + "\r\nPassword: " + PPassword + "\r\nWalk-In ID: " + String.valueOf(value));
-                    msg91.to(PPhone);
-                    msg91.unicode(true);
-                    msg91.setRoute("4");
-                    String sendStatus = msg91.send();
-                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-                    requestQueue.add(new LoginActivity.msgcheck(1, "http://siddharthjaidka.me/ono/signup.php", new Response.Listener<String>() {
-                        public void onResponse(String response) {
-                            if (response.equals("success")) {
-                                Log.w("Error", "Laude nahi lage");
-                            } else {
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                        public void onErrorResponse(VolleyError error) {
-                            Log.w("Error", "Laude lag gaye");
-                        }
-                    }, EEmail, PPassword, String.valueOf(value), FirebaseAuth.getInstance().getCurrentUser().getUid()));
-
-                    Log.w("SMS Status", sendStatus);
-                    editor.putString("WalkinId", String.valueOf(value)).commit();
-                    UserCreds user = new UserCreds(NName, EEmail.trim(), PPhone.trim(), RRegistration,UUniversity, (int) value);
-                    mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-                    progressDialog.dismiss();
-                    startActivity(new Intent(LoginActivity.this, SplashScreen.class));
-                    finish();
+                    new MyTask().execute();
                 }
             }
         });
     }
 
-    class msgcheck extends StringRequest {
-        final String val$EMAIL;
-        final String val$PASSWORD;
-        final String val$WALKIN;
-        final String val$QR;
+    private class MyTask extends AsyncTask<Void, Void, String> {
 
-        msgcheck(int x0, String x1, Response.Listener x2, Response.ErrorListener x3, String str, String str2, String str3, String str4) {
-            super(x0, x1, x2, x3);
-            this.val$EMAIL = str;
-            this.val$PASSWORD = str2;
-            this.val$WALKIN = str3;
-            this.val$QR = str4;
+        @Override
+        protected void onPreExecute() {
+            UserCreds user = new UserCreds(NName, EEmail.trim(), PPhone.trim(), RRegistration, UUniversity, (int) value);
+            mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
+            editor.putString("Name", NName);
+            editor.putString("EmailId", EEmail);
+            editor.putString("Contact", PPhone);
+            editor.putString("RegNo.", RRegistration);
+            editor.putString("University", UUniversity);
+            editor.putString("UserId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+            editor.putString("WalkinId", String.valueOf(value));
+            editor.commit();
+
         }
 
-        public Map<String, String> getHeaders() throws AuthFailureError {
-            Map<String, String> params = new HashMap();
-            params.put("Content-Type", "application/x-www-form-urlencoded");
-            return params;
+        @Override
+        protected String doInBackground(Void... params) {
+            String smsString = "Thank you for registering with Oneiros '17. Your credentials are: %0AEmail: " + EEmail + "%0APassword: " + PPassword + "%0AWalk-In Id: " + String.valueOf(value);
+            Connection.Response res = null;
+            try {
+                res = Jsoup.connect("http://api.msg91.com/api/sendhttp.php?authkey=176579Aj3z4wdz9g59ca63b3&mobiles=" + PPhone + "&message=" + smsString + "&sender=ONODGT&route=4&unicode=1")
+                        .userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21")
+                        .timeout(10000)
+                        .execute();
+                System.out.println(res.parse().toString());
+                res = Jsoup.connect("http://siddharthjaidka.me/ono/signup.php")
+                        .userAgent("Chrome/19.0.1042.0")
+                        .timeout(1000000)
+                        .validateTLSCertificates(false)
+                        .followRedirects(true)
+                        .data("email", EEmail, "password", PPassword, "walkin", String.valueOf(value), "qr", FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .method(Connection.Method.POST)
+                        .execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String result = "";
+            try {
+                if (res.parse().toString().toLowerCase().contains("success"))
+                    result = "success";
+                else
+                    result = "failed";
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return result;
         }
 
-        protected Map<String, String> getParams() throws AuthFailureError {
-            Map<String, String> params = new HashMap();
-            params.put("email", this.val$EMAIL);
-            params.put("password", this.val$PASSWORD);
-            params.put("walkin", this.val$WALKIN);
-            params.put("qr", this.val$QR);
-            return params;
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result.equals("success")) {
+                progressDialog.dismiss();
+                startActivity(new Intent(LoginActivity.this, SplashScreen.class));
+                finishAffinity();
+            }
         }
     }
 }
