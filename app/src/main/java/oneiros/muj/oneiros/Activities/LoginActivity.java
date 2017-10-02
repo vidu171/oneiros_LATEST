@@ -334,7 +334,7 @@ public class LoginActivity extends AppCompatActivity {
 
         else
         if (TextUtils.isEmpty(University)){
-            ONO_university.setError("University Name cannot be left empty");
+            ONO_university.setError("University name cannot be left empty");
             return false;
         }
 
@@ -342,7 +342,7 @@ public class LoginActivity extends AppCompatActivity {
 
         else
         if(Phone.length()!=10){
-            ONO_phonenumber.setError("Phone Number invalid");
+            ONO_phonenumber.setError("Phone number invalid");
             return false;
         }
 
@@ -366,7 +366,7 @@ public class LoginActivity extends AppCompatActivity {
 
         else
         if(!Email.contains("@")){
-            ONO_email.setError("Please enter a valid emain");
+            ONO_email.setError("Please enter a valid email");
             return false;
         }
 
