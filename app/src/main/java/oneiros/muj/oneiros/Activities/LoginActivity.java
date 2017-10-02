@@ -488,7 +488,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(Void... params) {//new
             String smsString = "Thank you for registering with Oneiros '17. Your credentials are: %0AEmail: " + EEmail + "%0APassword: " + PPassword + "%0AWalk-In Id: " + String.valueOf(value);
             Connection.Response res = null;
             try {
