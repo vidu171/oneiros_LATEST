@@ -1,7 +1,10 @@
 package oneiros.muj.oneiros.Backend;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 import oneiros.muj.oneiros.Activities.EventDetails;
+import oneiros.muj.oneiros.Activities.SplashScreen;
 import oneiros.muj.oneiros.R;
 
 /**
@@ -38,7 +42,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapt
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
         final RetrivedEvent currentEvent= myProvider.get(position);
         holder.TITLE.setText(currentEvent.Name);
         holder.TITLE.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +65,10 @@ public class recyclerViewAdapter extends RecyclerView.Adapter <recyclerViewAdapt
                 i.putExtra("Location",currentEvent.Location);
                 i.putExtra("Contact",currentEvent.Contact);
                 Log.w("Check 123", currentEvent.EventKey);
+
+
+                //TOdo -> Replace if not needed
+                //Bundle bundle = ActivityOptions.makeSceneTransitionAnimation((Activity) myContext, holder.TITLE, holder.TITLE.getTransitionName()).toBundle();
                 myContext.startActivity(i);
             }
         });

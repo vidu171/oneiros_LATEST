@@ -34,11 +34,11 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/ONE"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginBottom="55dip"
                 android:alpha="0.5" />
 
             <TextView
@@ -66,11 +66,11 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/TWO"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginBottom="55dip"
                 android:alpha="0.5" />
 
             <TextView
@@ -105,11 +105,11 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/THREE"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginBottom="55dip"
                 android:alpha="0.5" />
 
             <TextView
@@ -137,11 +137,11 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/FOUR"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginBottom="55dip"
                 android:alpha="0.5" />
 
             <TextView
@@ -176,11 +176,11 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/FIVE"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginBottom="55dip"
                 android:alpha="0.5" />
 
             <TextView
@@ -208,11 +208,11 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/SIX"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginBottom="55dip"
                 android:alpha="0.5" />
 
             <TextView
@@ -248,12 +248,14 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+
+
+            <ImageView
                 android:id="@+id/SEVEN"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
-                android:alpha="0.5" />
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:alpha="0.5"
+                android:layout_marginBottom="55dip"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -267,7 +269,11 @@
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
+
         </LinearLayout>
+
+
+
 
         <LinearLayout
             android:id="@+id/coreoe"
@@ -280,11 +286,11 @@
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/EIGHT"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="55dip"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginBottom="55dip"
                 android:alpha="0.5" />
 
             <TextView

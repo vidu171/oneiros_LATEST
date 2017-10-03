@@ -30,6 +30,7 @@ public class EventDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.eventlayout);
         
+        
         final Intent i = getIntent();
         Name = findViewById(R.id.Name);
         Fees = findViewById(R.id.Fees);
@@ -84,12 +85,17 @@ public class EventDetails extends AppCompatActivity {
             Contacts.setText(i.getStringExtra("Contact"));
         }catch (Exception es){}
         RegisteredEvent db = new RegisteredEvent(EventDetails.this);
+
+
+
         if(db.isAlreadyRegistered(i.getStringExtra("EventKey"))){
             Register.setEnabled(false);
             Register.setText("Already Registered");
             Register.setTextColor(getResources().getColor(R.color.half_black));
             Register.setBackground(getDrawable(R.drawable.button_shape));
         }
+
+
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
