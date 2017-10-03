@@ -4,13 +4,13 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId 'com.siddharthjaidka.ono'
+        applicationId 'oneiros.muj.oneiros'
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 21
         targetSdkVersion 26
         versionName '1.0.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionCode 1
+        versionCode 3
     }
     buildTypes {
         release {
@@ -55,6 +55,5 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.4.7'
     compile 'com.katepratik.msg91-android-sdk:library:0.1'
     compile 'org.jsoup:jsoup:1.10.3'
-
 }
 apply plugin: 'com.google.gms.google-services'
