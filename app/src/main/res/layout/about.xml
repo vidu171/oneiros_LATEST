@@ -47,6 +47,7 @@
                 android:tint="#ff999999" />
 
             <TextView
+                android:focusable="false"
                 android:id="@+id/uName"
                 android:layout_width="fill_parent"
                 android:layout_height="40.0dip"
@@ -82,6 +83,7 @@
                 android:tint="#ff999999" />
 
             <TextView
+                android:focusable="false"
                 android:id="@+id/uEmail"
                 android:layout_width="fill_parent"
                 android:layout_height="40.0dip"
@@ -152,6 +154,7 @@
                 android:tint="#ff999999" />
 
             <TextView
+                android:focusable="false"
                 android:id="@+id/uUni"
                 android:layout_width="fill_parent"
                 android:layout_height="40.0dip"
@@ -187,6 +190,7 @@
                 android:tint="#ff999999" />
 
             <TextView
+                android:focusable="false"
                 android:id="@+id/uID"
                 android:layout_width="fill_parent"
                 android:layout_height="40.0dip"
