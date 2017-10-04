@@ -50,7 +50,7 @@ public class Developers extends AppCompatActivity {
         String vidyanshu = "CS engineer in making. Loves SpongeBob for no reason. Or maybe there is one. No one would ever know. And yeah Algorithms turns him on!";
         String vineet = "One of the most hard working lad you'll get to meet in Manipal University. Age 20, Working as Student, Human. We thank our EC for working day and night for the website setup.";
         String sadana = "Coder and designer combined, Mr sadana played a key role in the making of the website. Team oneiros would forever be thankful to you for those pop corns and late night shelters.";
-        String sasank = "Chilled personality with a 'ye to aaj rat hi ho jeaga' motto.";
+        String sasank = "Chilled personality with a 'ye to aaj rat hi ho jeaga' motto. But hinestly the star performer of the c";
         String Parth = "Being a student of CSE, he has a inquisitive personality and a zeal to learn more with inclination towards Android Development and Cyber Security.";
 
 

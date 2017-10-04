@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         top.getTabAt(0).setIcon(R.drawable.ic_event);
         top.getTabAt(1).setIcon(R.drawable.ic_home);
         top.getTabAt(2).setIcon(R.drawable.ic_grade);
+        top.getTabAt(3).setIcon(R.drawable.heart);
         Generate_name = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
