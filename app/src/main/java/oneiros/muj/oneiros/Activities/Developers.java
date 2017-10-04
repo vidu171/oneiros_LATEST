@@ -24,9 +24,7 @@ public class Developers extends AppCompatActivity {
 
 
     ImageView frameLayout;
-    Bitmap largeIcon;
     HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager;
-    int images[]= {R.drawable.sid_sid,R.drawable.vineet_vinnet,R.drawable.nibble_nibble,R.drawable.vidu  ,R.drawable.tushar_tushar, R.drawable.sha_sha,R.drawable.mad_mad};
     int images2[]= {R.drawable.asid_sid,R.drawable.avineet_vinnet,R.drawable.anibble_nibble,R.drawable.avidu  ,R.drawable.atushar_tushar, R.drawable.asha_sha,R.drawable.amad_mad};
 
     @Override
