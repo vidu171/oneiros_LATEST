@@ -189,7 +189,7 @@ public class SplashScreen extends AppCompatActivity {
         if(isNetworkAvailable())
             new FetchData().execute("");
         else
-            showSnackBar("no internet connection !","Retry");
+            showSnackBar("no internet connection ","Retry");
     }
 
 }
