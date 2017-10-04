@@ -57,25 +57,25 @@ public class Developers extends AppCompatActivity {
         private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.sid, R.drawable.sid_sid,"Siddharth Jaidka","Advisory"
-                        ,siddhart),
+                        ,siddhart,"https://www.facebook.com/sidjaidka"),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.vineet, R.drawable.vineet_vinnet,"Vineet Sharma","Executive Committee"
-                        ,vineet),
+                        ,vineet,"https://www.facebook.com/Vineetthesharma"),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.aashis, R.drawable.nibble_nibble,"Aashis Kumar","Core Committee: App Development"
-                        ,aashis),
+                        ,aashis,"https://www.facebook.com/echoMeAesher"),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.team_vidyanshu, R.drawable.vidu,"Vidhyanshu Jain","Core Committee: App Development"
-                        ,vidyanshu),
+                        ,vidyanshu,"https://www.facebook.com/vidu.jain.3"),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.tushar, R.drawable.tushar_tushar,"Tushar Sadana","Core Committee: Web Development"
-                        ,sadana),
+                        ,sadana,"https://www.facebook.com/Tushar94900"),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.sha_sha, R.drawable.sha_sha,"Shashank Singh Solanki","Core Committee: Web Development"
-                        ,sasank),
+                        ,sasank,"https://www.facebook.com/sforshashank"),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.mad, R.drawable.mad_mad,"Suyash Mandhana","Core Committee: Web Development"
-                        ,Parth),
+                        ,Parth,"https://www.facebook.com/suyash.mandhana.5"),
 
 
 

@@ -1,8 +1,11 @@
 package oneiros.muj.oneiros.Backend;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -31,6 +34,18 @@ public class HorizontalPager_utilities {
         final TextView Description = view.findViewById(R.id.description);
         Description.setText(libraryObject.getDescription());
 
+        final  ImageView faceBook = view.findViewById(R.id.facebook);
+
+        faceBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(libraryObject.getLink()));
+                view.getContext().startActivity(i);
+            }
+        });
+
     }
 
 
@@ -44,18 +59,20 @@ public class HorizontalPager_utilities {
         private int mBack;
         private String mDesig;
         private String mDescription;
+        private String mLink;
 
-        public LibraryObject(final int res, final int back, final String title, final String desig, final String description) {
+        public LibraryObject(final int res, final int back, final String title, final String desig, final String description, final String Link) {
             mRes = res;
             mBack = back;
             mTitle = title;
             mDesig = desig;
             mDescription = description;
+            mLink = Link;
 
         }
 
 
-
+        String getLink() {return  mLink;}
 
         String getTitle() {
             return mTitle;
