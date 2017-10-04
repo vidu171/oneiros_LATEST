@@ -49,14 +49,14 @@ public class Developers extends AppCompatActivity {
         String siddhart = "The wizard of Manipal University. He can do magic with his laptop. Need help? Stuck at code? Knock at his place. He'll be keen to help........ Didn't answer? Must be sleeping ;D.";
         String vidyanshu = "CS engineer in making. Loves SpongeBob for no reason. Or maybe there is one. No one would ever know. And yeah Algorithms turns him on!";
         String vineet = "One of the most hard working lad you'll get to meet in Manipal University. Age 20, Working as Student, Human. We thank our EC for working day and night for the website setup.";
-        String sadana = "Coder and designer combined, Mr sadana played a key role in the making of the website. Team oneiros would forever be thankful to you for those pop corns and late night shelters.";
-        String sasank = "Chilled personality with a 'ye to aaj rat hi ho jeaga' motto. But hinestly the star performer of the c";
+        String sadana = "Developer, Coder and Designer combined, Mr.Sadana played a key role in everything. Team Web and App Dev would forever be thankful to you for those popcorns and late night shelters.";
+        String sasank = "Chilled personality with a 'ye to aaj rat hi ho jeaga' motto. But honestly the star performer of the committee";
         String Parth = "Being a student of CSE, he has a inquisitive personality and a zeal to learn more with inclination towards Android Development and Cyber Security.";
 
 
         private final HorizontalPager_utilities.LibraryObject[] LIBRARIES = new HorizontalPager_utilities.LibraryObject[]{
 
-                new HorizontalPager_utilities.LibraryObject(R.drawable.sid, R.drawable.sid_sid,"Siddhart Jaidka","Advisory"
+                new HorizontalPager_utilities.LibraryObject(R.drawable.sid, R.drawable.sid_sid,"Siddharth Jaidka","Advisory"
                         ,siddhart),
 
                 new HorizontalPager_utilities.LibraryObject(R.drawable.vineet, R.drawable.vineet_vinnet,"Vineet Sharma","Executive Committee"

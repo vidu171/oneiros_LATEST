@@ -21,6 +21,9 @@
     <color name="half__more_white">#ceffffff</color>
     <color name="half_black">#666565</color>
 
+    <color name="galleryCurrentItemOverlay">@android:color/transparent</color>
+    <color name="galleryItemOverlay">#cc000000</color>
+
     <array name="Oneiros_colors">
         <item>@color/One</item>
     </array>

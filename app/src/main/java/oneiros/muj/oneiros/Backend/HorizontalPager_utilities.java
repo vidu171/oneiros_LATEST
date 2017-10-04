@@ -51,6 +51,7 @@ public class HorizontalPager_utilities {
             mTitle = title;
             mDesig = desig;
             mDescription = description;
+
         }
 
 
