@@ -150,6 +150,7 @@ public class Home extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
         isCollapsed = true;
         ButterKnife.bind(this,view);
+
         rListView = view.findViewById(R.id.rEventList);
         pref = view.getContext().getSharedPreferences("UserCredentials", MODE_PRIVATE);
         uName.setText(pref.getString("Name",null));
@@ -162,6 +163,8 @@ public class Home extends Fragment {
         rListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         rAdapter = new RegistrationAdapter(getActivity(),list);
         rListView.setAdapter(rAdapter);
+
+        DONEWITHBSHIT();
 
         counter.setText(""+list.size());
 
@@ -242,6 +245,28 @@ public class Home extends Fragment {
             } catch (Exception es) {
             }
         }
+    }
+
+
+
+
+    public  void DONEWITHBSHIT(){
+        uID.setFocusable(false);
+        uID.setEnabled(false);
+
+        uName.setFocusable(false);
+        uName.setEnabled(false);
+
+        uEmail.setFocusable(false);
+        uEmail.setEnabled(false);
+
+        uUni.setFocusable(false);
+        uUni.setEnabled(false);
+
+        uReg.setFocusable(false);
+        uReg.setEnabled(false);
+
+
     }
 
 }

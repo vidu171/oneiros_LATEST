@@ -56,7 +56,6 @@
                 android:fontFamily="sans-serif-light"
                 android:inputType="textPersonName"
                 android:maxLines="1"
-                android:paddingRight="40dp"
                 android:paddingTop="9dip"
                 android:text="User Full Name"
                 android:textColor="#ff999999"
@@ -69,7 +68,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="-15dip"
             android:layout_marginLeft="10dip"
-            android:layout_marginRight="10dip"
             android:orientation="horizontal">
 
             <ImageView
@@ -92,7 +90,6 @@
                 android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingRight="40dp"
                 android:paddingTop="9dip"
                 android:text="User Email ID"
                 android:textColor="#ff999999"
@@ -127,7 +124,6 @@
                 android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingRight="40dp"
                 android:paddingTop="9dip"
                 android:text="User RegNo."
                 android:textColor="#ff999999"
@@ -163,7 +159,6 @@
                 android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingRight="40dp"
                 android:paddingTop="9dip"
                 android:text="User University"
                 android:textColor="#ff999999"
@@ -199,7 +194,6 @@
                 android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:maxLines="1"
-                android:paddingRight="40dp"
                 android:paddingTop="9dip"
                 android:text="User ID"
                 android:textColor="#ff999999"

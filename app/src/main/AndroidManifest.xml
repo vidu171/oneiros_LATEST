@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="oneiros.muj.oneiros">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,8 +16,7 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="true"
         android:hardwareAccelerated="true"
-        android:largeHeap="true"
-        >
+        android:largeHeap="true">
 
         <activity android:name=".Activities.FirstActivity"
             android:screenOrientation="portrait"
@@ -28,15 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait"
             tools:replace="screenOrientation"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateVisible">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
         </activity>
 
 
