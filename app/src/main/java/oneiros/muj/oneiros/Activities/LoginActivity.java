@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -304,6 +305,14 @@ public class LoginActivity extends AppCompatActivity {
                                                             finish();
                                                         }
                                                     });
+                                                } else {
+                                                    FirebaseAuth.getInstance().getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            progressDialog.dismiss();
+                                                            Toast.makeText(getApplicationContext(), "404 not found, signup again!", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    });
                                                 }
 
                                             } catch (InterruptedException e) {
@@ -471,50 +480,69 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private class MyTask extends AsyncTask<Void, Void, String> {
-
+        UserCreds user = new UserCreds(NName, EEmail.trim(), PPhone.trim(), RRegistration, UUniversity, (int) value);
         @Override
         protected void onPreExecute() {
-            UserCreds user = new UserCreds(NName, EEmail.trim(), PPhone.trim(), RRegistration, UUniversity, (int) value);
             mMessagesDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user);
-            editor.putString("Name", NName);
-            editor.putString("EmailId", EEmail);
-            editor.putString("Contact", PPhone);
-            editor.putString("RegNo.", RRegistration);
-            editor.putString("University", UUniversity);
-            editor.putString("UserId", FirebaseAuth.getInstance().getCurrentUser().getUid());
-            editor.putString("WalkinId", String.valueOf(value));
-            editor.commit();
-
         }
 
         @Override
         protected String doInBackground(Void... params) {//new
-            String smsString = "Thank you for registering with Oneiros '17. Your credentials are: %0AEmail: " + EEmail + "%0APassword: " + PPassword + "%0AWalk-In Id: " + String.valueOf(value);
-            Connection.Response res = null;
-            try {
-                res = Jsoup.connect("http://api.msg91.com/api/sendhttp.php?authkey=176579Aj3z4wdz9g59ca63b3&mobiles=" + PPhone + "&message=" + smsString + "&sender=ONODGT&route=4&unicode=1")
-                        .userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21")
-                        .timeout(10000)
-                        .execute();
-                System.out.println(res.parse().toString());
-                res = Jsoup.connect("http://siddharthjaidka.me/ono/signup.php")
-                        .userAgent("Chrome/19.0.1042.0")
-                        .timeout(1000000)
-                        .validateTLSCertificates(false)
-                        .followRedirects(true)
-                        .data("email", EEmail, "password", PPassword, "walkin", String.valueOf(value), "qr", FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .method(Connection.Method.POST)
-                        .execute();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             String result = "";
+            final Future<UserCreds> listFutureForUserData = FetchUserDAO
+                    .getInstance()
+                    .getUserData(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            while (!listFutureForUserData.isDone()) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             try {
-                if (res.parse().toString().toLowerCase().contains("success"))
-                    result = "success";
-                else
+                UserCreds userData = listFutureForUserData.get();
+                if (userData != null && userData.Name.trim().toString().equals(NName)) {
+                    editor.putString("Name", userData.Name);
+                    editor.putString("EmailId", userData.EmailId);
+                    editor.putString("Contact", userData.Contact);
+                    editor.putString("RegNo.", userData.RegNum);
+                    editor.putString("University", userData.University);
+                    editor.putString("UserId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    editor.putString("WalkinId", "" + userData.WalkinId);
+                    editor.commit();
+                    String smsString = "Thank you for registering with Oneiros '17. Your credentials are: %0AEmail: " + EEmail + "%0APassword: " + PPassword + "%0AWalk-In Id: " + String.valueOf(value);
+                    Connection.Response res = null;
+                    try {
+                        res = Jsoup.connect("http://api.msg91.com/api/sendhttp.php?authkey=176579Aj3z4wdz9g59ca63b3&mobiles=" + PPhone + "&message=" + smsString + "&sender=ONODGT&route=4&unicode=1")
+                                .userAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21")
+                                .timeout(10000)
+                                .execute();
+                        System.out.println(res.parse().toString());
+                        res = Jsoup.connect("http://siddharthjaidka.me/ono/signup.php")
+                                .userAgent("Chrome/19.0.1042.0")
+                                .timeout(1000000)
+                                .validateTLSCertificates(false)
+                                .followRedirects(true)
+                                .data("email", EEmail, "password", PPassword, "walkin", String.valueOf(value), "qr", FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .method(Connection.Method.POST)
+                                .execute();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        if (res.parse().toString().toLowerCase().contains("success"))
+                            result = "success";
+                        else
+                            result = "failed";
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
                     result = "failed";
-            } catch (IOException e) {
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
                 e.printStackTrace();
             }
             return result;
@@ -527,6 +555,19 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 startActivity(new Intent(LoginActivity.this, SplashScreen.class));
                 finishAffinity();
+            } else {
+                FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("User", "User account deleted.");
+                            progressDialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "Error occured, try later!", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error occured, try later!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
         }
     }
