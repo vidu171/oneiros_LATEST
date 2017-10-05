@@ -1,6 +1,8 @@
 package oneiros.muj.oneiros.Fragments;
 
 import android.animation.ArgbEvaluator;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -45,7 +47,7 @@ public class MainEvents extends Fragment implements DiscreteScrollView.ScrollLis
         itemPicker.setAdapter(new GalleryAdapter(data));
         itemPicker.addScrollListener(this);
         itemPicker.addOnItemChangedListener(this);
-        itemPicker.scrollToPosition(1);
+        itemPicker.scrollToPosition(0);
 
         v.findViewById(R.id.fab_share).setOnClickListener(this);
         return v;
@@ -86,8 +88,46 @@ public class MainEvents extends Fragment implements DiscreteScrollView.ScrollLis
 
     }
 
+    /*
+    https://oneiros.co.in/major_event/requiem
+    https://oneiros.co.in/major_event/destival
+    https://oneiros.co.in/major_event/fashion_show
+     */
+
+
 
     private void share(View view) {
-        Snackbar.make(view, "Hey"+itemPicker.getCurrentItem(), Snackbar.LENGTH_SHORT).show();
+
+
+        switch (itemPicker.getCurrentItem()){
+            case 0:
+                        GOTONET("https://oneiros.co.in/major_event/fashion_show");
+                        break;
+
+            case 1:
+                         GOTONET("https://oneiros.co.in");
+                        break;
+
+            case 2:
+                         GOTONET("https://oneiros.co.in/major_event/requiem");
+                        break;
+
+            case 3:
+                GOTONET("https://oneiros.co.in/major_event/destival");
+                break;
+
+            case 4:
+
+                GOTONET("https://oneiros.co.in");
+                break;
+
+        }
+
+    }
+
+    public  void GOTONET(String net){
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(net));
+        getContext().startActivity(i);
     }
 }
