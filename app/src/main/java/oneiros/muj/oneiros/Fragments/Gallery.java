@@ -23,7 +23,7 @@ public class Gallery {
                 new Image(R.drawable.posterfasion),
                 new Image(R.drawable.posterdjn),
                 new Image(R.drawable.posterguest),
-                new Image(R.drawable.posterdest),
-                new Image(R.drawable.posterhardy));
+                new Image(R.drawable.posterdesta),
+                new Image(R.drawable.posterhardya));
     }
 }
