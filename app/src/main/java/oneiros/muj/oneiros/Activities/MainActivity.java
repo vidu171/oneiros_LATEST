@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setCancelable(true);
             builder.create().show();
         }
-        Pagerfragments.setOffscreenPageLimit(2);
+        Pagerfragments.setOffscreenPageLimit(4);
         top.setupWithViewPager(Pagerfragments);
 
         pagerAdapter adapter = new pagerAdapter(getSupportFragmentManager());
